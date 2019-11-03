@@ -1,13 +1,23 @@
 Package: fauxnaif
 Title: Replacement for dplyr's na_if()
-Version: 0.0.0.9000
+Version: 0.1.1
 Authors@R: 
     person(given = "Alexander",
            family = "Rossell Hayes",
            role = c("aut", "cre"),
            email = "alexander@rossellhayes.com",
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
+           comment = c(ORCID = "0000-0001-9412-0457"))
+Description: fauxnaif is an extension to `dplyr::na_if()`.
+    Unlike `dplyr`'s `na_if()`, it allows you to specify multiple values to be
+    replaced with `NA` using a single function.
+    Load `fauxnaif` after `dplyr` (or use a conflict manager like `conflicted`)
+    to use the extended `na_if()` functionality.
+    Alternatively, use `na_if_in()` to avoid conflicts with `dplyr`.
 License: MIT
+Suggests:
+    dplyr,
+    conflicted
+Roxygen: list(markdown = TRUE)
 Encoding: UTF-8
 LazyData: true
+RoxygenNote: 6.1.1

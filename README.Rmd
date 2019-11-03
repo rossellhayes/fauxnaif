@@ -1,0 +1,51 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+options(tibble.print_min = 5, tibble.print_max = 5)
+```
+
+# fauxnaif
+
+***faux-naïf*** (/ˌfoʊ.naɪˈif/ *FOH-niy-EEF*): a person who pretends to be simple or innocent
+
+**`fauxnaif`**: an R package for pretending values are `NA`s
+
+## Overview
+
+fauxnaif provides a replacement for `dplyr::na_if()`.
+Unlike [**dplyr**](https://github.com/tidyverse/dplyr)'s `na_if()`, it allows you
+to specify multiple values to be replaced with `NA` using a single function.
+Load **fauxnaif** after **dplyr** (or use a conflict manager like
+[**conflicted**](https://github.com/r-lib/conflicted)) to use the extended
+`na_if()` functionality.
+Alternatively, use `na_if_in()` to avoid conflicts with **dplyr**.
+
+## Installation
+
+```{r eval = FALSE}
+# install.packages("devtools")
+devtools::install_github("rossellhayes/fauxnaif")
+```
+
+## Usage
+
+```{r, message = FALSE}
+library(dplyr)
+library(fauxnaif)
+
+na_if(1:5, 2, 4)
+
+dplyr::starwars %>%
+  select(name, hair_color) %>%
+  mutate(mutated_hair_color = na_if(hair_color, "unknown", "none"))
+```

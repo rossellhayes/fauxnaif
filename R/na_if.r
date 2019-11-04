@@ -17,6 +17,9 @@
 #'
 #'   [dplyr::recode()] and [dplyr::case_when()] to more generally replace
 #'   values.
+#'
+#' @importFrom glue glue_collapse
+#' @importFrom purrr map map_chr map_lgl
 #' @export
 #' @examples
 #' na_if(1:5, 2, 4)
@@ -42,7 +45,23 @@
 
 na_if <- function(x, ...) {
   y <- c(..., recursive = TRUE)
-  if (typeof(y) == "list") stop("Input cannot be coerced to a vector.")
+  if (length(y) == 0) warning("No values to replace with `NA`")
+  if (typeof(y) == "list") stop(test_na_if(...))
   x[x %in% y] <- NA
   x
+}
+
+test_na_if <- function(...) {
+  args           <- as.list(substitute(list(...)))
+  tested_args    <- map(args, ~ c(eval(.), recursive = TRUE))
+  tested_args[1] <- NA
+  errors         <- map_lgl(tested_args, ~ typeof(.) == "list")
+  error_names    <- map_chr(args[errors], ~ paste0("`", deparse(.), "`"))
+  error_message  <- glue_collapse(error_names, sep = ", ", last = " and ")
+
+  if (length(error_args) == 1) {
+    paste("Argument", error_message, "cannot be coerced to a vector")
+  } else {
+    paste("Arguments", error_message, "cannot be coerced to vectors")
+  }
 }

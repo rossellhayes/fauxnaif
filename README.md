@@ -6,7 +6,7 @@
 ***faux-naïf*** (/ˌfoʊ.naɪˈif/ *FOH-niy-EEF*): a person who pretends to
 be simple or innocent
 
-**`fauxnaif`**: an R package for pretending values are `NA`s
+**`fauxnaif`**: an R package for pretending values are `NA`
 
 ## Overview
 

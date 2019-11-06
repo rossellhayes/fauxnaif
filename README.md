@@ -3,6 +3,12 @@
 
 # fauxnaif
 
+[![Project Status: Active – The project has reached a stable, usable
+state and is being actively
+developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+[![Build
+Status](https://travis-ci.org/rossellhayes/fauxnaif.svg?branch=master)](https://travis-ci.org/rossellhayes/fauxnaif)
+
 ***faux-naïf*** (/ˌfoʊ.naɪˈif/ *FOH-niy-EEF*): a person who pretends to
 be simple or innocent
 

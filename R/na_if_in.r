@@ -25,6 +25,7 @@
 #' y <- c("abc", "", "def", "NA", "ghi", 42, "jkl", "NULL", "mno")
 #' na_if_in(y, "", c("NA", "NULL"), 1:100)
 #'
+#' \donttest{
 #' # This function handles vector values differently than dplyr,
 #' # and returns a different result with vector replacement values:
 #' na_if_in(1:5, 5:1)
@@ -39,6 +40,7 @@
 #' # na_if can also be used with scoped variants of mutate
 #' # like mutate_if to mutate multiple columns
 #' dplyr::starwars %>%
-#'   mutate_if(is.character, list(~na_if_in(., "unknown", "none")))
+#'   mutate_if(is.character, ~ na_if_in(., "unknown", "none"))
+#' }
 
 na_if_in <- na_if

@@ -10,14 +10,17 @@ state and is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 [![Build
 Status](https://travis-ci.org/rossellhayes/fauxnaif.svg?branch=master)](https://travis-ci.org/rossellhayes/fauxnaif)
-[![AppVeyor build
-status](https://ci.appveyor.com/api/projects/status/github/rossellhayes/fauxnaif?branch=master&svg=true)](https://ci.appveyor.com/project/rossellhayes/fauxnaif)
+[![AppVeyor Build
+Status](https://ci.appveyor.com/api/projects/status/github/rossellhayes/fauxnaif?branch=master&svg=true)](https://ci.appveyor.com/project/rossellhayes/fauxnaif)
+[![GitHub
+License](https://img.shields.io/github/license/rossellhayes/fauxnaif?color=blueviolet)](https://github.com/rossellhayes/fauxnaif/blob/master/LICENSE)
 <!-- badges: end -->
 
-***faux-naïf*** (/ˌfoʊ.naɪˈif/ *FOH-niy-EEF*): a person who pretends to
-be simple or innocent
+***faux-naïf*** (/ˌfoʊ.naɪˈif/): a person who pretends to be simple or
+innocent
 
-**`fauxnaif`**: an R package for pretending values are `NA`
+**`fauxnaif`**: an R package for simplifying data by pretending values
+are `NA`
 
 ## Overview
 

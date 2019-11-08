@@ -16,7 +16,9 @@ Description: fauxnaif provides a replacement for `dplyr::na_if()`.
 License: MIT
 Depends:
     glue,
-    purrr
+    purrr,
+    rlang,
+    stringr
 Suggests:
     dplyr,
     conflicted

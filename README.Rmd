@@ -34,7 +34,7 @@ to specify multiple values to be replaced with `NA` using a single function.
 Load **fauxnaif** after **dplyr** (or use a conflict manager like
 [**conflicted**](https://github.com/r-lib/conflicted)) to use the extended
 `na_if()` functionality.
-Alternatively, use `na_if_in()` to avoid conflicts with **dplyr**.
+Alternatively, use `faux_na_if()` to avoid conflicts with **dplyr**.
 
 ## Installation
 
@@ -49,7 +49,9 @@ devtools::install_github("rossellhayes/fauxnaif")
 library(dplyr)
 library(fauxnaif)
 
-na_if(1:5, 2, 4)
+na_if(1:10, 2, 4:5, c(7, 9))
+
+na_if(1:10, ~ . >= 8)
 
 dplyr::starwars %>%
   select(name, hair_color) %>%

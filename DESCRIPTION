@@ -12,7 +12,7 @@ Description: fauxnaif provides a replacement for `dplyr::na_if()`.
     replaced with `NA` using a single function.
     Load `fauxnaif` after `dplyr` (or use a conflict manager like `conflicted`)
     to use the extended `na_if()` functionality.
-    Alternatively, use `na_if_in()` to avoid conflicts with `dplyr`.
+    Alternatively, use `faux_na_if()` to avoid conflicts with `dplyr`.
 License: MIT
 Depends:
     glue,

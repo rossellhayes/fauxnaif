@@ -17,9 +17,9 @@ coverage](https://codecov.io/gh/rossellhayes/fauxnaif/branch/master/graph/badge.
 License](https://img.shields.io/github/license/rossellhayes/fauxnaif?color=blueviolet)](https://github.com/rossellhayes/fauxnaif/blob/master/LICENSE)
 <!-- badges: end -->
 
-***faux-naÃ¯f***
-([/ËŒfoÊŠ.naÉªËˆif/](https://en.wikipedia.org/wiki/Help:IPA/English)):
-a person who pretends to be simple or innocent
+***faux-naïf***
+([/ˌfoʊ.naɪˈif/](https://en.wikipedia.org/wiki/Help:IPA/English)): a
+person who pretends to be simple or innocent
 
 **`fauxnaif`**: an R package for simplifying data by pretending values
 are `NA`

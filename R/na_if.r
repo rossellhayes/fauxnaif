@@ -23,7 +23,6 @@
 #' @importFrom glue glue_collapse
 #' @importFrom purrr map map_chr map_lgl
 #' @importFrom rlang is_formula
-#' @importFrom stringr fixed str_c str_replace
 #' @aliases faux_na_if fauxnaif
 #' @export
 #' @examples
@@ -49,24 +48,20 @@
 #'   dplyr::mutate_if(is.character, ~ na_if(., "unknown", "none"))
 
 na_if <- function(x, ...) {
-  if (typeof(c(x, recurisve = TRUE)) == "list")
+  if (typeof(c(x, recursive = TRUE)) == "list")
     stop("Input `x` cannot be coerced to a vector")
 
   arguments <- as.list(substitute(list(...)))
 
-  if (any(map_lgl(arguments, ~ is_formula(., lhs = TRUE))))
-    stop("Formula arguments must be one-sided")
+  two_sided_formulas <- map_lgl(arguments, ~ is_formula(., lhs = TRUE))
+  if (any(two_sided_formulas)) stop("Formula arguments must be one-sided")
 
   formulas <- map_lgl(arguments, ~ is_formula(., lhs = FALSE))
   x[eval(parse(text = extract_formulas(arguments, formulas)))] <- NA
 
-  arguments[formulas] <- NULL
-  arguments[1]        <- NULL
-  evaluated_arguments <- map(arguments, ~ c(eval(.), recursive = TRUE))
-  y                   <- c(evaluated_arguments, recursive = TRUE)
+  evaluated_arguments <- evaulate_arguments(arguments, formulas)
 
-  if (typeof(y) == "list")
-    stop(find_errors(arguments, evaluated_arguments))
+  y <- c(evaluated_arguments, recursive = TRUE)
 
   if (length(y) == 0 & sum(formulas) == 0)
     warning("No values to replace with `NA` specified")

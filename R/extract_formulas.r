@@ -1,8 +1,8 @@
 extract_formulas <- function(arguments, formulas) {
-  str_c(
+  paste(
     map(
       arguments[formulas],
-      ~ str_replace(as.character(.)[2], "\\.|\\.x", "x")
+      ~ gsub("\\.|\\.x", "x", as.character(.)[2])
     ),
     collapse = " | "
   )

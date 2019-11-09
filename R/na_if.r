@@ -40,13 +40,13 @@
 #' # na_if is particularly useful inside mutate,
 #' # and is meant for use with vectors rather than entire data frames
 #' dplyr::starwars %>%
-#'   select(name, hair_color) %>%
-#'   mutate(hair_color = na_if(hair_color, "unknown", "none"))
+#'   dplyr::select(name, hair_color) %>%
+#'   dplyr::mutate(hair_color = na_if(hair_color, "unknown", "none"))
 #'
 #' # na_if can also be used with scoped variants of mutate
 #' # like mutate_if to mutate multiple columns
 #' dplyr::starwars %>%
-#'   mutate_if(is.character, ~ na_if(., "unknown", "none"))
+#'   dplyr::mutate_if(is.character, ~ na_if(., "unknown", "none"))
 
 na_if <- function(x, ...) {
   if (typeof(c(x, recurisve = TRUE)) == "list")

@@ -4,6 +4,7 @@
 #' It is useful if you want to convert annoying values to `NA`.
 #' Unlike [dplyr::na_if()], this function allows you to specify multiple values
 #' to be replaced with `NA` at the same time.
+#' `faux_na_if()` is offered as an alternative to avoid clashes with [dplyr].
 #'
 #' @param x Vector to modify
 #' @param ... Values to replace with `NA`
@@ -22,6 +23,7 @@
 #' @importFrom purrr map map_chr map_lgl
 #' @importFrom rlang is_formula
 #' @importFrom stringr fixed str_c str_replace
+#' @aliases faux_na_if fauxnaif
 #' @export
 #' @examples
 #' na_if(1:5, 2, 4)
@@ -29,7 +31,7 @@
 #' y <- c("abc", "", "def", "NA", "ghi", 42, "jkl", "NULL", "mno")
 #' na_if(y, "", c("NA", "NULL"), 1:100)
 #'
-#' \donttest{
+#' \dontrun{
 #' # This function handles vector values differently than dplyr,
 #' # and returns a different result with vector replacement values:
 #' na_if(1:5, 5:1)
@@ -73,3 +75,8 @@ na_if <- function(x, ...) {
   x[x %in% y] <- NA
   x
 }
+
+#' @rdname na_if
+#' @export
+
+faux_na_if <-  na_if

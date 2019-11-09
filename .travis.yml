@@ -8,3 +8,24 @@ r_packages:
 
 after_success:
   - Rscript -e 'library(covr); codecov()'
+
+r_binary_packages:
+  - callr
+  - covr
+  - desc
+  - dplyr
+  - glue
+  - lifecycle
+  - memoise
+  - pkgbuild
+  - pkgload
+  - prettyunits
+  - processx
+  - ps
+  - purrr
+  - rlang
+  - rprojroot
+  - rstudioapi
+  - stringr
+  - testthat
+  - tidyr

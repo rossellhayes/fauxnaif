@@ -17,8 +17,7 @@ License: MIT + file LICENSE
 Depends:
     glue,
     purrr,
-    rlang,
-    stringr
+    rlang
 Suggests:
     dplyr,
     conflicted,

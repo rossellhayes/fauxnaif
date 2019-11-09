@@ -1,5 +1,3 @@
-#' Helper function to extract and format formulas
-
 extract_formulas <- function(arguments, formulas) {
   str_c(
     map(

@@ -1,11 +1,9 @@
-#' Helper function to find invalid inputs
-
 find_errors <- function(arguments, evaluated_arguments) {
   errors         <- map_lgl(evaluated_arguments, ~ typeof(.) == "list")
   error_names    <- map_chr(arguments[errors], ~ paste0("`", deparse(.), "`"))
   error_message  <- glue_collapse(error_names, sep = ", ", last = " and ")
 
-  if (length(error_args) == 1) {
+  if (length(error_names) == 1) {
     paste(
       "Argument",
       error_message,

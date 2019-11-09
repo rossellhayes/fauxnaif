@@ -24,7 +24,8 @@ This is a replacement for \code{\link[dplyr:na_if]{dplyr::na_if()}}.
 It is useful if you want to convert annoying values to \code{NA}.
 Unlike \code{\link[dplyr:na_if]{dplyr::na_if()}}, this function allows you to specify multiple values
 to be replaced with \code{NA} at the same time.
-\code{faux_na_if()} is offered as an alternative to avoid clashes with \link{dplyr}.
+\code{faux_na_if()} is offered as an alternative to avoid clashes with
+\link[dplyr:dplyr-package]{dplyr}.
 }
 \examples{
 na_if(1:5, 2, 4)
@@ -32,7 +33,6 @@ na_if(1:5, 2, 4)
 y <- c("abc", "", "def", "NA", "ghi", 42, "jkl", "NULL", "mno")
 na_if(y, "", c("NA", "NULL"), 1:100)
 
-\dontrun{
 # This function handles vector values differently than dplyr,
 # and returns a different result with vector replacement values:
 na_if(1:5, 5:1)
@@ -48,7 +48,6 @@ dplyr::starwars \%>\%
 # like mutate_if to mutate multiple columns
 dplyr::starwars \%>\%
   mutate_if(is.character, ~ na_if(., "unknown", "none"))
-}
 }
 \seealso{
 \code{\link[dplyr:na_if]{dplyr::na_if()}} to replace a single value with \code{NA}.

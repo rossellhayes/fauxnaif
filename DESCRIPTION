@@ -13,7 +13,7 @@ Description: fauxnaif provides a replacement for `dplyr::na_if()`.
     Load `fauxnaif` after `dplyr` (or use a conflict manager like `conflicted`)
     to use the extended `na_if()` functionality.
     Alternatively, use `faux_na_if()` to avoid conflicts with `dplyr`.
-License: MIT
+License: MIT + file LICENSE
 Depends:
     glue,
     purrr,
@@ -22,8 +22,9 @@ Depends:
 Suggests:
     dplyr,
     conflicted,
+    covr,
     testthat (>= 2.1.0),
-    covr
+    tidyr
 Roxygen: list(markdown = TRUE)
 Encoding: UTF-8
 LazyData: true

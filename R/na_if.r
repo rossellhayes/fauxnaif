@@ -4,7 +4,8 @@
 #' It is useful if you want to convert annoying values to `NA`.
 #' Unlike [dplyr::na_if()], this function allows you to specify multiple values
 #' to be replaced with `NA` at the same time.
-#' `faux_na_if()` is offered as an alternative to avoid clashes with [dplyr].
+#' `faux_na_if()` is offered as an alternative to avoid clashes with
+#' \link[dplyr:dplyr-package]{dplyr}.
 #'
 #' @param x Vector to modify
 #' @param ... Values to replace with `NA`

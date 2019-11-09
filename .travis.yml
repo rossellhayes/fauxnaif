@@ -12,6 +12,7 @@ r_binary_packages:
   - desc
   - dplyr
   - glue
+  - lifecycle
   - memoise
   - pkgbuild
   - pkgload
@@ -24,3 +25,4 @@ r_binary_packages:
   - rstudioapi
   - stringr
   - testthat
+  - tidyr

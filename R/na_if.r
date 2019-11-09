@@ -31,7 +31,6 @@
 #' y <- c("abc", "", "def", "NA", "ghi", 42, "jkl", "NULL", "mno")
 #' na_if(y, "", c("NA", "NULL"), 1:100)
 #'
-#' \dontrun{
 #' # This function handles vector values differently than dplyr,
 #' # and returns a different result with vector replacement values:
 #' na_if(1:5, 5:1)
@@ -47,7 +46,6 @@
 #' # like mutate_if to mutate multiple columns
 #' dplyr::starwars %>%
 #'   mutate_if(is.character, ~ na_if(., "unknown", "none"))
-#' }
 
 na_if <- function(x, ...) {
   if (typeof(c(x, recurisve = TRUE)) == "list")

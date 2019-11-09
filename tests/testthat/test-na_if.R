@@ -27,7 +27,10 @@ test_that("two-sided formula produces error", {
 test_that("non-coercible argument produces error", {
   expect_error(na_if(0:9, mean))
   expect_error(na_if(0:9, lm(1 ~ 1)))
+  expect_error(na_if(0:9, mean, lm(1 ~ 1)))
 })
+
+
 
 test_that("single argument produces warning", {
   expect_warning(na_if(0:9), "No values to replace with `NA` specified")

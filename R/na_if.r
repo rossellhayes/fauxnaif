@@ -52,12 +52,8 @@ na_if <- function(x, ...) {
     stop("Input `x` cannot be coerced to a vector")
 
   arguments <- as.list(substitute(list(...)))
-
-  two_sided_formulas <- map_lgl(arguments, ~ is_formula(., lhs = TRUE))
-  if (any(two_sided_formulas)) stop("Formula arguments must be one-sided")
-
-  formulas <- map_lgl(arguments, ~ is_formula(., lhs = FALSE))
-  x[eval(parse(text = extract_formulas(arguments, formulas)))] <- NA
+  formulas  <- map_lgl(arguments, ~ is_formula(., lhs = FALSE))
+  x[eval(extract_formulas(arguments, formulas))] <- NA
 
   evaluated_arguments <- evaulate_arguments(arguments, formulas)
 

@@ -59,3 +59,7 @@ dplyr::starwars %>%
   select(name, hair_color) %>%
   mutate(mutated_hair_color = na_if(hair_color, "unknown", "none"))
 ```
+
+## Credits
+
+Sticker fonts are [Bodoni*](https://github.com/indestructible-type/Bodoni) and [Hasklig](https://github.com/i-tu/Hasklig)

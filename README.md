@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# fauxnaif
+# fauxnaif <img src='man/figures/logo.png' align="right" height="138" />
 
 <!-- badges: start -->
 
@@ -66,3 +66,9 @@ dplyr::starwars %>%
 #> 5 Leia Organa    brown      brown             
 #> # ... with 82 more rows
 ```
+
+## Credits
+
+Sticker fonts are
+[Bodoni\*](https://github.com/indestructible-type/Bodoni) and
+[Hasklig](https://github.com/i-tu/Hasklig)

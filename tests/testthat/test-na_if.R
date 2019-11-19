@@ -1,7 +1,6 @@
 test_that("scalar argument replaces all matching x", {
-  x <- rep(0:1, 2)
-  expect_equal(na_if(x, 0), c(NA, 1, NA, 1))
-  expect_equal(na_if(x, 1), c(0, NA, 0, NA))
+  expect_equal(na_if(0:9, 0), c(NA, 1:9))
+  expect_equal(na_if(0:9, 1), c(0, NA, 2:9))
 })
 
 test_that("multiple scalar arguments replaces all matching x", {

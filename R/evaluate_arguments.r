@@ -1,5 +1,12 @@
-evaulate_arguments <- function(arguments, formulas) {
-  arguments[formulas] <- NULL
-  arguments[1]        <- NULL
-  remove_errors(map(arguments, ~ c(eval(.), recursive = TRUE)), arguments)
+evaulate_arguments <- function(objects) {
+  c(
+    remove_errors(
+      lapply(
+        objects,
+        function (x) c(eval(x), recursive = TRUE)
+      ),
+      objects
+    ),
+    recursive = TRUE
+  )
 }

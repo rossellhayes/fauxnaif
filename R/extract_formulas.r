@@ -1,14 +1,21 @@
-extract_formulas <- function(arguments, formulas) {
-  if (any(map_lgl(arguments, ~ is_formula(., lhs = TRUE))))
-    stop("Formula arguments must be one-sided")
-
-  parse(
-    text = paste(
+extract_formulas <- function(formulas, not = FALSE) {
+  if (length(formulas) > 0) {
+    formulas <- glue_collapse(
       map(
-        arguments[formulas],
-        ~ gsub("\\.|\\.x", "x", as.character(.)[2])
+        formulas,
+        ~ glue('({gsub("\\.", "input", as.character(.)[2])})')
       ),
-      collapse = " | "
+      sep = " | "
     )
-  )
+
+    parse(
+      text = if (not) {
+        glue("!({formulas})")
+      } else {
+        formulas
+      }
+    )
+  } else {
+    NULL
+  }
 }

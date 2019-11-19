@@ -15,17 +15,17 @@ test_that("formula argument replaces all matching x", {
 })
 
 test_that("non-vector x produces error", {
-  expect_error(na_if(mean, 0), "Input `x` cannot be coerced to a vector")
-  expect_error(na_if(lm(1 ~ 1), 0), "Input `x` cannot be coerced to a vector")
-  expect_error(na_if(~ . < 0, 0), "Input `x` cannot be coerced to a vector")
+  expect_error(na_if(mean, 0), "input `mean`")
+  expect_error(na_if(lm(1 ~ 1), 0), "input `lm(1 ~ 1)`", fixed = TRUE)
+  expect_error(na_if(~ . < 0, 0), "input `~. < 0`", fixed = TRUE)
 })
 
 test_that("coercible non-vector x does not produce error", {
   expect_equal(na_if(list(0, 1), 0), list(NA, 1))
 })
 
-test_that("two-sided formula produces error", {
-  expect_error(na_if(0:9, x ~ . < 1), "Formula arguments must be one-sided")
+test_that("two-sided formula produces warning", {
+  expect_warning(na_if(0:9, x ~ . < 1), "Formula arguments must be one-sided")
 })
 
 test_that("non-coercible argument produces warning", {

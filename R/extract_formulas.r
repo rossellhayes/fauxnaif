@@ -3,7 +3,7 @@ extract_formulas <- function(formulas, not = FALSE) {
     formulas <- glue_collapse(
       map(
         formulas,
-        ~ glue('({gsub("\\.", "input", as.character(.)[2])})')
+        ~ glue('({gsub(".", "input", as.character(.)[2], fixed = TRUE)})')
       ),
       sep = " | "
     )

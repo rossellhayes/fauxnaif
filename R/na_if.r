@@ -35,8 +35,8 @@
 #'   values.
 #'
 #' @importFrom glue glue glue_collapse
-#' @importFrom purrr map map_chr map_lgl
-#' @importFrom rlang abort is_function warn
+#' @importFrom purrr map map_chr map_lgl walk
+#' @importFrom rlang abort is_formula warn
 #' @aliases na_if_not faux_na_if fauxnaif
 #' @export
 #' @examples

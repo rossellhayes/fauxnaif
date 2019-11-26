@@ -17,7 +17,6 @@ Depends:
     rlang
 Suggests:
     dplyr,
-    conflicted,
     covr,
     testthat (>= 2.1.0),
     tidyr

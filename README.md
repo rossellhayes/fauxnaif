@@ -29,10 +29,7 @@ are `NA`
 fauxnaif provides a replacement for `dplyr::na_if()`. Unlike
 [**dplyr**](https://github.com/tidyverse/dplyr)’s `na_if()`, it allows
 you to specify multiple values to be replaced with `NA` using a single
-function. Load **fauxnaif** after **dplyr** (or use a conflict manager
-like [**conflicted**](https://github.com/r-lib/conflicted)) to use the
-extended `na_if()` functionality. Alternatively, use `faux_na_if()` to
-avoid conflicts with **dplyr**.
+function.
 
 ## Installation
 
@@ -47,15 +44,15 @@ devtools::install_github("rossellhayes/fauxnaif")
 library(dplyr)
 library(fauxnaif)
 
-na_if(1:10, 2, 4:5, c(7, 9))
+na_if_in(1:10, 2, 4:5, c(7, 9))
 #>  [1]  1 NA  3 NA NA  6 NA  8 NA 10
 
-na_if(1:10, ~ . >= 8)
+na_if_in(1:10, ~ . >= 8)
 #>  [1]  1  2  3  4  5  6  7 NA NA NA
 
 dplyr::starwars %>%
   select(name, hair_color) %>%
-  mutate(mutated_hair_color = na_if(hair_color, "unknown", "none"))
+  mutate(mutated_hair_color = na_if_in(hair_color, "unknown", "none"))
 #> # A tibble: 87 x 3
 #>   name           hair_color mutated_hair_color
 #>   <chr>          <chr>      <chr>             

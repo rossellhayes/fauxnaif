@@ -33,10 +33,6 @@ options(tibble.print_min = 5, tibble.print_max = 5)
 fauxnaif provides a replacement for `dplyr::na_if()`.
 Unlike [**dplyr**](https://github.com/tidyverse/dplyr)'s `na_if()`, it allows you
 to specify multiple values to be replaced with `NA` using a single function.
-Load **fauxnaif** after **dplyr** (or use a conflict manager like
-[**conflicted**](https://github.com/r-lib/conflicted)) to use the extended
-`na_if()` functionality.
-Alternatively, use `faux_na_if()` to avoid conflicts with **dplyr**.
 
 ## Installation
 
@@ -51,13 +47,13 @@ devtools::install_github("rossellhayes/fauxnaif")
 library(dplyr)
 library(fauxnaif)
 
-na_if(1:10, 2, 4:5, c(7, 9))
+na_if_in(1:10, 2, 4:5, c(7, 9))
 
-na_if(1:10, ~ . >= 8)
+na_if_in(1:10, ~ . >= 8)
 
 dplyr::starwars %>%
   select(name, hair_color) %>%
-  mutate(mutated_hair_color = na_if(hair_color, "unknown", "none"))
+  mutate(mutated_hair_color = na_if_in(hair_color, "unknown", "none"))
 ```
 
 ## Credits

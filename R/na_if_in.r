@@ -4,11 +4,9 @@
 #' It is useful if you want to convert annoying values to `NA`.
 #' Unlike [dplyr::na_if()], this function allows you to specify multiple values
 #' to be replaced with `NA` at the same time. \cr
-#' `na_if()` replaces values that match its arguments with `NA`. \cr
+#' `na_if_in()` replaces values that match its arguments with `NA`. \cr
 #' `na_if_not()` replaces values that *do not* match its arguments with
 #' `NA`. \cr
-#' `faux_na_if()` is provided as an alias for `na_if()` to avoid clashes
-#' with [dplyr::na_if()].
 #'
 #' @section Formulas:
 #' These functions accept one-sided formulas that can evaluate to logical
@@ -40,28 +38,28 @@
 #' @aliases na_if_not faux_na_if fauxnaif
 #' @export
 #' @examples
-#' na_if(1:5, 2, 4)
+#' na_if_in(1:5, 2, 4)
 #'
 #' y <- c("abc", "", "def", "NA", "ghi", 42, "jkl", "NULL", "mno")
-#' na_if(y, "", c("NA", "NULL"), 1:100)
+#' na_if_in(y, "", c("NA", "NULL"), 1:100)
 #'
 #' # This function handles vector values differently than dplyr,
 #' # and returns a different result with vector replacement values:
-#' na_if(1:5, 5:1)
+#' na_if_in(1:5, 5:1)
 #' dplyr::na_if(1:5, 5:1)
 #'
-#' # na_if is particularly useful inside mutate,
+#' # na_if_in is particularly useful inside mutate,
 #' # and is meant for use with vectors rather than entire data frames
 #' dplyr::starwars %>%
 #'   dplyr::select(name, hair_color) %>%
-#'   dplyr::mutate(hair_color = na_if(hair_color, "unknown", "none"))
+#'   dplyr::mutate(hair_color = na_if_in(hair_color, "unknown", "none"))
 #'
-#' # na_if can also be used with scoped variants of mutate
+#' # na_if_in can also be used with scoped variants of mutate
 #' # like mutate_if to mutate multiple columns
 #' dplyr::starwars %>%
-#'   dplyr::mutate_if(is.character, ~ na_if(., "unknown", "none"))
+#'   dplyr::mutate_if(is.character, ~ na_if_in(., "unknown", "none"))
 
-na_if <- function(input, ...) {
+na_if_in <- function(input, ...) {
   check_valid_input(input)
 
   arguments <- extract_arguments(...)

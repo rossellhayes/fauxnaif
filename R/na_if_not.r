@@ -1,4 +1,4 @@
-#' @rdname na_if
+#' @rdname na_if_in
 #' @export
 
 na_if_not <- function(input, ...) {

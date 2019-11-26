@@ -1,6 +1,6 @@
 Package: fauxnaif
-Title: Replacement for dplyr's na_if()
-Version: 0.2.0
+Title: Convert values to NA
+Version: 0.3.0
 Authors@R: 
     person(given = "Alexander",
            family = "Rossell Hayes",
@@ -10,9 +10,6 @@ Authors@R:
 Description: fauxnaif provides a replacement for `dplyr::na_if()`.
     Unlike `dplyr`'s `na_if()`, it allows you to specify multiple values to be
     replaced with `NA` using a single function.
-    Load `fauxnaif` after `dplyr` (or use a conflict manager like `conflicted`)
-    to use the extended `na_if()` functionality.
-    Alternatively, use `faux_na_if()` to avoid conflicts with `dplyr`.
 License: MIT + file LICENSE
 Depends:
     glue,

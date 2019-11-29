@@ -17,7 +17,8 @@ License: MIT + file LICENSE
 Depends:
     glue,
     purrr,
-    rlang
+    rlang,
+    R (>= 3.2)
 Suggests:
     dplyr,
     covr,

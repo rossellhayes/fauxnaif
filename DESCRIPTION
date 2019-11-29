@@ -16,16 +16,16 @@ Description: fauxnaif provides a replacement for
     `dplyr`.
 License: MIT + file LICENSE
 Depends:
-    glue,
-    purrr,
+    glue (>= 1.3.1),
+    purrr (>= 0.3.3),
     R (>= 3.2),
-    rlang
+    rlang (>= 0.4.1)
 Suggests:
-    covr,
-    dplyr,
-    spelling,
+    covr (>= 3.3.2),
+    dplyr (>= 0.8.3),
+    spelling (>= 2.1),
     testthat (>= 2.1.0),
-    tidyr
+    tidyr (>= 1.0.0)
 Encoding: UTF-8
 Language: en-US
 LazyData: true

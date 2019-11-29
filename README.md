@@ -29,7 +29,10 @@ are `NA`
 fauxnaif provides a replacement for `dplyr::na_if()`. Unlike
 [**dplyr**](https://github.com/tidyverse/dplyr)’s `na_if()`, it allows
 you to specify multiple values to be replaced with `NA` using a single
-function.
+function. Load **fauxnaif** after **dplyr** (or use a conflict manager
+like [**conflicted**](https://github.com/r-lib/conflicted)) to use the
+extended `na_if()` functionality. Alternatively, use `na_if_in()` to
+avoid conflicts with **dplyr**.
 
 ## Installation
 

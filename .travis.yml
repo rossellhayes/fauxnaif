@@ -8,24 +8,24 @@ fortran: false
 after_success:
   - Rscript -e 'library(covr); covr::codecov()'
 
-r_binary_packages:
-  - callr
-  - covr
-  - desc
-  - dplyr
-  - glue
-  - lifecycle
-  - memoise
-  - pkgbuild
-  - pkgload
-  - prettyunits
-  - processx
-  - ps
-  - purrr
-  - remotes
-  - rlang
-  - rprojroot
-  - rstudioapi
-  - stringr
-  - testthat
-  - tidyr
+# r_binary_packages:
+#   - callr
+#   - covr
+#   - desc
+#   - dplyr
+#   - glue
+#   - lifecycle
+#   - memoise
+#   - pkgbuild
+#   - pkgload
+#   - prettyunits
+#   - processx
+#   - ps
+#   - purrr
+#   - remotes
+#   - rlang
+#   - rprojroot
+#   - rstudioapi
+#   - stringr
+#   - testthat
+#   - tidyr

@@ -1,3 +1,23 @@
+check_valid_input <- function(input) {
+  if (typeof(c(input, recursive = TRUE)) == "list") {
+    input <- deparse(substitute(input, env = parent.frame(2)))
+
+    abort(
+      paste0(
+        "Input `",
+        input,
+        "` cannot be coerced to a vector"
+      )
+    )
+  }
+}
+
+extract_arguments <- function (...) {
+  arguments    <- as.list(substitute(list(...)))
+  arguments[1] <- NULL
+  arguments
+}
+
 remove_errors <- function(evaluated_arguments, arguments) {
   if (any(sapply(arguments, is_formula, lhs = TRUE)))
     warn("Formula arguments must be one-sided")

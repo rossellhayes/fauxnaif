@@ -1,21 +1,15 @@
 extract_formulas <- function(formulas, not = FALSE) {
-  if (length(formulas) > 0) {
-    formulas <- glue_collapse(
-      map(
-        formulas,
-        ~ glue('({gsub(".", "input", as.character(.)[2], fixed = TRUE)})')
-      ),
-      sep = " | "
-    )
+  if (length(formulas) == 0) {return(NULL)}
 
-    parse(
-      text = if (not) {
-        glue("!({formulas})")
-      } else {
-        formulas
-      }
-    )
-  } else {
-    NULL
-  }
+  formulas <- glue_collapse(
+    map(
+      formulas,
+      ~ paste0("(", gsub("\\.", "input", as.character(.)[2]), ")")
+    ),
+    sep = " | "
+  )
+
+  if (not) {formulas <- glue("!({formulas})")}
+
+  parse(text = formulas)
 }

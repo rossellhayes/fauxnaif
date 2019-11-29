@@ -14,9 +14,9 @@ test_that("formula argument replaces all matching x", {
 })
 
 test_that("non-vector x produces error", {
-  expect_error(na_if_in(mean, 0), "input `mean`")
-  expect_error(na_if_in(lm(1 ~ 1), 0), "input `lm(1 ~ 1)`", fixed = TRUE)
-  expect_error(na_if_in(~ . < 0, 0), "input `~. < 0`", fixed = TRUE)
+  expect_error(na_if_in(mean, 0), "`mean` cannot")
+  expect_error(na_if_in(lm(1 ~ 1), 0), "`lm(1 ~ 1)` cannot", fixed = TRUE)
+  expect_error(na_if_in(~ . < 0, 0), "`~. < 0` cannot", fixed = TRUE)
 })
 
 test_that("coercible non-vector x does not produce error", {

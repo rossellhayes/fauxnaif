@@ -7,26 +7,27 @@ Authors@R:
            role = c("aut", "cre"),
            email = "alexander@rossellhayes.com",
            comment = c(ORCID = "0000-0001-9412-0457"))
-Description: fauxnaif provides a replacement for `dplyr::na_if()`.
-    Unlike `dplyr`'s `na_if()`, it allows you to specify multiple values to be
-    replaced with `NA` using a single function.
-    Load `fauxnaif` after `dplyr` (or use a conflict manager like `conflicted`)	
-    to use the extended `na_if()` functionality.
-    Alternatively, use `faux_na_if()` to avoid conflicts with `dplyr`.
+Description: fauxnaif provides a replacement for
+    `dplyr::na_if()`.  Unlike `dplyr`'s `na_if()`, it allows you to
+    specify multiple values to be replaced with `NA` using a single
+    function.  Load `fauxnaif` after `dplyr` (or use a conflict manager
+    like `conflicted`) to use the extended `na_if()` functionality.
+    Alternatively, use `faux_na_if()` to avoid conflicts with
+    `dplyr`.
 License: MIT + file LICENSE
 Depends:
     glue,
     purrr,
-    rlang,
-    R (>= 3.2)
+    R (>= 3.2),
+    rlang
 Suggests:
-    dplyr,
     covr,
+    dplyr,
+    spelling,
     testthat (>= 2.1.0),
-    tidyr,
-    spelling
-Roxygen: list(markdown = TRUE)
+    tidyr
 Encoding: UTF-8
-LazyData: true
-RoxygenNote: 6.1.1
 Language: en-US
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 6.1.1

@@ -1,4 +1,4 @@
-#' @rdname na_if
+#' @rdname na_if_all
 #' @export
 
 na_if_not_all <- function(.tbl, ...) {
@@ -17,7 +17,7 @@ na_if_not_all <- function(.tbl, ...) {
   dplyr::mutate(.tbl, !!!funs)
 }
 
-#' @rdname na_if
+#' @rdname na_if_all
 #' @export
 
 na_if_not_at <- function(.tbl, .vars, ...) {
@@ -35,7 +35,7 @@ na_if_not_at <- function(.tbl, .vars, ...) {
   dplyr::mutate(.tbl, !!!funs)
 }
 
-#' @rdname na_if
+#' @rdname na_if_all
 #' @export
 
 na_if_not_if <- function(.tbl, .predicate, ...) {

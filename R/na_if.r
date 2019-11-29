@@ -3,11 +3,10 @@
 #' This is a replacement for [dplyr::na_if()].
 #' It is useful if you want to convert annoying values to `NA`.
 #' Unlike [dplyr::na_if()], this function allows you to specify multiple values
-#' to be replaced with `NA` at the same time. \cr
-#' `na_if()` replaces values that match its arguments with `NA`. \cr
-#' `na_if_not()` replaces values that *do not* match its arguments with
-#' `NA`. \cr
-#' `na_if_in()` is provided as an alias for `na_if()` to avoid clashes
+#' to be replaced with `NA` at the same time.
+#'  * `na_if()` replaces values that match its arguments with `NA`.
+#'  * `na_if_not()` replaces values that *do not* match its arguments with `NA`.
+#'  * `na_if_in()` is provided as an alias for `na_if()` to avoid clashes
 #' with [dplyr::na_if()].
 #'
 #' @section Formulas:
@@ -25,7 +24,11 @@
 #' }
 #' @return A modified version of `input` with selected values replaced with
 #' `NA`.
-#' @seealso [dplyr::na_if()] to replace a single value with `NA`.
+#'
+#' @seealso [Scoped variants][na_if_all()] can be used in pipelines and modify
+#'   multiple variables at once
+#'
+#'   [dplyr::na_if()] to replace a single value with `NA`.
 #'
 #'   [dplyr::coalesce()] to replace missing values with a specified value.
 #'
@@ -37,7 +40,7 @@
 #' @importFrom glue glue glue_collapse
 #' @importFrom purrr map map_chr map_lgl walk
 #' @importFrom rlang abort caller_env enquo is_formula warn
-#' @aliases na_if_not faux_na_if fauxnaif
+#' @aliases fauxnaif
 #' @export
 #' @examples
 #' na_if_in(1:5, 2, 4)

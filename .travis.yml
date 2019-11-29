@@ -3,9 +3,6 @@ cache: packages
 latex: false
 fortran: false
 
-r_packages:
-  - covr
-
 after_success:
   - Rscript -e 'library(covr); codecov()'
 
@@ -23,6 +20,7 @@ r_binary_packages:
   - processx
   - ps
   - purrr
+  - remotes
   - rlang
   - rprojroot
   - rstudioapi

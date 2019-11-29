@@ -69,3 +69,9 @@ dplyr::starwars %>%
 Sticker fonts are
 [Bodoni\*](https://github.com/indestructible-type/Bodoni) and
 [Hasklig](https://github.com/i-tu/Hasklig)
+
+-----
+
+Please note that the **fauxnaif** project is released with a
+[Contributor Code of Conduct](CODE_OF_CONDUCT.md). By contributing to
+this project, you agree to abide by its terms.

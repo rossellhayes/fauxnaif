@@ -1,3 +1,7 @@
+# fauxnaif 0.4.1
+
+* Added unit tests for scoped functions.
+
 # fauxnaif 0.4.0
 
 * Added scoped variants of `na_if()` and `na_if_not()` based on scoped

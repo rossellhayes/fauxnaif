@@ -26,7 +26,7 @@
 #'
 #'   [dplyr::mutate_all()], [dplyr::mutate_at()] and [dplyr::mutate_if()] can
 #'   apply any function to variables selected in the same way
-#' @export
+#'
 #' @examples
 #' df <- dplyr::tibble(a = 0:5, b = 5:0, c = as.numeric(0:5), d = letters[1:6])
 #'
@@ -38,57 +38,28 @@
 #'
 #' na_if_if(df, is.integer, 0)
 #' na_if_not_if(df, is.integer, 0:3)
+#'
+#' @name scoped_na_if
+
+NULL
+
+#' @rdname scoped_na_if
+#' @export
 
 na_if_all <- function(.tbl, ...) {
   if(!requireNamespace("dplyr")) {
     abort("Package `dplyr` must be installed to use `na_if_all`")
   }
 
-  dplyr:::check_grouped(.tbl, "mutate", "all", alt = TRUE)
-
-  funs <- dplyr:::manip_all(
-    .tbl, faux_na_if, enquo(faux_na_if), caller_env(), arguments = list(...),
+  dplyr::mutate_all(
+    .tbl,
+    faux_na_if,
+    arguments = list(...),
     arg_names = as.list(substitute(list(...)))
   )
-
-  dplyr::mutate(.tbl, !!!funs)
 }
 
-#' @rdname na_if_all
-#' @export
-
-na_if_at <- function(.tbl, .vars, ...) {
-  if(!requireNamespace("dplyr")) {
-    abort("Package `dplyr` must be installed to use `na_if_at`")
-  }
-
-  funs <- dplyr:::manip_at(
-    .tbl, .vars, faux_na_if, enquo(faux_na_if), caller_env(),
-    .include_group_vars = TRUE, arguments = list(...),
-    arg_names = as.list(substitute(list(...)))
-  )
-
-  dplyr::mutate(.tbl, !!!funs)
-}
-
-#' @rdname na_if_all
-#' @export
-
-na_if_if <- function(.tbl, .predicate, ...) {
-  if(!requireNamespace("dplyr")) {
-    abort("Package `dplyr` must be installed to use `na_if_if`")
-  }
-
-  dplyr:::check_grouped(.tbl, "mutate", "if")
-
-  funs <- dplyr:::manip_if(
-    .tbl, .predicate, faux_na_if, enquo(faux_na_if), caller_env(),
-    arguments = list(...), arg_names = as.list(substitute(list(...)))
-  )
-
-  dplyr::mutate(.tbl, !!!funs)
-}
-#' @rdname na_if_all
+#' @rdname scoped_na_if
 #' @export
 
 na_if_not_all <- function(.tbl, ...) {
@@ -96,17 +67,33 @@ na_if_not_all <- function(.tbl, ...) {
     abort("Package `dplyr` must be installed to use `na_if_not_all`")
   }
 
-  dplyr:::check_grouped(.tbl, "mutate", "all", alt = TRUE)
-
-  funs <- dplyr:::manip_all(
-    .tbl, faux_na_if, enquo(faux_na_if), caller_env(), not = TRUE,
-    arguments = list(...), arg_names = as.list(substitute(list(...)))
+  dplyr::mutate_all(
+    .tbl,
+    faux_na_if,
+    not = TRUE,
+    arguments = list(...),
+    arg_names = as.list(substitute(list(...)))
   )
-
-  dplyr::mutate(.tbl, !!!funs)
 }
 
-#' @rdname na_if_all
+#' @rdname scoped_na_if
+#' @export
+
+na_if_at <- function(.tbl, .vars, ...) {
+  if(!requireNamespace("dplyr")) {
+    abort("Package `dplyr` must be installed to use `na_if_at`")
+  }
+
+  dplyr::mutate_at(
+    .tbl,
+    .vars,
+    faux_na_if,
+    arguments = list(...),
+    arg_names = as.list(substitute(list(...)))
+  )
+}
+
+#' @rdname scoped_na_if
 #' @export
 
 na_if_not_at <- function(.tbl, .vars, ...) {
@@ -114,16 +101,34 @@ na_if_not_at <- function(.tbl, .vars, ...) {
     abort("Package `dplyr` must be installed to use `na_if_not_at`")
   }
 
-  funs <- dplyr:::manip_at(
-    .tbl, .vars, faux_na_if, enquo(faux_na_if), caller_env(),
-    .include_group_vars = TRUE, not = TRUE, arguments = list(...),
+  dplyr::mutate_at(
+    .tbl,
+    .vars,
+    faux_na_if,
+    not = TRUE,
+    arguments = list(...),
     arg_names = as.list(substitute(list(...)))
   )
-
-  dplyr::mutate(.tbl, !!!funs)
 }
 
-#' @rdname na_if_all
+#' @rdname scoped_na_if
+#' @export
+
+na_if_if <- function(.tbl, .predicate, ...) {
+  if(!requireNamespace("dplyr")) {
+    abort("Package `dplyr` must be installed to use `na_if_if`")
+  }
+
+  dplyr::mutate_if(
+    .tbl,
+    .predicate,
+    faux_na_if,
+    arguments = list(...),
+    arg_names = as.list(substitute(list(...)))
+  )
+}
+
+#' @rdname scoped_na_if
 #' @export
 
 na_if_not_if <- function(.tbl, .predicate, ...) {
@@ -131,12 +136,13 @@ na_if_not_if <- function(.tbl, .predicate, ...) {
     abort("Package `dplyr` must be installed to use `na_if_not_if`")
   }
 
-  dplyr:::check_grouped(.tbl, "mutate", "if")
-
-  funs <- dplyr:::manip_if(
-    .tbl, .predicate, faux_na_if, enquo(faux_na_if), caller_env(), not = TRUE,
-    arguments = list(...), arg_names = as.list(substitute(list(...)))
+  dplyr::mutate_if(
+    .tbl,
+    .predicate,
+    faux_na_if,
+    not = TRUE,
+    arguments = list(...),
+    arg_names = as.list(substitute(list(...)))
   )
-
-  dplyr::mutate(.tbl, !!!funs)
 }
+

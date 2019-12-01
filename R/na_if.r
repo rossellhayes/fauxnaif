@@ -37,9 +37,6 @@
 #'   [dplyr::recode()] and [dplyr::case_when()] to more generally replace
 #'   values.
 #'
-#' @importFrom glue glue glue_collapse
-#' @importFrom purrr map map_chr map_lgl walk
-#' @importFrom rlang abort caller_env enquo is_formula warn
 #' @aliases fauxnaif
 #' @export
 #' @examples
@@ -51,6 +48,7 @@
 #' # This function handles vector values differently than dplyr,
 #' # and returns a different result with vector replacement values:
 #' na_if(1:5, 5:1)
+#' \dontrun{
 #' dplyr::na_if(1:5, 5:1)
 #'
 #' # na_if_in is particularly useful inside mutate,
@@ -63,13 +61,19 @@
 #' # like mutate_if to mutate multiple columns
 #' dplyr::starwars %>%
 #'   dplyr::mutate_if(is.character, ~ na_if(., "unknown", "none"))
+#' }
 
 na_if <- function(input, ...) {
-  arguments <- extract_arguments(...)
-  input     <- faux_na_if(input, arguments, not = FALSE)
-  input
+  faux_na_if(input, ..., not = FALSE)
 }
 
 #' @rdname na_if
 #' @export
 na_if_in <- na_if
+
+#' @rdname na_if
+#' @export
+
+na_if_not <- function(input, ...) {
+  faux_na_if(input, ..., not = TRUE)
+}

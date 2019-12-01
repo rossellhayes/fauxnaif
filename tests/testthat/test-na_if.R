@@ -20,12 +20,12 @@ test_that("formula argument replaces all matching x", {
 })
 
 test_that("non-vector x produces error", {
-  expect_error(na_if(mean, 0), "`mean` cannot")
-  expect_error(na_if(lm(1 ~ 1), 0), "`lm(1 ~ 1)` cannot", fixed = TRUE)
-  expect_error(na_if(~ . < 0, 0), "`~. < 0` cannot", fixed = TRUE)
-  expect_error(na_if_not(mean, 0), "`mean` cannot")
-  expect_error(na_if_not(lm(1 ~ 1), 0), "`lm(1 ~ 1)` cannot", fixed = TRUE)
-  expect_error(na_if_not(~ . < 0, 0), "`~. < 0` cannot", fixed = TRUE)
+  expect_error(na_if(mean, 0), "Input mean")
+  expect_error(na_if(lm(1 ~ 1), 0), "Input lm(1 ~ 1)", fixed = TRUE)
+  expect_error(na_if(~ . < 0, 0), "Input ~. < 0", fixed = TRUE)
+  expect_error(na_if_not(mean, 0), "Input mean")
+  expect_error(na_if_not(lm(1 ~ 1), 0), "Input lm(1 ~ 1)", fixed = TRUE)
+  expect_error(na_if_not(~ . < 0, 0), "Input ~. < 0", fixed = TRUE)
 })
 
 test_that("coercible non-vector x does not produce error", {
@@ -39,29 +39,19 @@ test_that("two-sided formula produces warning", {
 })
 
 test_that("non-coercible argument produces warning", {
-  expect_warning(na_if(0:9, mean), "`mean` unused")
-  expect_warning(na_if(0:9, lm(1 ~ 1)), "`lm(1 ~ 1)` unused", fixed = TRUE)
-  expect_warning(na_if_not(0:9, mean), "`mean` unused")
-  expect_warning(na_if_not(0:9, lm(1 ~ 1)), "`lm(1 ~ 1)` unused", fixed = TRUE)
+  expect_warning(na_if(0:9, lm(1 ~ 1)), "Argument lm(1 ~ 1)", fixed = TRUE)
+  expect_warning(na_if_not(0:9, lm(1 ~ 1)), "Argument lm(1 ~ 1)", fixed = TRUE)
 })
 
 test_that("multiple non-coercible arguments produce multiple warnings", {
   expect_warning(
-    na_if(0:9, mean, lm(1 ~ 1)),
-    "`mean` unused"
-  )
-  expect_warning(
-    na_if(0:9, mean, lm(1 ~ 1)),
-    "`lm(1 ~ 1)` unused",
+    na_if(0:9, expr(mean), lm(1 ~ 1)),
+    "Arguments expr(mean) and lm(1 ~ 1)",
     fixed = TRUE
   )
   expect_warning(
-    na_if_not(0:9, mean, lm(1 ~ 1)),
-    "`mean` unused"
-  )
-  expect_warning(
-    na_if_not(0:9, mean, lm(1 ~ 1)),
-    "`lm(1 ~ 1)` unused",
+    na_if_not(0:9, expr(mean), lm(1 ~ 1)),
+    "Arguments expr(mean) and lm(1 ~ 1)",
     fixed = TRUE
   )
 })

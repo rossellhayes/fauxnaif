@@ -1,3 +1,8 @@
+# fauxnaif 0.5.0
+
+* Added support for function arguments
+* Complete rewrite of underlying implementation function
+
 # fauxnaif 0.4.1
 
 * Added unit tests for scoped functions.

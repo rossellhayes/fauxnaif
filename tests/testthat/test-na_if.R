@@ -19,6 +19,19 @@ test_that("formula argument replaces all matching x", {
   expect_equal(na_if_not(0:9, ~ . >= 8), c(rep(NA, 8), 8, 9))
 })
 
+test_that("function argument replaces all matching x", {
+  is.wholenumber <- function(x, tol = .Machine$double.eps^0.5) {
+    abs(x - round(x)) < tol
+  }
+
+  expect_equal(na_if(0:9, min), c(NA, 1:9))
+  expect_equal(na_if(0:9, max), c(0:8, NA))
+  expect_equal(na_if(c(0, 0.5, 1), is.wholenumber), c(NA, 0.5, NA))
+  expect_equal(na_if_not(0:9, min), c(0, rep(NA, 9)))
+  expect_equal(na_if_not(0:9, max), c(rep(NA, 9), 9))
+  expect_equal(na_if_not(c(0, 0.5, 1), is.wholenumber), c(0, NA, 1))
+})
+
 test_that("non-vector x produces error", {
   expect_error(na_if(mean, 0), "Input mean")
   expect_error(na_if(lm(1 ~ 1), 0), "Input lm(1 ~ 1)", fixed = TRUE)

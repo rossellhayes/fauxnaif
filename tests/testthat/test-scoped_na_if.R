@@ -58,3 +58,43 @@ test_that("multiple scalar arguments replaces all matching x", {
   expect_equal(na_if_not_at(df, "a", 0, 9), data.frame(a = target, b = 0:9))
   expect_equal(na_if_not_if(df, is.integer, 0, 9), data.frame(a = target, b = 0:9))
 })
+
+test_that("two-sided formula produces warning", {
+  df <- data.frame(a = 0:9, b = as.numeric(0:9))
+  expect_warning(na_if_all(df, x ~ . < 1), "must be one-sided")
+  expect_warning(na_if_at(df, "a", x ~ . < 1), "must be one-sided")
+  expect_warning(na_if_if(df, is.integer, x ~ . < 1), "must be one-sided")
+  expect_warning(na_if_not_all(df, x ~ . < 1), "must be one-sided")
+  expect_warning(na_if_not_at(df, "a", x ~ . < 1), "must be one-sided")
+  expect_warning(na_if_not_if(df, is.integer, x ~ . < 1), "must be one-sided")
+})
+
+test_that("non-coercible argument produces warning", {
+  df <- data.frame(a = 0:9, b = as.numeric(0:9))
+  expect_warning(na_if_all(df, lm(1 ~ 1)), "Argument.*lm")
+  expect_warning(na_if_at(df, "a", lm(1 ~ 1)), "Argument.*lm")
+  expect_warning(na_if_if(df, is.integer, lm(1 ~ 1)), "Argument.*lm")
+  expect_warning(na_if_not_all(df, lm(1 ~ 1)), "Argument.*lm")
+  expect_warning(na_if_not_at(df, "a", lm(1 ~ 1)), "Argument.*lm")
+  expect_warning(na_if_not_if(df, is.integer, lm(1 ~ 1)), "Argument.*lm")
+})
+
+test_that("multiple non-coercible arguments produce multiple warnings", {
+  df <- data.frame(a = 0:9, b = as.numeric(0:9))
+  expect_warning(na_if_all(df, NULL, lm(1 ~ 1)), "NULL.*lm")
+  expect_warning(na_if_at(df, "a", NULL, lm(1 ~ 1)), "NULL.*lm")
+  expect_warning(na_if_if(df, is.integer, NULL, lm(1 ~ 1)), "NULL.*lm")
+  expect_warning(na_if_not_all(df, NULL, lm(1 ~ 1)), "NULL.*lm")
+  expect_warning(na_if_not_at(df, "a", NULL, lm(1 ~ 1)), "NULL.*lm")
+  expect_warning(na_if_not_if(df, is.integer, NULL, lm(1 ~ 1)), "NULL.*lm")
+})
+
+test_that("no ... produces warning", {
+  df <- data.frame(a = 0:9, b = as.numeric(0:9))
+  expect_warning(na_if_all(df), "No values")
+  expect_warning(na_if_at(df, "a"), "No values")
+  expect_warning(na_if_if(df, is.integer), "No values")
+  expect_warning(na_if_not_all(df), "No values")
+  expect_warning(na_if_not_at(df, "a"), "No values")
+  expect_warning(na_if_not_if(df, is.integer), "No values")
+})

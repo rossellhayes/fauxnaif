@@ -1,6 +1,6 @@
 #' @importFrom glue glue glue_collapse
-#' @importFrom rlang abort as_function caller_env enquo inform is_atomic
-#' is_formula is_function is_list is_logical is_missing warn
+#' @importFrom rlang abort as_function as_label caller_env enquo inform
+#' is_atomic is_formula is_function is_list is_logical is_missing warn
 
 faux_na_if <- function(input, ..., not = FALSE, arguments, arg_names) {
   if (is_missing(arguments)) arguments <- list(...)
@@ -10,7 +10,7 @@ faux_na_if <- function(input, ..., not = FALSE, arguments, arg_names) {
 
   if (is_list(recurse(input))) abort_uncoercible(input)
 
-  if(length(arguments) == 0) {
+  if (length(arguments) == 0) {
     warn("No values to replace with `NA` specified.")
     return(input)
   }

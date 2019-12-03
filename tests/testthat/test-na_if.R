@@ -68,7 +68,7 @@ test_that("multiple non-coercible arguments produce multiple warnings", {
   expect_warning(na_if_not(0:9, NULL, lm(1 ~ 1)), "NULL.*lm")
 })
 
-test_that("single argument produces warning", {
+test_that("no ... produces warning", {
   expect_warning(na_if(0:9), "No values to replace with `NA` specified")
   expect_warning(na_if_not(0:9), "No values to replace with `NA` specified")
 })

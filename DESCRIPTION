@@ -22,13 +22,13 @@ Depends:
 Suggests:
     covr (>= 3.3.2),
     dplyr (>= 0.8.3),
-    magrittr,
+    magrittr (>= 1.5),
+    roxygen2 (>= 6.1.1),
     spelling (>= 2.1),
     testthat (>= 2.1.0),
-    tidyr (>= 1.0.0),
-    roxygen2 (>= 6.1.1)
+    tidyr (>= 1.0.0)
 Encoding: UTF-8
 Language: en-US
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 6.1.1
+RoxygenNote: 7.0.1

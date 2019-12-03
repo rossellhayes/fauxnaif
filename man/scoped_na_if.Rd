@@ -48,10 +48,10 @@ replaced with \code{NA}.
 The \link[dplyr:scoped]{dplyr::scoped} variants of \code{\link[=na_if]{na_if()}} and \code{\link[=na_if_not]{na_if_not()}} can be used
 directly within pipelines and can modify multiple variables at once.
 \itemize{
-\item \code{*_all()} affects every variable
-\item \code{*_at()} affects variables selected with a character vector or
+\item \verb{*_all()} affects every variable
+\item \verb{*_at()} affects variables selected with a character vector or
 \code{\link[dplyr:vars]{dplyr::vars()}}
-\item \code{*_if()} affects variables selected with a predicate function
+\item \verb{*_if()} affects variables selected with a predicate function
 }
 }
 \examples{

@@ -1,3 +1,7 @@
+# fauxnaif 0.5.2
+
+* Included magrittr pipe
+
 # fauxnaif 0.5.1
 
 * Rewrote scoped na_if_* functions to use only exported dplyr functions

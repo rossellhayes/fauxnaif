@@ -22,7 +22,6 @@ Depends:
 Suggests:
     covr (>= 3.3.2),
     dplyr (>= 0.8.3),
-    magrittr (>= 1.5),
     roxygen2 (>= 6.1.1),
     spelling (>= 2.1),
     testthat (>= 2.1.0),
@@ -32,3 +31,5 @@ Language: en-US
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.0.1
+Imports: 
+    magrittr

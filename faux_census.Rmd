@@ -1,30 +1,40 @@
+
+
 ```{r}
-load("data/faux_census.rda")
-faux_census
+library(fauxnaif)
+census_data <- fauxnaif::faux_census
 ```
 
 ```{r}
-na_if(faux_census$income, 9999999)
-
-faux_census %>% dplyr::mutate(income = na_if(income, 9999999))
-
-faux_census %>% na_if_at("income", 9999999)
+na_if(census_data$income, 9999999)
 ```
 
 ```{r}
-faux_census %>% na_if_at("age", 2, 557)
-
-faux_census %>% na_if_at("age", ~ . < 18, ~ . > 122)
-faux_census %>% na_if_not_at("age", 18:122)
+census_data %>% dplyr::mutate(income = na_if(income, 9999999))
 ```
 
 ```{r}
-faux_census %>% na_if_at("state", ~ nchar(.) > 2)
-faux_census %>% na_if_not_at("state", ~ nchar(.) == 2)
+census_data %>% na_if_at("income", 9999999)
 ```
 
 ```{r}
-faux_census %>% dplyr::select(-state) %>% na_if_if(is.character, ~ nchar(.) > 25)
+census_data %>% na_if_at("income", 9999999)
+```
+
+```{r}
+census_data %>% na_if_at("age", 2, 557)
+
+census_data %>% na_if_at("age", ~ . < 18, ~ . > 122)
+census_data %>% na_if_not_at("age", 18:122)
+```
+
+```{r}
+census_data %>% na_if_at("state", ~ nchar(.) > 2)
+census_data %>% na_if_not_at("state", ~ nchar(.) == 2)
+```
+
+```{r}
+census_data %>% dplyr::select(-state) %>% na_if_if(is.character, ~ nchar(.) > 25)
 ```
 
 

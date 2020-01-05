@@ -88,7 +88,7 @@ In the above example, we were able to examine our dataset and select the values 
 In real-life analyses, we often can't look at each observation one by one to find unrealistic values, but we often do know the range of realistic values.
 Using `na_if_not()`, we can specify which values are realistic and discard those that are not.
 
-Returning to the age variable, let's replace values with `NA` if they are *not* between 18 (the minimum age we expect to enter teh survey) and 122 (the world record for the oldest person).
+Returning to the age variable, let's replace values with `NA` if they are *not* between 18 (the minimum age we expect to enter the survey) and 122 (the world record for the oldest person).
 
 ```{r}
 faux_census$age %>% na_if_not(18:122)
@@ -98,7 +98,7 @@ This has the same effect as specifying the unrealistic values directly, but no l
 
 # Replacing values using formulas
 
-Another way to approach this problem is to use a formula to specify the range of accpetable values.
+Another way to approach this problem is to use a formula to specify the range of acceptable values.
 This is particularly useful when dealing with non-integer values, where the colon operator (`:`) will not work:
 
 ```{r}
@@ -123,7 +123,7 @@ faux_census$age %>% na_if(~ . < 18, ~ . > 122)
 
 ## Using relational operators from other packages
 
-If you really wnat to get this down to a single argument, you can use more advanced relational operators provided by packages like `intrval`, `inops`, or `invctr`.
+If you really want to get this down to a single argument, you can use more advanced relational operators provided by packages like `intrval`, `inops`, or `invctr`.
 
 For example, `intrval`'s closed interval operator (`%[]%`) allows you to check if a value is between two values, even if it is not an integer:
 

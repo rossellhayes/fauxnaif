@@ -6,15 +6,15 @@
 <!-- badges: start -->
 
 [![Lifecycle:
-experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
+[![GitHub
+License](https://img.shields.io/github/license/rossellhayes/fauxnaif?color=blueviolet)](https://github.com/rossellhayes/fauxnaif/blob/master/LICENSE)
 [![Travis build
 status](https://travis-ci.org/rossellhayes/fauxnaif.svg?branch=master)](https://travis-ci.org/rossellhayes/fauxnaif)
 [![AppVeyor Build
 Status](https://ci.appveyor.com/api/projects/status/github/rossellhayes/fauxnaif?branch=master&svg=true)](https://ci.appveyor.com/project/rossellhayes/fauxnaif)
 [![Codecov test
 coverage](https://codecov.io/gh/rossellhayes/fauxnaif/branch/master/graph/badge.svg)](https://codecov.io/gh/rossellhayes/fauxnaif?branch=master)
-[![GitHub
-License](https://img.shields.io/github/license/rossellhayes/fauxnaif?color=blueviolet)](https://github.com/rossellhayes/fauxnaif/blob/master/LICENSE)
 <!-- badges: end -->
 
 ***faux-naïf***
@@ -64,7 +64,7 @@ dplyr::starwars %>%
 #> 3 R2-D2          <NA>       <NA>              
 #> 4 Darth Vader    none       <NA>              
 #> 5 Leia Organa    brown      brown             
-#> # ... with 82 more rows
+#> # … with 82 more rows
 ```
 
 ## Credits

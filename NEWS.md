@@ -1,3 +1,7 @@
+# fauxnaif 0.5.3
+
+* Moved package imports from "Depends" to "Imports" for cleaner loading
+
 # fauxnaif 0.5.2
 
 * Included magrittr pipe

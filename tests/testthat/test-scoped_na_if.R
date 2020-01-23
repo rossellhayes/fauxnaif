@@ -52,11 +52,15 @@ test_that("multiple scalar arguments replaces all matching x", {
   target <- c(0, 1, rep(NA, 8))
   expect_equal(na_if_not_all(df, 0, 1), data.frame(a = target, b = target))
   expect_equal(na_if_not_at(df, "a", 0, 1), data.frame(a = target, b = 0:9))
-  expect_equal(na_if_not_if(df, is.integer, 0, 1), data.frame(a = target, b = 0:9))
+  expect_equal(
+    na_if_not_if(df, is.integer, 0, 1), data.frame(a = target, b = 0:9)
+  )
   target <- c(0, rep(NA, 8), 9)
   expect_equal(na_if_not_all(df, 0, 9), data.frame(a = target, b = target))
   expect_equal(na_if_not_at(df, "a", 0, 9), data.frame(a = target, b = 0:9))
-  expect_equal(na_if_not_if(df, is.integer, 0, 9), data.frame(a = target, b = 0:9))
+  expect_equal(
+    na_if_not_if(df, is.integer, 0, 9), data.frame(a = target, b = 0:9)
+  )
 })
 
 test_that("two-sided formula produces warning", {

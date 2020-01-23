@@ -42,8 +42,10 @@ recurse <- function(list) {
 }
 
 tick <- function(names) {
-  sapply(
-    sapply(names, as_label),
-    encodeString, quote = "`"
+  vapply(
+    vapply(names, as_label, as_label(1)),
+    encodeString,
+    character(1),
+    quote = "`"
   )
 }

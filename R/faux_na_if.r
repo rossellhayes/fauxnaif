@@ -15,13 +15,14 @@ faux_na_if <- function(input, ..., not = FALSE, arguments, arg_names) {
     return(input)
   }
 
-  lists <- sapply(arguments, is_list)
+  lists <- vapply(arguments, is_list, logical(1))
 
   arguments[lists] <- lapply(arguments[lists], recurse)
 
-  valid <- sapply(
+  valid <- vapply(
     arguments,
-    function(x) is_atomic(x) | is_function(x) | is_formula(x, lhs = FALSE)
+    function(x) is_atomic(x) | is_function(x) | is_formula(x, lhs = FALSE),
+    logical(1)
   )
 
   eval_replacement <- function(replacement) {
@@ -34,7 +35,7 @@ faux_na_if <- function(input, ..., not = FALSE, arguments, arg_names) {
     input[replacement]
   }
 
-  replacements <- recurse(sapply(arguments[valid], eval_replacement))
+  replacements <- recurse(lapply(arguments[valid], eval_replacement))
 
   if (length(replacements) > 0) {
     if (not) {
@@ -46,7 +47,7 @@ faux_na_if <- function(input, ..., not = FALSE, arguments, arg_names) {
     warn("No valid values to replace with `NA` specified.")
   }
 
-  two_sided <- sapply(arguments, is_formula, lhs = TRUE)
+  two_sided <- vapply(arguments, is_formula, logical(1), lhs = TRUE)
 
   if (any(two_sided))           warn_two_sided(arg_names[-1][two_sided])
   if (any(!valid & !two_sided)) warn_invalid(arg_names[-1][!valid & !two_sided])

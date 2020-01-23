@@ -1,3 +1,8 @@
+# fauxnaif 0.5.4
+
+* Changed all instances of `sapply()` to `vapply()` or `lapply()` for type
+  stability
+
 # fauxnaif 0.5.3
 
 * Moved package imports from "Depends" to "Imports" for cleaner loading

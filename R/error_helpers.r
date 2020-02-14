@@ -11,7 +11,11 @@ abort_uncoercible <- function(input) {
 
 abort_no_dplyr <- function(fun_name) {
   if(!requireNamespace("dplyr")) {
-    glue_abort("Package `dplyr` must be installed to use `{fun_name}()`")
+    glue_abort(
+      "Package `dplyr` must be installed to use `",
+      fun_name,
+      "()`"
+    )
   }
 }
 

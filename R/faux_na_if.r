@@ -2,7 +2,9 @@
 #' @importFrom rlang abort as_function as_label caller_env enquo inform
 #' is_atomic is_formula is_function is_list is_logical is_missing warn
 
-faux_na_if <- function(input, ..., not = FALSE, arguments, arg_names) {
+faux_na_if <- function(
+  input, ..., arguments, arg_names, not = FALSE, scoped = FALSE
+) {
   if (is_missing(arguments)) arguments <- list(...)
   if (is_missing(arg_names)) arg_names <- as.list(substitute(list(...)))
 
@@ -52,8 +54,9 @@ faux_na_if <- function(input, ..., not = FALSE, arguments, arg_names) {
   if (any(two_sided))           warn_two_sided(arg_names[-1][two_sided])
   if (any(!valid & !two_sided)) warn_invalid(arg_names[-1][!valid & !two_sided])
 
-  if (identical(input, original_input) & sum(two_sided | !valid) == 0)
-    inform("Arguments were evaluated, but no replacements were made.")
+  if (!scoped & sum(two_sided | !valid) == 0) {
+    inform_no_replacements(input, original_input)
+  }
 
   input
 }

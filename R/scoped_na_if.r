@@ -47,61 +47,65 @@ NULL
 #' @export
 
 na_if_all <- function(.tbl, ...) {
-  if(!requireNamespace("dplyr")) {
-    abort("Package `dplyr` must be installed to use `na_if_all`")
-  }
+  abort_no_dplyr("na_if_not_all")
 
-  dplyr::mutate_all(
+  result <- dplyr::mutate_all(
     .tbl,
     faux_na_if,
     arguments = list(...),
     arg_names = as.list(substitute(list(...)))
   )
+
+  inform_no_replacements(.tbl, result)
+
+  result
 }
 
 #' @rdname scoped_na_if
 #' @export
 
 na_if_not_all <- function(.tbl, ...) {
-  if(!requireNamespace("dplyr")) {
-    abort("Package `dplyr` must be installed to use `na_if_not_all`")
-  }
+  abort_no_dplyr("na_if_not_all")
 
-  dplyr::mutate_all(
+  result <- dplyr::mutate_all(
     .tbl,
     faux_na_if,
     not = TRUE,
     arguments = list(...),
     arg_names = as.list(substitute(list(...)))
   )
+
+  inform_no_replacements(.tbl, result)
+
+  result
 }
 
 #' @rdname scoped_na_if
 #' @export
 
 na_if_at <- function(.tbl, .vars, ...) {
-  if(!requireNamespace("dplyr")) {
-    abort("Package `dplyr` must be installed to use `na_if_at`")
-  }
+  abort_no_dplyr("na_if_at")
 
-  dplyr::mutate_at(
+  result <- dplyr::mutate_at(
     .tbl,
     .vars,
     faux_na_if,
     arguments = list(...),
     arg_names = as.list(substitute(list(...)))
   )
+
+  inform_no_replacements(.tbl, result)
+
+  result
 }
 
 #' @rdname scoped_na_if
 #' @export
 
 na_if_not_at <- function(.tbl, .vars, ...) {
-  if(!requireNamespace("dplyr")) {
-    abort("Package `dplyr` must be installed to use `na_if_not_at`")
-  }
+  abort_no_dplyr("na_if_not_at")
 
-  dplyr::mutate_at(
+  result <- dplyr::mutate_at(
     .tbl,
     .vars,
     faux_na_if,
@@ -109,34 +113,38 @@ na_if_not_at <- function(.tbl, .vars, ...) {
     arguments = list(...),
     arg_names = as.list(substitute(list(...)))
   )
+
+  inform_no_replacements(.tbl, result)
+
+  result
 }
 
 #' @rdname scoped_na_if
 #' @export
 
 na_if_if <- function(.tbl, .predicate, ...) {
-  if(!requireNamespace("dplyr")) {
-    abort("Package `dplyr` must be installed to use `na_if_if`")
-  }
+  abort_no_dplyr("na_if_if")
 
-  dplyr::mutate_if(
+  result <- dplyr::mutate_if(
     .tbl,
     .predicate,
     faux_na_if,
     arguments = list(...),
     arg_names = as.list(substitute(list(...)))
   )
+
+  inform_no_replacements(.tbl, result)
+
+  result
 }
 
 #' @rdname scoped_na_if
 #' @export
 
 na_if_not_if <- function(.tbl, .predicate, ...) {
-  if(!requireNamespace("dplyr")) {
-    abort("Package `dplyr` must be installed to use `na_if_not_if`")
-  }
+  abort_no_dplyr("na_if_not_if")
 
-  dplyr::mutate_if(
+  result <- dplyr::mutate_if(
     .tbl,
     .predicate,
     faux_na_if,
@@ -144,5 +152,9 @@ na_if_not_if <- function(.tbl, .predicate, ...) {
     arguments = list(...),
     arg_names = as.list(substitute(list(...)))
   )
+
+  inform_no_replacements(.tbl, result)
+
+  result
 }
 

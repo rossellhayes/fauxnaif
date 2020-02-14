@@ -29,7 +29,6 @@ Suggests:
     knitr (>= 1.26),
     rmarkdown (>= 2.0),
     roxygen2 (>= 6.1.1),
-    spelling (>= 2.1),
     testthat (>= 2.1.0),
     tidyr (>= 1.0.0)
 VignetteBuilder: 

@@ -31,6 +31,11 @@ warn_two_sided <- function(arg_names) {
   )
 }
 
+inform_no_replacements <- function(input, result) {
+  if (identical(input, result))
+    inform("Arguments were evaluated, but no replacements were made.")
+}
+
 glue_abort <- function(...) {
   abort(glue(...))
 }

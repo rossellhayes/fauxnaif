@@ -64,7 +64,7 @@ dplyr::starwars %>%
 #> 3 R2-D2          <NA>       <NA>              
 #> 4 Darth Vader    none       <NA>              
 #> 5 Leia Organa    brown      brown             
-#> # … with 82 more rows
+#> # ... with 82 more rows
 ```
 
 ## Credits
@@ -72,18 +72,11 @@ dplyr::starwars %>%
 Sticker fonts are
 [Bodoni\*](https://github.com/indestructible-type/Bodoni) by
 [indestructible type\*](https://indestructibletype.com/Home.html) and
-[Hasklig](https://github.com/i-tu/Hasklig) by [Ian
-Tuomi](https://indestructibletype.com/Home.html) based on [Source Code
-Pro](https://github.com/adobe-fonts/source-code-pro) by
+[Source Code Pro](https://github.com/adobe-fonts/source-code-pro) by
 [Adobe](https://adobe.com).
-
-Sticker image is [Thomson and Thompson (Dupond et
-Dupont)](http://en.tintin.com/personnages/show/id/13/page/0/0/the-thomsons)
-from [*The Adventures of Tintin*](http://en.tintin.com/) by
-[Hergé](http://en.tintin.com/herge).
 
 -----
 
-Please note that the **fauxnaif** project is released with a
-[Contributor Code of Conduct](CODE_OF_CONDUCT.md). By contributing to
-this project, you agree to abide by its terms.
+Please note that **fauxnaif** is released with a [Contributor Code of
+Conduct](CODE_OF_CONDUCT.md). By contributing to this project, you agree
+to abide by its terms.

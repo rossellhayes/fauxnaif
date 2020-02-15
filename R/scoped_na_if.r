@@ -28,9 +28,9 @@
 #'   apply any function to variables selected in the same way
 #'
 #' @examples
-#' df <- dplyr::tibble(a = 0:5, b = 5:0, c = as.numeric(0:5), d = letters[1:6])
+#' df <- data.frame(a = 0:5, b = 5:0, c = as.numeric(0:5), d = letters[1:6])
 #'
-#' na_if_all(df, 0, "f")
+#' na_if_all(df, 0)
 #' na_if_not_all(df, 0:3, "c")
 #'
 #' na_if_at(df, c("a", "c"), 0)
@@ -53,7 +53,9 @@ na_if_all <- function(.tbl, ...) {
     .tbl,
     faux_na_if,
     arguments = list(...),
-    arg_names = as.list(substitute(list(...)))
+    arg_names = as.list(substitute(list(...))),
+    not       = FALSE,
+    scoped    = TRUE
   )
 
   inform_no_replacements(.tbl, result)
@@ -70,9 +72,10 @@ na_if_not_all <- function(.tbl, ...) {
   result <- dplyr::mutate_all(
     .tbl,
     faux_na_if,
-    not = TRUE,
     arguments = list(...),
-    arg_names = as.list(substitute(list(...)))
+    arg_names = as.list(substitute(list(...))),
+    not       = TRUE,
+    scoped    = TRUE
   )
 
   inform_no_replacements(.tbl, result)
@@ -91,7 +94,9 @@ na_if_at <- function(.tbl, .vars, ...) {
     .vars,
     faux_na_if,
     arguments = list(...),
-    arg_names = as.list(substitute(list(...)))
+    arg_names = as.list(substitute(list(...))),
+    not       = FALSE,
+    scoped    = TRUE
   )
 
   inform_no_replacements(.tbl, result)
@@ -109,9 +114,10 @@ na_if_not_at <- function(.tbl, .vars, ...) {
     .tbl,
     .vars,
     faux_na_if,
-    not = TRUE,
     arguments = list(...),
-    arg_names = as.list(substitute(list(...)))
+    arg_names = as.list(substitute(list(...))),
+    not       = TRUE,
+    scoped    = TRUE
   )
 
   inform_no_replacements(.tbl, result)
@@ -130,7 +136,9 @@ na_if_if <- function(.tbl, .predicate, ...) {
     .predicate,
     faux_na_if,
     arguments = list(...),
-    arg_names = as.list(substitute(list(...)))
+    arg_names = as.list(substitute(list(...))),
+    not       = FALSE,
+    scoped    = TRUE
   )
 
   inform_no_replacements(.tbl, result)
@@ -148,9 +156,10 @@ na_if_not_if <- function(.tbl, .predicate, ...) {
     .tbl,
     .predicate,
     faux_na_if,
-    not = TRUE,
     arguments = list(...),
-    arg_names = as.list(substitute(list(...)))
+    arg_names = as.list(substitute(list(...))),
+    not       = TRUE,
+    scoped    = TRUE
   )
 
   inform_no_replacements(.tbl, result)

@@ -59,7 +59,7 @@
 #' na_if(messy_string, "", "NA", "NULL", 1:100)
 #' na_if(messy_string, c("", "NA", "NULL", 1:100))
 #' na_if(messy_string, list("", "NA", "NULL", 1:100))
-#' # We can save arguments with a clever formula
+#' # ... or using a clever formula
 #' grepl("[a-z]{3,}", messy_string)
 #' na_if_not(messy_string, ~ grepl("[a-z]{3,}", .))
 #'

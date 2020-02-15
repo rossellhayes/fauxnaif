@@ -49,19 +49,106 @@ devtools::install_github("rossellhayes/fauxnaif")
 ```{r, message = FALSE}
 library(dplyr)
 library(fauxnaif)
+```
 
-na_if_in(1:10, 2, 4:5, c(7, 9))
+### The basics
 
-na_if_in(1:10, ~ . >= 8)
+Let's say we want to remove an unwanted negative value from a vector of numbers
 
-dplyr::starwars %>%
-  select(name, hair_color) %>%
-  mutate(mutated_hair_color = na_if_in(hair_color, "unknown", "none"))
+```{r}
+-1:10
+```
+
+We can replace -1...
+
+... explicitly:
+```{r}
+na_if(-1:10, -1)
+```
+
+... by specifying values to keep:
+```{r}
+na_if_not(-1:10, 0:10)
+```
+
+... using a formula:
+```{r}
+na_if(-1:10, ~ . < 0)
+```
+
+... or using a function:
+```{r}
+na_if(-1:10, min)
+```
+
+### A little more complex
+
+```{r}
+messy_string <- c("abc", "", "def", "NA", "ghi", 42, "jkl", "NULL", "mno")
+```
+
+We can replace unwanted values...
+
+... one at a time:
+```{r}
+na_if(messy_string, "")
+```
+
+... or all at once:
+```{r}
+na_if(messy_string, "", "NA", "NULL", 1:100)
+na_if(messy_string, c("", "NA", "NULL", 1:100))
+na_if(messy_string, list("", "NA", "NULL", 1:100))
+```
+
+... or using a clever formula:
+```{r}
+grepl("[a-z]{3,}", messy_string)
+na_if_not(messy_string, ~ grepl("[a-z]{3,}", .))
+```
+
+### With data frames
+
+```{r include = FALSE}
+faux_census <- fauxnaif::faux_census %>% 
+  select(state, age, income, gender) %>% 
+  filter(
+    state == "Canada" |
+      age < 18 |
+      age > 120 |
+      income == 9999999
+  )
+```
+
+```{r}
+faux_census
+```
+
+na_if() is particularly useful inside dplyr::mutate:
+```{r}
+faux_census %>%
+ dplyr::mutate(
+   income = na_if(income, 9999999),
+   age    = na_if(age, ~ . < 18, ~ . > 120),
+   state  = na_if_not(state, ~ grepl("^[A-Z]{2,}$", .)),
+   gender = na_if(gender, ~ nchar(.) > 20)
+ )
+```
+
+Or you can use scoped functions (_at, _if, and _all) directly on data frames:
+```{r}
+faux_census %>%
+  na_if_at("age", ~ . < 18, ~ . > 120) %>% 
+  na_if_not_at("state", ~ grepl("^[A-Z]{2,}$", .)) %>%
+  na_if_if(is.character, ~ nchar(.) > 20) %>%
+  na_if_all(9999999)
 ```
 
 ## Credits
 
-Sticker fonts are [Bodoni*](https://github.com/indestructible-type/Bodoni) by [indestructible type*](https://indestructibletype.com/Home.html) and [Source Code Pro](https://github.com/adobe-fonts/source-code-pro) by [Adobe](https://adobe.com).
+Hex sticker fonts are [Bodoni*](https://github.com/indestructible-type/Bodoni) by [indestructible type*](https://indestructibletype.com/Home.html) and [Source Code Pro](https://github.com/adobe-fonts/source-code-pro) by [Adobe](https://adobe.com).
+
+Image adapted from icon made by [Freepik](https://freepik.com) from [flaticon.com](https://www.flaticon.com/free-icon/paper-shredder_1701401).
 
 ---
 

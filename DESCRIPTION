@@ -2,17 +2,17 @@ Package: fauxnaif
 Title: Convert values to NA
 Version: 0.5.5
 Authors@R: 
-    person(given = "Alex",
+    person(given = "Alexander",
            family = "Rossell Hayes",
            role = c("aut", "cre"),
            email = "alexander@rossellhayes.com",
            comment = c(ORCID = "0000-0001-9412-0457"))
-Description: fauxnaif provides a replacement for
-    dplyr::na_if().  Unlike dplyr's na_if(), it allows you to specify
-    multiple values to be replaced with NA using a single function.  Load
-    fauxnaif after dplyr (or use a conflict manager like conflicted) to
-    use the extended na_if() functionality.  Alternatively, use na_if_in()
-    to avoid conflicts with dplyr.
+Description: Provides a replacement for dplyr::na_if().  Unlike
+    dplyr's na_if(), it allows you to specify multiple values to be
+    replaced with NA using a single function.  Load fauxnaif after dplyr
+    (or use a conflict manager like conflicted) to use the extended
+    na_if() functionality.  Alternatively, use na_if_in() to avoid
+    conflicts with dplyr.
 License: MIT + file LICENSE
 URL: https://github.com/rossellhayes/fauxnaif
 BugReports: https://github.com/rossellhayes/fauxnaif/issues

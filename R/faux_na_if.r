@@ -1,6 +1,6 @@
 #' @importFrom glue glue glue_collapse
 #' @importFrom rlang abort as_function as_label caller_env enquo inform
-#' is_atomic is_formula is_function is_list is_logical is_missing warn
+#'     is_atomic is_formula is_function is_list is_logical is_missing warn
 
 faux_na_if <- function(
   input, ..., arguments, arg_names, not = FALSE, scoped = FALSE

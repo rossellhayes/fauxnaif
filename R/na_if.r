@@ -40,28 +40,53 @@
 #' @aliases fauxnaif
 #' @export
 #' @examples
-#' na_if_in(1:5, 2, 4)
+#' -1:10
+#' # We can replace -1...
+#' # ... explicitly
+#' na_if(-1:10, -1)
+#' # ... by specifying values to keep
+#' na_if_not(-1:10, 0:10)
+#' # ... using a formula
+#' na_if(-1:10, ~ . < 0)
+#' # ... or using a function
+#' na_if(-1:10, min)
 #'
-#' y <- c("abc", "", "def", "NA", "ghi", 42, "jkl", "NULL", "mno")
-#' na_if(y, "", c("NA", "NULL"), 1:100)
+#' messy_string <- c("abc", "", "def", "NA", "ghi", 42, "jkl", "NULL", "mno")
+#' # We can replace unwanted values...
+#' # ... one at a time
+#' na_if(messy_string, "")
+#' # ... or all at once
+#' na_if(messy_string, "", "NA", "NULL", 1:100)
+#' na_if(messy_string, c("", "NA", "NULL", 1:100))
+#' na_if(messy_string, list("", "NA", "NULL", 1:100))
+#' # We can save arguments with a clever formula
+#' grepl("[a-z]{3,}", messy_string)
+#' na_if_not(messy_string, ~ grepl("[a-z]{3,}", .))
+#'
+#' # na_if() is particularly useful inside dplyr::mutate
+#' faux_census %>%
+#'   dplyr::mutate(
+#'     state = na_if(state, "Canada"),
+#'     age   = na_if(age, ~ . < 18, ~ . > 120)
+#'   )
+#'
+#' # We get a message if our values to replace don't exist
+#' na_if(-1:10, 11)
+#' # And a warning if we use an invalid input...
+#' # ... like a two-sided formula
+#' na_if(-1:10, x ~ . < 0)
+#' # ... NULL
+#' na_if(-1:10, NULL)
+#' # ... or nothing at all
+#' na_if(-1:10)
+#'
+#' # If you want to avoid clashes with dplyr::na_if(), you can use na_if_in()
+#' na_if_in(-1:10, -1)
 #'
 #' # This function handles vector values differently than dplyr,
 #' # and returns a different result with vector replacement values:
-#' na_if(1:5, 5:1)
-#' \dontrun{
+#' fauxnaif::na_if(1:5, 5:1)
 #' dplyr::na_if(1:5, 5:1)
-#'
-#' # na_if_in is particularly useful inside mutate,
-#' # and is meant for use with vectors rather than entire data frames
-#' dplyr::starwars %>%
-#'   dplyr::select(name, hair_color) %>%
-#'   dplyr::mutate(hair_color = na_if(hair_color, "unknown", "none"))
-#'
-#' # na_if_in can also be used with scoped variants of mutate
-#' # like mutate_if to mutate multiple columns
-#' dplyr::starwars %>%
-#'   dplyr::mutate_if(is.character, ~ na_if(., "unknown", "none"))
-#' }
 
 na_if <- function(input, ...) {
   faux_na_if(input, ..., not = FALSE)

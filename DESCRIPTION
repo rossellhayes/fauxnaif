@@ -1,5 +1,5 @@
 Package: fauxnaif
-Title: Convert values to NA
+Title: Convert Values to NA
 Version: 0.5.5
 Authors@R: 
     person(given = "Alexander",

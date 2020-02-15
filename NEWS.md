@@ -1,3 +1,9 @@
+# fauxnaif 0.5.5
+
+* Refactored scoped na_if_*() to only message when no replacements are made in
+  in entire data frame. Previously, a message would be generated for each column
+  in which no replacements were made.
+
 # fauxnaif 0.5.4
 
 * Changed all instances of `sapply()` to `vapply()` or `lapply()` for type

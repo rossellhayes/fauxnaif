@@ -1,8 +1,8 @@
 Package: fauxnaif
 Title: Convert values to NA
-Version: 0.5.4
+Version: 0.5.5
 Authors@R: 
-    person(given = "Alexander",
+    person(given = "Alex",
            family = "Rossell Hayes",
            role = c("aut", "cre"),
            email = "alexander@rossellhayes.com",

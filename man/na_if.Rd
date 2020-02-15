@@ -83,9 +83,7 @@ na_if(-1:10, 11)
 # And a warning if we use an invalid input...
 # ... like a two-sided formula
 na_if(-1:10, x ~ . < 0)
-# ... or an unexpected object type
-na_if(-1:10, lm(1 ~ 1))
-# ... or NULL
+# ... NULL
 na_if(-1:10, NULL)
 # ... or nothing at all
 na_if(-1:10)

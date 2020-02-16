@@ -41,129 +41,98 @@
 #'
 #' @name scoped_na_if
 
-NULL
+scoped_na_if <- function(fun_name, fun, .tbl, ...) {
+  abort_no_dplyr(fun_name)
+
+  result <- fun(.tbl = .tbl, .funs = faux_na_if, ..., scoped = TRUE)
+
+  inform_no_replacements(.tbl, result)
+
+  result
+}
 
 #' @rdname scoped_na_if
 #' @export
 
 na_if_all <- function(.tbl, ...) {
-  abort_no_dplyr("na_if_not_all")
-
-  result <- dplyr::mutate_all(
-    .tbl,
-    faux_na_if,
+  scoped_na_if(
+    fun_name  = "na_if_all",
+    fun       = dplyr::mutate_all,
+    .tbl      = .tbl,
     arguments = list(...),
-    arg_names = as.list(substitute(list(...))),
-    not       = FALSE,
-    scoped    = TRUE
+    arg_names = as.list(substitute(list(...)))
   )
-
-  inform_no_replacements(.tbl, result)
-
-  result
 }
 
 #' @rdname scoped_na_if
 #' @export
 
 na_if_not_all <- function(.tbl, ...) {
-  abort_no_dplyr("na_if_not_all")
-
-  result <- dplyr::mutate_all(
-    .tbl,
-    faux_na_if,
+  scoped_na_if(
+    fun_name  = "na_if_not_all",
+    fun       = dplyr::mutate_all,
+    .tbl      = .tbl,
     arguments = list(...),
     arg_names = as.list(substitute(list(...))),
-    not       = TRUE,
-    scoped    = TRUE
+    not       = TRUE
   )
-
-  inform_no_replacements(.tbl, result)
-
-  result
 }
 
 #' @rdname scoped_na_if
 #' @export
 
 na_if_at <- function(.tbl, .vars, ...) {
-  abort_no_dplyr("na_if_at")
-
-  result <- dplyr::mutate_at(
-    .tbl,
-    .vars,
-    faux_na_if,
+  scoped_na_if(
+    fun_name  = "na_if_at",
+    fun       = dplyr::mutate_at,
+    .tbl      = .tbl,
+    .vars     = .vars,
     arguments = list(...),
-    arg_names = as.list(substitute(list(...))),
-    not       = FALSE,
-    scoped    = TRUE
+    arg_names = as.list(substitute(list(...)))
   )
-
-  inform_no_replacements(.tbl, result)
-
-  result
 }
 
 #' @rdname scoped_na_if
 #' @export
 
 na_if_not_at <- function(.tbl, .vars, ...) {
-  abort_no_dplyr("na_if_not_at")
-
-  result <- dplyr::mutate_at(
-    .tbl,
-    .vars,
-    faux_na_if,
+  scoped_na_if(
+    fun_name  = "na_if_not_at",
+    fun       = dplyr::mutate_at,
+    .tbl      = .tbl,
+    .vars     = .vars,
     arguments = list(...),
     arg_names = as.list(substitute(list(...))),
-    not       = TRUE,
-    scoped    = TRUE
+    not       = TRUE
   )
-
-  inform_no_replacements(.tbl, result)
-
-  result
 }
 
 #' @rdname scoped_na_if
 #' @export
 
 na_if_if <- function(.tbl, .predicate, ...) {
-  abort_no_dplyr("na_if_if")
-
-  result <- dplyr::mutate_if(
-    .tbl,
-    .predicate,
-    faux_na_if,
-    arguments = list(...),
-    arg_names = as.list(substitute(list(...))),
-    not       = FALSE,
-    scoped    = TRUE
+  scoped_na_if(
+    fun_name   = "na_if_if",
+    fun        = dplyr::mutate_if,
+    .tbl       = .tbl,
+    .predicate = .predicate,
+    arguments  = list(...),
+    arg_names  = as.list(substitute(list(...)))
   )
-
-  inform_no_replacements(.tbl, result)
-
-  result
 }
 
 #' @rdname scoped_na_if
 #' @export
 
 na_if_not_if <- function(.tbl, .predicate, ...) {
-  abort_no_dplyr("na_if_not_if")
-
-  result <- dplyr::mutate_if(
-    .tbl,
-    .predicate,
-    faux_na_if,
-    arguments = list(...),
-    arg_names = as.list(substitute(list(...))),
-    not       = TRUE,
-    scoped    = TRUE
+  scoped_na_if(
+    fun_name   = "na_if_not_if",
+    fun        = dplyr::mutate_if,
+    .tbl       = .tbl,
+    .predicate = .predicate,
+    arguments  = list(...),
+    arg_names  = as.list(substitute(list(...))),
+    not        = TRUE
   )
-
-  inform_no_replacements(.tbl, result)
-
-  result
 }
 

@@ -14,7 +14,7 @@ knitr::opts_chunk$set(
 options(tibble.print_min = 5, tibble.print_max = 5)
 ```
 
-# fauxnaif <img src='man/figures/logo.png' align="right" height="138" />
+# fauxnaif <img src='man/figures/logo.png?raw=TRUE' align="right" height="138" />
 
 <!-- badges: start -->
 [![Lifecycle: maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)

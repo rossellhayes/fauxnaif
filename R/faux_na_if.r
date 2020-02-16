@@ -63,8 +63,14 @@ faux_na_if <- function(
   input
 }
 
-scoped_na_if <- function(fun_name, fun, .tbl, ...) {
-  abort_no_dplyr(fun_name)
+scoped_na_if <- function(fun, .tbl, ...) {
+  if(!requireNamespace("dplyr")) {
+    glue_abort(
+      "Package `dplyr` must be installed to use scoped fauxnaif functions.",
+      "\n",
+      'Try install.packages("dplyr")'
+    )
+  }
 
   result <- fun(.tbl = .tbl, .funs = faux_na_if, ..., scoped = TRUE)
 

@@ -48,7 +48,6 @@ NULL
 
 na_if_all <- function(.tbl, ...) {
   scoped_na_if(
-    fun_name  = "na_if_all",
     fun       = dplyr::mutate_all,
     .tbl      = .tbl,
     arguments = list(...),
@@ -61,7 +60,6 @@ na_if_all <- function(.tbl, ...) {
 
 na_if_not_all <- function(.tbl, ...) {
   scoped_na_if(
-    fun_name  = "na_if_not_all",
     fun       = dplyr::mutate_all,
     .tbl      = .tbl,
     arguments = list(...),
@@ -75,7 +73,6 @@ na_if_not_all <- function(.tbl, ...) {
 
 na_if_at <- function(.tbl, .vars, ...) {
   scoped_na_if(
-    fun_name  = "na_if_at",
     fun       = dplyr::mutate_at,
     .tbl      = .tbl,
     .vars     = .vars,
@@ -89,7 +86,6 @@ na_if_at <- function(.tbl, .vars, ...) {
 
 na_if_not_at <- function(.tbl, .vars, ...) {
   scoped_na_if(
-    fun_name  = "na_if_not_at",
     fun       = dplyr::mutate_at,
     .tbl      = .tbl,
     .vars     = .vars,
@@ -104,7 +100,6 @@ na_if_not_at <- function(.tbl, .vars, ...) {
 
 na_if_if <- function(.tbl, .predicate, ...) {
   scoped_na_if(
-    fun_name   = "na_if_if",
     fun        = dplyr::mutate_if,
     .tbl       = .tbl,
     .predicate = .predicate,
@@ -118,7 +113,6 @@ na_if_if <- function(.tbl, .predicate, ...) {
 
 na_if_not_if <- function(.tbl, .predicate, ...) {
   scoped_na_if(
-    fun_name   = "na_if_not_if",
     fun        = dplyr::mutate_if,
     .tbl       = .tbl,
     .predicate = .predicate,

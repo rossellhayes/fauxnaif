@@ -9,16 +9,6 @@ abort_uncoercible <- function(input) {
   )
 }
 
-abort_no_dplyr <- function(fun_name) {
-  if(!requireNamespace("dplyr")) {
-    glue_abort(
-      "Package `dplyr` must be installed to use `",
-      fun_name,
-      "()`"
-    )
-  }
-}
-
 warn_invalid <- function(arg_names) {
   glue_warn(
     "Arguments must be atomics, formulas or functions. \n* ",

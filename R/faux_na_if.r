@@ -5,8 +5,10 @@
 faux_na_if <- function(
   input, ..., arguments, arg_names, not = FALSE, scoped = FALSE
 ) {
-  if (is_missing(arguments)) arguments <- list(...)
-  if (is_missing(arg_names)) arg_names <- as.list(substitute(list(...)))
+  if (!scoped) {
+    arguments <- list(...)
+    arg_names <- as.list(substitute(list(...)))
+  }
 
   original_input <- input
 

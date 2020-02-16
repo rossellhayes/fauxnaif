@@ -1,3 +1,8 @@
+# fauxnaif 0.5.6
+
+* Scoped na_if_*() functions now call an internal function
+  fauxnaif:::scoped_na_if() to reduce repeated code.
+
 # fauxnaif 0.5.5
 
 * Refactored scoped na_if_*() to only message when no replacements are made in
@@ -7,24 +12,24 @@
 # fauxnaif 0.5.4
 
 * Changed all instances of `sapply()` to `vapply()` or `lapply()` for type
-  stability
+  stability.
 
 # fauxnaif 0.5.3
 
-* Moved package imports from "Depends" to "Imports" for cleaner loading
+* Moved package imports from "Depends" to "Imports" for cleaner loading.
 
 # fauxnaif 0.5.2
 
-* Included magrittr pipe
+* Included magrittr pipe.
 
 # fauxnaif 0.5.1
 
-* Rewrote scoped na_if_* functions to use only exported dplyr functions
+* Rewrote scoped na_if_* functions to use only exported dplyr functions.
 
 # fauxnaif 0.5.0
 
-* Added support for function arguments
-* Complete rewrite of underlying implementation function
+* Added support for function arguments.
+* Complete rewrite of underlying implementation function.
 
 # fauxnaif 0.4.1
 

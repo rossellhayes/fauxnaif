@@ -62,3 +62,13 @@ faux_na_if <- function(
 
   input
 }
+
+scoped_na_if <- function(fun_name, fun, .tbl, ...) {
+  abort_no_dplyr(fun_name)
+
+  result <- fun(.tbl = .tbl, .funs = faux_na_if, ..., scoped = TRUE)
+
+  inform_no_replacements(.tbl, result)
+
+  result
+}

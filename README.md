@@ -37,8 +37,8 @@ avoid conflicts with **dplyr**.
 ## Installation
 
 ``` r
-# install.packages("devtools")
-devtools::install_github("rossellhayes/fauxnaif")
+# install.packages("remotes")
+remotes::install_github("rossellhayes/fauxnaif")
 ```
 
 ## Usage

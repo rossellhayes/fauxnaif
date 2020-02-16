@@ -40,8 +40,8 @@ Alternatively, use `na_if_in()` to avoid conflicts with **dplyr**.
 ## Installation
 
 ```{r eval = FALSE}
-# install.packages("devtools")
-devtools::install_github("rossellhayes/fauxnaif")
+# install.packages("remotes")
+remotes::install_github("rossellhayes/fauxnaif")
 ```
 
 ## Usage

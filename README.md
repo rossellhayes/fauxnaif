@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# fauxnaif <img src='man/figures/logo.png?raw=TRUE' align="right" height="138" />
+# fauxnaif <img src="man/figures/logo.png?raw=TRUE" align="right" height="138" />
 
 <!-- badges: start -->
 
@@ -26,12 +26,17 @@ are `NA`
 
 ## Overview
 
-fauxnaif provides a replacement for `dplyr::na_if()`. Unlike
-[**dplyr**](https://github.com/tidyverse/dplyr)’s `na_if()`, it allows
-you to specify multiple values to be replaced with `NA` using a single
-function. Load **fauxnaif** after **dplyr** (or use a conflict manager
-like [**conflicted**](https://github.com/r-lib/conflicted)) to use the
-extended `na_if()` functionality. Alternatively, use `na_if_in()` to
+**fauxnaif** provides an extension to `dplyr::na_if()`. Unlike
+[**dplyr**](https://github.com/tidyverse/dplyr)’s `na_if()`,
+`fauxnaif::na_if()` allows you to specify multiple values to be replaced
+with `NA` using a single function. **fauxnaif** also includes a
+complementary function `na_if_not()` and a set of scoped functions –
+`na_if_at()`, `_if()`, `_all()`, `_not_at()`, `_not_if()`, and
+`_not_all()` – that can operate directly on data frames.
+
+Load **fauxnaif** after **dplyr** or use a conflict manager like
+[**conflicted**](https://github.com/r-lib/conflicted) to ensure you get
+its extended `na_if()` functionality. Alternatively, use `na_if_in()` to
 avoid conflicts with **dplyr**.
 
 ## Installation

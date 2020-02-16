@@ -89,7 +89,7 @@
 #' dplyr::na_if(1:5, 5:1)
 
 na_if <- function(input, ...) {
-  faux_na_if(input, ..., not = FALSE)
+  faux_na_if(input, ...)
 }
 
 #' @rdname na_if

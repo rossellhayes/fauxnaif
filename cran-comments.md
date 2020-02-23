@@ -1,3 +1,8 @@
+# Resubmission
+This is a resubmission. In this version I have:
+
+* Converted LICENSE to use CRAN template
+
 # Test environments
 * Local Windows 10 install, R 3.6.2
 * Ubuntu 14.04, R 3.6.2 (on travis-ci)
@@ -12,7 +17,3 @@
 0 errors | 0 warnings | 1 note
 
 * This is a new release.
-
-# Resubmission
-
-* Fixed file LICENSE to use CRAN template

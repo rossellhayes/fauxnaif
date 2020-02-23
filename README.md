@@ -7,8 +7,8 @@
 
 [![Lifecycle:
 maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
-[![GitHub
-License](https://img.shields.io/github/license/rossellhayes/fauxnaif?color=blueviolet)](https://github.com/rossellhayes/fauxnaif/blob/master/LICENSE)
+[![License:
+MIT](https://img.shields.io/badge/License-MIT-blueviolet.svg)](https://opensource.org/licenses/MIT)
 [![Travis build
 status](https://travis-ci.org/rossellhayes/fauxnaif.svg?branch=master)](https://travis-ci.org/rossellhayes/fauxnaif)
 [![AppVeyor Build
@@ -21,8 +21,8 @@ coverage](https://codecov.io/gh/rossellhayes/fauxnaif/branch/master/graph/badge.
 ([/ˌfoʊ.naɪˈif/](https://en.wikipedia.org/wiki/Help:IPA/English)): a
 person who pretends to be simple or innocent
 
-**`fauxnaif`**: an R package for simplifying data by pretending values
-are `NA`
+**fauxnaif**: an R package for simplifying data by pretending values are
+`NA`
 
 ## Overview
 

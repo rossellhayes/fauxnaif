@@ -17,7 +17,7 @@ options(tibble.print_min = 5, tibble.print_max = 5)
 # fauxnaif <img src="man/figures/logo.png?raw=TRUE" align="right" height="138" />
 
 <!-- badges: start -->
-[![Lifecycle: maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
+[![Lifecycle: maturing](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://www.tidyverse.org/lifecycle/#stable)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blueviolet.svg)](https://opensource.org/licenses/MIT)
 [![Travis build status](https://travis-ci.org/rossellhayes/fauxnaif.svg?branch=master)](https://travis-ci.org/rossellhayes/fauxnaif)
 [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/rossellhayes/fauxnaif?branch=master&svg=true)](https://ci.appveyor.com/project/rossellhayes/fauxnaif)

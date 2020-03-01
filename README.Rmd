@@ -38,11 +38,22 @@ Unlike [**dplyr**](https://github.com/tidyverse/dplyr)'s `na_if()`,
 scoped functions -- `na_if_at()`, `_if()`, `_all()`, `_not_at()`, `_not_if()`,
 and `_not_all()` -- that can operate directly on data frames.
 
-Load **fauxnaif** after **dplyr** or use a conflict manager like [**conflicted**](https://github.com/r-lib/conflicted) to ensure you get its
+Load **fauxnaif** after **dplyr** or use a conflict manager like
+[**conflicted**](https://github.com/r-lib/conflicted) to ensure you get its
 extended `na_if()` functionality.
 Alternatively, use `na_if_in()` to avoid conflicts with **dplyr**.
 
 ## Installation
+
+You can install `fauxnaif` from
+[CRAN](https://cran.r-project.org/web/packages/fauxnaif/index.html):
+
+```{r eval = FALSE}
+install.packages("fauxanif")
+```
+
+Or the development version from
+[GitHub](https://github.com/rossellhayes/fauxnaif):
 
 ```{r eval = FALSE}
 # install.packages("remotes")
@@ -151,9 +162,13 @@ faux_census %>%
 
 ## Credits
 
-Hex sticker fonts are [Bodoni*](https://github.com/indestructible-type/Bodoni) by [indestructible type*](https://indestructibletype.com/Home.html) and [Source Code Pro](https://github.com/adobe-fonts/source-code-pro) by [Adobe](https://adobe.com).
+Hex sticker fonts are [Bodoni*](https://github.com/indestructible-type/Bodoni)
+by [indestructible type*](https://indestructibletype.com/Home.html) and
+[Source Code Pro](https://github.com/adobe-fonts/source-code-pro) by
+[Adobe](https://adobe.com).
 
-Image adapted from icon made by [Freepik](https://freepik.com) from [flaticon.com](https://www.flaticon.com/free-icon/paper-shredder_1701401).
+Image adapted from icon made by [Freepik](https://freepik.com) from
+[flaticon.com](https://www.flaticon.com/free-icon/paper-shredder_1701401).
 
 ---
 

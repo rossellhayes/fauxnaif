@@ -41,6 +41,16 @@ avoid conflicts with **dplyr**.
 
 ## Installation
 
+You can install `fauxnaif` from
+[CRAN](https://cran.r-project.org/web/packages/fauxnaif/index.html):
+
+``` r
+install.packages("fauxanif")
+```
+
+Or the development version from
+[GitHub](https://github.com/rossellhayes/fauxnaif):
+
 ``` r
 # install.packages("remotes")
 remotes::install_github("rossellhayes/fauxnaif")

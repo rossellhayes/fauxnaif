@@ -1,6 +1,6 @@
 Package: fauxnaif
 Title: Convert Values to NA
-Version: 0.5.6
+Version: 0.5.6.9000
 Authors@R: 
     person(given = "Alexander",
            family = "Rossell Hayes",

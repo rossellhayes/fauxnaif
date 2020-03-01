@@ -1,3 +1,7 @@
+# fauxnaif (development version)
+
+* No changes yet
+
 # fauxnaif 0.5.6
 
 * Scoped na_if_*() functions now call an internal function

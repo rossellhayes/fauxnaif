@@ -3,14 +3,14 @@ citHeader("To cite fauxnaif in publications use:")
 citEntry(
   entry    = "Manual",
   title    = "fauxnaif: Convert Values to NA",
-  author   = "Alexander Rossell Hayes",
+  author   = "Rossell Hayes, Alexander",
   year     = 2020,
-  note     = "R package version 0.5.5",
+  note     = "R package version 0.5.6",
   url      = "https://github.com/rossellhayes/fauxnaif",
   textVersion = paste(
     "Alexander Rossell Hayes (2020).",
     "fauxnaif: Convert Values to NA.",
-    "R package version 0.5.5.",
+    "R package version 0.5.6.",
     "https://github.com/rossellhayes/fauxnaif"
   )
 )

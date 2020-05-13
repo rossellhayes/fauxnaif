@@ -11,7 +11,10 @@ knitr::opts_chunk$set(
   fig.path = "man/figures/README-",
   out.width = "100%"
 )
+
 options(tibble.print_min = 5, tibble.print_max = 5)
+
+library(ipa)
 ```
 
 # fauxnaif <img src="man/figures/logo.png?raw=TRUE" align="right" height="138" />
@@ -20,12 +23,11 @@ options(tibble.print_min = 5, tibble.print_max = 5)
 [![CRAN status](https://www.r-pkg.org/badges/version/fauxnaif)](https://CRAN.R-project.org/package=fauxnaif)
 [![Lifecycle: maturing](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://www.tidyverse.org/lifecycle/#stable)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blueviolet.svg)](https://opensource.org/licenses/MIT)
-[![Travis build status](https://travis-ci.org/rossellhayes/fauxnaif.svg?branch=master)](https://travis-ci.org/rossellhayes/fauxnaif)
-[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/rossellhayes/fauxnaif?branch=master&svg=true)](https://ci.appveyor.com/project/rossellhayes/fauxnaif)
+[![R build status](https://github.com/rossellhayes/fauxnaif/workflows/R-CMD-check/badge.svg)](https://github.com/rossellhayes/fauxnaif/actions)
 [![Codecov test coverage](https://codecov.io/gh/rossellhayes/fauxnaif/branch/master/graph/badge.svg)](https://codecov.io/gh/rossellhayes/fauxnaif?branch=master)
 <!-- badges: end -->
 
-***faux-naïf*** ([/ˌfoʊ.naɪˈif/](https://en.wikipedia.org/wiki/Help:IPA/English)): a person who pretends to be simple or innocent
+***faux-naïf*** ([`r ipa::sampa("/%foU.naI\"if/")`](https://en.wikipedia.org/wiki/Help:IPA/English)): a person who pretends to be simple or innocent
 
 **fauxnaif**: an R package for simplifying data by pretending values are `NA`
 
@@ -161,7 +163,7 @@ faux_census %>%
   na_if_all(9999999)
 ```
 
-## Credits
+---
 
 Hex sticker fonts are [Bodoni*](https://github.com/indestructible-type/Bodoni)
 by [indestructible type*](https://indestructibletype.com/Home.html) and
@@ -170,8 +172,6 @@ by [indestructible type*](https://indestructibletype.com/Home.html) and
 
 Image adapted from icon made by [Freepik](https://freepik.com) from
 [flaticon.com](https://www.flaticon.com/free-icon/paper-shredder_1701401).
-
----
 
 Please note that **fauxnaif** is released with a
 [Contributor Code of Conduct](https://www.contributor-covenant.org/version/2/0/code_of_conduct/).

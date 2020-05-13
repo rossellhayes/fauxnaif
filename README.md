@@ -11,10 +11,8 @@ status](https://www.r-pkg.org/badges/version/fauxnaif)](https://CRAN.R-project.o
 maturing](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://www.tidyverse.org/lifecycle/#stable)
 [![License:
 MIT](https://img.shields.io/badge/license-MIT-blueviolet.svg)](https://opensource.org/licenses/MIT)
-[![Travis build
-status](https://travis-ci.org/rossellhayes/fauxnaif.svg?branch=master)](https://travis-ci.org/rossellhayes/fauxnaif)
-[![AppVeyor Build
-Status](https://ci.appveyor.com/api/projects/status/github/rossellhayes/fauxnaif?branch=master&svg=true)](https://ci.appveyor.com/project/rossellhayes/fauxnaif)
+[![R build
+status](https://github.com/rossellhayes/fauxnaif/workflows/R-CMD-check/badge.svg)](https://github.com/rossellhayes/fauxnaif/actions)
 [![Codecov test
 coverage](https://codecov.io/gh/rossellhayes/fauxnaif/branch/master/graph/badge.svg)](https://codecov.io/gh/rossellhayes/fauxnaif?branch=master)
 <!-- badges: end -->
@@ -193,7 +191,7 @@ faux_census %>%
 #> 5 TN       64     NA M
 ```
 
-## Credits
+-----
 
 Hex sticker fonts are
 [Bodoni\*](https://github.com/indestructible-type/Bodoni) by
@@ -203,8 +201,6 @@ Hex sticker fonts are
 
 Image adapted from icon made by [Freepik](https://freepik.com) from
 [flaticon.com](https://www.flaticon.com/free-icon/paper-shredder_1701401).
-
------
 
 Please note that **fauxnaif** is released with a [Contributor Code of
 Conduct](https://www.contributor-covenant.org/version/2/0/code_of_conduct/).

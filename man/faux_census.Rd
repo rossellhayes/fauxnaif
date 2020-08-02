@@ -4,7 +4,9 @@
 \name{faux_census}
 \alias{faux_census}
 \title{A small sample of a fabricated census-like dataset}
-\format{A tibble with 20 rows and 6 variables.}
+\format{
+A tibble with 20 rows and 6 variables.
+}
 \source{
 Fabricated
 }

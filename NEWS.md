@@ -1,6 +1,6 @@
 # fauxnaif (development version)
 
-* No changes yet
+* Deprecate scoped_na_if() functions and suggest replacing them with `dplyr::across()`.
 
 # fauxnaif 0.5.6
 

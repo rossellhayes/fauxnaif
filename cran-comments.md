@@ -1,11 +1,13 @@
 # Test environments
-* Local Windows 10 install, R 3.6.2
-* Ubuntu 14.04, R 3.6.2 (on travis-ci)
-* Windows Server 2012 R2 x64, R 3.6.2 (on appveyor)
-* Win-builder, R-devel
-* Windows Server 2008 R2 SP1, R-devel, 32/64 bit (on R-hub)
-* Ubuntu 16.04 LTS, R-release, GCC (on R-hub)
-* Fedora, R-devel, clang, gfortran (on R-hub)
+* Local R installation, Windows 10, R 4.0.0
+* GitHub Actions
+    * R 4.1.0-devel on Ubuntu 16.04
+    * R 4.0.0 on Windows Server 2019, Mac OS X 10.15.4 and Ubuntu 16.04
+    * R 3.3, 3.4, 3.5, and 3.6 on Ubuntu 16.04
+* R 4.1.0-devel on win-builder
+* r-hub
+    * R 4.1.0-devel on Windows Server 2008 and Fedora Linux
+    * R 4.0.0 on Ubuntu 16.04
 
 # R CMD check results
 

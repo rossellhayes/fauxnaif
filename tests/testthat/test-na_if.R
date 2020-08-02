@@ -7,9 +7,7 @@ test_that("scalar argument replaces all matching x", {
 
 test_that("no changes made if no matches", {
   expect_equal(na_if(0:9, 10), 0:9)
-  expect_message(na_if(0:9, 10), "no replacements were made")
   expect_equal(na_if_not(0:9, 0:9), 0:9)
-  expect_message(na_if_not(0:9, 0:9), "no replacements were made")
 })
 
 test_that("multiple scalar arguments replaces all matching x", {

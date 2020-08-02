@@ -56,10 +56,6 @@ faux_na_if <- function(
   if (any(two_sided))           warn_two_sided(arg_names[-1][two_sided])
   if (any(!valid & !two_sided)) warn_invalid(arg_names[-1][!valid & !two_sided])
 
-  if (!scoped & sum(two_sided | !valid) == 0) {
-    inform_no_replacements(input, original_input)
-  }
-
   input
 }
 

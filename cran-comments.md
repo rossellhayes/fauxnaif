@@ -1,9 +1,10 @@
 # Test environments
-* Local R installation, Windows 10, R 4.0.0
+* Local R installation, Windows 10, R 4.0.2
 * GitHub Actions
     * R 4.1.0-devel on Ubuntu 16.04
-    * R 4.0.0 on Windows Server 2019, Mac OS X 10.15.4 and Ubuntu 16.04
-    * R 3.3, 3.4, 3.5, and 3.6 on Ubuntu 16.04
+    * R 4.0.2 on Windows Server 2019, Mac OS X 10.15.4 and Ubuntu 16.04
+    * R 3.6 on Windows Server 2019 and Ubuntu 16.04
+    * R 3.5 on Ubuntu 16.04
 * R 4.1.0-devel on win-builder
 * r-hub
     * R 4.1.0-devel on Windows Server 2008 and Fedora Linux

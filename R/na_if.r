@@ -37,7 +37,6 @@
 #'   [dplyr::recode()] and [dplyr::case_when()] to more generally replace
 #'   values.
 #'
-#' @aliases fauxnaif
 #' @export
 #' @examples
 #' -1:10

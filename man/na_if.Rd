@@ -2,7 +2,6 @@
 % Please edit documentation in R/na_if.r
 \name{na_if}
 \alias{na_if}
-\alias{fauxnaif}
 \alias{na_if_in}
 \alias{na_if_not}
 \title{Convert values to NA}

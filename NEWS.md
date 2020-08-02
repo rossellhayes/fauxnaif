@@ -1,5 +1,6 @@
 # fauxnaif (development version)
 
+* No longer produce a warning when no replacements are made.
 * Deprecate scoped_na_if() functions and suggest replacing them with `dplyr::across()`.
 
 # fauxnaif 0.5.6

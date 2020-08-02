@@ -74,7 +74,5 @@ scoped_na_if <- function(fun, .tbl, ...) {
 
   result <- fun(.tbl = .tbl, .funs = faux_na_if, ..., scoped = TRUE)
 
-  inform_no_replacements(.tbl, result)
-
   result
 }

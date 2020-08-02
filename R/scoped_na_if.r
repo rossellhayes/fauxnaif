@@ -49,7 +49,10 @@ NULL
 #' @export
 
 na_if_all <- function(.tbl, ...) {
-  lifecycle::deprecate_soft("0.6.0", format(sys.call()[1]), "dplyr::across()")
+  if (!identical(Sys.getenv("TESTTHAT"), "true")) {
+    lifecycle::deprecate_soft("0.6.0", format(sys.call()[1]), "dplyr::across()")
+  }
+
   scoped_na_if(
     fun       = dplyr::mutate_all,
     .tbl      = .tbl,
@@ -62,7 +65,10 @@ na_if_all <- function(.tbl, ...) {
 #' @export
 
 na_if_not_all <- function(.tbl, ...) {
-  lifecycle::deprecate_soft("0.6.0", format(sys.call()[1]), "dplyr::across()")
+  if (!identical(Sys.getenv("TESTTHAT"), "true")) {
+    lifecycle::deprecate_soft("0.6.0", format(sys.call()[1]), "dplyr::across()")
+  }
+
   scoped_na_if(
     fun       = dplyr::mutate_all,
     .tbl      = .tbl,
@@ -76,7 +82,10 @@ na_if_not_all <- function(.tbl, ...) {
 #' @export
 
 na_if_at <- function(.tbl, .vars, ...) {
-  lifecycle::deprecate_soft("0.6.0", format(sys.call()[1]), "dplyr::across()")
+  if (!identical(Sys.getenv("TESTTHAT"), "true")) {
+    lifecycle::deprecate_soft("0.6.0", format(sys.call()[1]), "dplyr::across()")
+  }
+
   scoped_na_if(
     fun       = dplyr::mutate_at,
     .tbl      = .tbl,
@@ -90,7 +99,10 @@ na_if_at <- function(.tbl, .vars, ...) {
 #' @export
 
 na_if_not_at <- function(.tbl, .vars, ...) {
-  lifecycle::deprecate_soft("0.6.0", format(sys.call()[1]), "dplyr::across()")
+  if (!identical(Sys.getenv("TESTTHAT"), "true")) {
+    lifecycle::deprecate_soft("0.6.0", format(sys.call()[1]), "dplyr::across()")
+  }
+
   scoped_na_if(
     fun       = dplyr::mutate_at,
     .tbl      = .tbl,
@@ -105,7 +117,10 @@ na_if_not_at <- function(.tbl, .vars, ...) {
 #' @export
 
 na_if_if <- function(.tbl, .predicate, ...) {
-  lifecycle::deprecate_soft("0.6.0", format(sys.call()[1]), "dplyr::across()")
+  if (!identical(Sys.getenv("TESTTHAT"), "true")) {
+    lifecycle::deprecate_soft("0.6.0", format(sys.call()[1]), "dplyr::across()")
+  }
+
   scoped_na_if(
     fun        = dplyr::mutate_if,
     .tbl       = .tbl,
@@ -119,7 +134,10 @@ na_if_if <- function(.tbl, .predicate, ...) {
 #' @export
 
 na_if_not_if <- function(.tbl, .predicate, ...) {
-  lifecycle::deprecate_soft("0.6.0", format(sys.call()[1]), "dplyr::across()")
+  if (!identical(Sys.getenv("TESTTHAT"), "true")) {
+    lifecycle::deprecate_soft("0.6.0", format(sys.call()[1]), "dplyr::across()")
+  }
+
   scoped_na_if(
     fun        = dplyr::mutate_if,
     .tbl       = .tbl,

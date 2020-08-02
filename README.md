@@ -152,11 +152,11 @@ faux_census
 #> 5 TN        64 9999999 M
 ```
 
-na\_if() is particularly useful inside dplyr::mutate:
+na\_if() is particularly useful inside `dplyr::mutate()`:
 
 ``` r
 faux_census %>%
- dplyr::mutate(
+ mutate(
    income = na_if(income, 9999999),
    age    = na_if(age, ~ . < 18, ~ . > 120),
    state  = na_if_not(state, ~ grepl("^[A-Z]{2,}$", .)),
@@ -172,15 +172,16 @@ faux_census %>%
 #> 5 TN       64     NA M
 ```
 
-Or you can use scoped functions (\_at, \_if, and \_all) directly on data
-frames:
+Or you can use `dplyr::across()` on data frames:
 
 ``` r
 faux_census %>%
-  na_if_at("age", ~ . < 18, ~ . > 120) %>% 
-  na_if_not_at("state", ~ grepl("^[A-Z]{2,}$", .)) %>%
-  na_if_if(is.character, ~ nchar(.) > 20) %>%
-  na_if_all(9999999)
+  mutate(
+    across(age, na_if, ~ . < 18, ~ . > 120),
+    across(state, na_if_not, ~ grepl("^[A-Z]{2,}$", .)),
+    across(where(is.character), na_if, ~ nchar(.) > 20),
+    across(everything(), na_if, 9999999)
+  )
 #> # A tibble: 5 x 4
 #>   state   age income gender
 #>   <chr> <dbl>  <dbl> <chr> 

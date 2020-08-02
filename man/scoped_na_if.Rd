@@ -58,6 +58,7 @@ directly within pipelines and can modify multiple variables at once.
 }
 }
 \examples{
+\dontrun{
 df <- data.frame(a = 0:5, b = 5:0, c = as.numeric(0:5), d = letters[1:6])
 
 na_if_all(df, 0)
@@ -68,6 +69,7 @@ na_if_not_at(df, c("a", "c"), 0:3)
 
 na_if_if(df, is.integer, 0)
 na_if_not_if(df, is.integer, 0:3)
+}
 
 }
 \seealso{

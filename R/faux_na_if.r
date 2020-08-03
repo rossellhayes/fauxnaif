@@ -47,8 +47,6 @@ faux_na_if <- function(
     } else {
       input[input %in% replacements] <- NA
     }
-  } else {
-    warn("No valid values to replace with `NA` specified.")
   }
 
   two_sided <- vapply(arguments, is_formula, logical(1), lhs = TRUE)
@@ -60,11 +58,11 @@ faux_na_if <- function(
 }
 
 scoped_na_if <- function(fun, .tbl, ...) {
-  if(!requireNamespace("dplyr")) {
+  if (!requireNamespace("dplyr")) {
     glue_abort(
       "Package `dplyr` must be installed to use scoped fauxnaif functions.",
       "\n",
-      'Try install.packages("dplyr")'
+      'Try `install.packages("dplyr")`'
     )
   }
 

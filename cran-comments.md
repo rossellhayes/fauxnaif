@@ -1,7 +1,9 @@
 # Resubmission
 
 This resubmission fixes the following problems:
-* README.md now refers to the canonical CRAN link
+* Package now explicitly includes vctrs and tibble in Suggests (although they 
+  already should have been included as dependencies of dplyr). This should avoid
+  errors that vctrs and tibble are unavailable.
 
 # Test environments
 * Local R installation, Windows 10, R 4.0.2

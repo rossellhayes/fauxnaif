@@ -28,7 +28,9 @@ Suggests:
     rmarkdown,
     roxygen2,
     testthat,
-    tidyr
+    tibble,
+    tidyr,
+    vctrs
 VignetteBuilder: 
     knitr
 RdMacros: 

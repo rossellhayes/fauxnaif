@@ -24,7 +24,7 @@
 #' }
 #' @return A modified data frame. Matched values in selected columns are
 #'   replaced with `NA`.
-#' @seealso [na_if()] and [na_if_not()] operate directly on vectors
+#' @seealso [na_if_in()] and [na_if_not()] operate directly on vectors
 #'
 #'   [dplyr::mutate_all()], [dplyr::mutate_at()] and [dplyr::mutate_if()] can
 #'   apply any function to variables selected in the same way

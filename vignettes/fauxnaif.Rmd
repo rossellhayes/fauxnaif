@@ -42,23 +42,23 @@ faux_census$income
 
 Printing the vector of incomes, one value stands out: while most respondents' have values in the tens to hundreds of thousands, two respondents have incomes of 9999999.
 It's common for datasets you receive from other sources to use an unrealistically high value (often a string of 9s) to indicate `NA`.
-We can clean this using `na_if()`.
+We can clean this using `na_if_in()`.
 
 ```{r}
-na_if(faux_census$income, 9999999)
+na_if_in(faux_census$income, 9999999)
 ```
 
 The new variable has `NA`s in the place of those strings of 9s.
 
-As an alternative, we can use the `magrittr` pipe (`%>%`) to pass an input into `na_if()`:
+As an alternative, we can use the `magrittr` pipe (`%>%`) to pass an input into `na_if_in()`:
 
 ```{r}
-faux_census$income %>% na_if(9999999)
+faux_census$income %>% na_if_in(9999999)
 ```
 
 This produces the same result.
 
-This task could have been completed using the version of `na_if()` included in the `dplyr` package.
+This task could have been completed using the version of `na_if_in()` included in the `dplyr` package.
 However, moving forward we will use more advanced functionality of `fauxnaif`.
 
 # Replacing multiple values
@@ -79,7 +79,7 @@ faux_census$age %>% dplyr::na_if(557) %>% dplyr::na_if(2)
 But using `fauxnaif` we can simplify this to a single step:
 
 ```{r}
-faux_census$age %>% na_if(557, 2)
+faux_census$age %>% na_if_in(557, 2)
 ```
 
 # Specifying values to keep rather than values to discard
@@ -118,7 +118,7 @@ To clean the age variable, we will need two formulas.
 One will replace values less than 18 and another will replace values greater than 122:
 
 ```{r}
-faux_census$age %>% na_if(~ . < 18, ~ . > 122)
+faux_census$age %>% na_if_in(~ . < 18, ~ . > 122)
 ```
 
 ## Using relational operators from other packages
@@ -142,7 +142,7 @@ faux_census$age %>% na_if_not(~ . %[]% c(18, 122))
 or 
 
 ```{r}
-faux_census$age %>% na_if(~ . %][% c(18, 122))
+faux_census$age %>% na_if_in(~ . %][% c(18, 122))
 ```
 
 ## Using formulas for non-numeric variables
@@ -158,10 +158,10 @@ faux_census$religion
 
 While there are a few things we might want to clean in this variable, one clear issue is the respondent who did not answer the question but instead used the space to give an opinion: "Religion is the opiate of the people".
 
-We could use the most basic form of `na_if()` to simply remove this answer:
+We could use the most basic form of `na_if_in()` to simply remove this answer:
 
 ```{r}
-faux_census$religion %>% na_if("Religion is the opiate of the people")
+faux_census$religion %>% na_if_in("Religion is the opiate of the people")
 ```
 
 But in a larger analysis, we may prefer to have a simple rule for excluding answers.
@@ -169,7 +169,7 @@ Perhaps we decide that answers longer than 25 characters are unlikely to be genu
 In that case, we can use a formula operating on the number of characters (`nchar(.)`) in a response:
 
 ```{r}
-faux_census$religion %>% na_if(~ nchar(.) > 25)
+faux_census$religion %>% na_if_in(~ nchar(.) > 25)
 ```
 
 # Replacing values using functions
@@ -180,13 +180,13 @@ Returning to the income variable, we know that `NA` is indicated using the large
 Rather than specifying it directly, we can simply tell `fauxnaif` to replace the variable's maximum value:
 
 ```{r}
-faux_census$income %>% na_if(max)
+faux_census$income %>% na_if_in(max)
 ```
 
 We can do the same with the age variable, where both the lowest and highest values are unrealistic:
 
 ```{r}
-faux_census$age %>% na_if(min, max)
+faux_census$age %>% na_if_in(min, max)
 ```
 
 But beware!
@@ -198,65 +198,55 @@ It is often better to use more complicated formulas than simpler functions for y
 Often in data analysis, we prefer to work within a single data frame than operating on individual vectors.
 `fauxnaif` is built to handle this use case.
 
-A simple solution is to use `na_if()` or `na_if_not()` within `dplyr`'s `mutate()` function:
+A simple solution is to use `na_if_in()` or `na_if_not()` within `dplyr`'s `mutate()` function.
 
 ```{r}
-faux_census %>% dplyr::mutate(income = na_if(income, 9999999))
-```
+library(dplyr)
 
-However, you can also pass a data frame directly into one of `fauxnaif`'s `na_if_at()`.
-This function takes the column to operate on as an input in addition to the value(s) to be replaced:
-
-```{r}
-faux_census %>% na_if_at("income", 9999999)
-```
-
-`na_if_not_at()` operates similarly but applies the logic of `na_if_not()`:
-
-```{r}
-faux_census %>% na_if_not_at("age", 18:122)
+faux_census %>% mutate(income = na_if_in(income, 9999999))
 ```
 
 # Replacing values in multiple columns
 
 Sometimes, the same replacement function can be used in multiple columns.
 Here, the respondent who didn't give a real answer to the religion question seemed to do the same with the gender and race questions.
-You can specify multiple columns to `na_if_at()` is you would like to make replacements based on the same criteria:
+You can specify multiple columns using `dplyr`'s `across()` is you would like to make replacements based on the same criteria:
 
 ```{r}
-faux_census %>% na_if_at(c("religion", "gender", "race"), ~ nchar(.) > 25)
+faux_census %>%
+  mutate(across(c(religion, gender, race), na_if_in, ~ nchar(.) > 25))
 ```
-
-`na_if_at()` is based on `dplyr`'s `mutate_at()`, meaning it can also work with any of `tidyselect`'s select helpers.
 
 ## Replacing values using a predicate function
 
-Rather than specifying columns manually, we can also select columns using a predicate function with `na_if_if()`.
+Rather than specifying columns manually, we can also select columns using a predicate function with `dplyr`'s `where()`.
 
 For example, we may want to remove strings of 9s in any numeric column:
 
 ```{r}
-faux_census %>% na_if_if(is.numeric, ~ grepl("999*", as.character(.)))
+faux_census %>% mutate(across(where(is.numeric), na_if_in, ~ grepl("999", .)))
 ```
 
 ## Replacing values in all columns
 
 While this replacement was intended for three specific columns, no variable contains a legitimate answer longer than 25 characters.
-In this case, rather than specifying the variable of interest, we can simply use `na_if_all()` to make the replacement in all columns:
+In this case, rather than specifying the variable of interest, we can simply use `dplyr`'s `everything()` to make the replacement in all columns:
 
 ```{r}
-faux_census %>% na_if_all(~ nchar(.) > 25)
+faux_census %>% mutate(across(everything(), na_if_in, ~ nchar(.) > 25))
 ```
 
 # Putting it all together
 
-In a data analysis pipeline, we can combine several `fauxnaif` steps to produce a usable dataset.
+In a data analysis pipeline, we can combine several steps to produce a usable dataset.
 Combining our interval check for age, our check for strings of 9s in numeric variables, and our check for long responses in character variables, we can yield much cleaner data:
 
 ```{r}
 faux_census %>%
-  na_if_not_at("age", 18:122) %>%
-  na_if_if(is.numeric, ~ grepl("999*", as.character(.))) %>%
-  na_if_all(~ nchar(.) > 25)
+  mutate(
+    age = na_if_not(age, 18:122),
+    across(where(is.numeric), na_if_in, ~ grepl("999", .)),
+    across(everything(), na_if_in, ~ nchar(.) > 25)
+  )
 ```
 

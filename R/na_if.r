@@ -4,10 +4,8 @@
 #' It is useful if you want to convert annoying values to `NA`.
 #' Unlike [dplyr::na_if()], this function allows you to specify multiple values
 #' to be replaced with `NA` at the same time.
-#'  * `na_if()` replaces values that match its arguments with `NA`.
+#'  * `na_if_in()` replaces values that match its arguments with `NA`.
 #'  * `na_if_not()` replaces values that *do not* match its arguments with `NA`.
-#'  * `na_if_in()` is provided as an alias for `na_if()` to avoid clashes
-#' with [dplyr::na_if()].
 #'
 #' @section Formulas:
 #' These functions accept one-sided formulas that can evaluate to logical
@@ -42,58 +40,61 @@
 #' -1:10
 #' # We can replace -1...
 #' # ... explicitly
-#' na_if(-1:10, -1)
+#' na_if_in(-1:10, -1)
 #' # ... by specifying values to keep
 #' na_if_not(-1:10, 0:10)
 #' # ... using a formula
-#' na_if(-1:10, ~ . < 0)
+#' na_if_in(-1:10, ~ . < 0)
 #' # ... or using a function
-#' na_if(-1:10, min)
+#' na_if_in(-1:10, min)
 #'
 #' messy_string <- c("abc", "", "def", "NA", "ghi", 42, "jkl", "NULL", "mno")
 #' # We can replace unwanted values...
 #' # ... one at a time
-#' na_if(messy_string, "")
+#' na_if_in(messy_string, "")
 #' # ... or all at once
-#' na_if(messy_string, "", "NA", "NULL", 1:100)
-#' na_if(messy_string, c("", "NA", "NULL", 1:100))
-#' na_if(messy_string, list("", "NA", "NULL", 1:100))
+#' na_if_in(messy_string, "", "NA", "NULL", 1:100)
+#' na_if_in(messy_string, c("", "NA", "NULL", 1:100))
+#' na_if_in(messy_string, list("", "NA", "NULL", 1:100))
 #' # ... or using a clever formula
 #' grepl("[a-z]{3,}", messy_string)
 #' na_if_not(messy_string, ~ grepl("[a-z]{3,}", .))
 #'
-#' # na_if() is particularly useful inside dplyr::mutate
+#' # na_if_in() is particularly useful inside dplyr::mutate
 #' faux_census %>%
 #'   dplyr::mutate(
-#'     state = na_if(state, "Canada"),
-#'     age   = na_if(age, ~ . < 18, ~ . > 120)
+#'     state = na_if_in(state, "Canada"),
+#'     age   = na_if_in(age, ~ . < 18, ~ . > 120)
 #'   )
 #'
 #' # We get a message if our values to replace don't exist
-#' na_if(-1:10, 11)
+#' na_if_in(-1:10, 11)
 #' # And a warning if we use an invalid input...
 #' # ... like a two-sided formula
-#' na_if(-1:10, x ~ . < 0)
+#' na_if_in(-1:10, x ~ . < 0)
 #' # ... NULL
-#' na_if(-1:10, NULL)
+#' na_if_in(-1:10, NULL)
 #' # ... or nothing at all
-#' na_if(-1:10)
-#'
-#' # If you want to avoid clashes with dplyr::na_if(), you can use na_if_in()
-#' na_if_in(-1:10, -1)
+#' na_if_in(-1:10)
 #'
 #' # This function handles vector values differently than dplyr,
 #' # and returns a different result with vector replacement values:
-#' fauxnaif::na_if(1:5, 5:1)
+#' na_if_in(1:5, 5:1)
 #' dplyr::na_if(1:5, 5:1)
 
-na_if <- function(input, ...) {
+na_if_in <- function(input, ...) {
   faux_na_if(input, ...)
 }
 
 #' @rdname na_if
 #' @export
-na_if_in <- na_if
+na_if <- function(input, ...) {
+  if (!identical(Sys.getenv("TESTTHAT"), "true")) {
+    lifecycle::deprecate_soft("0.6.0", "fauxnaif::na_if()", "na_if_in()")
+  }
+
+  faux_na_if(input, ...)
+}
 
 #' @rdname na_if
 #' @export

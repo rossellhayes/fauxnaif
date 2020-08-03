@@ -28,16 +28,9 @@ person who pretends to be simple or innocent
 
 **fauxnaif** provides an extension to `dplyr::na_if()`. Unlike
 [**dplyr**](https://github.com/tidyverse/dplyr)’s `na_if()`,
-`fauxnaif::na_if()` allows you to specify multiple values to be replaced
-with `NA` using a single function. **fauxnaif** also includes a
-complementary function `na_if_not()` and a set of scoped functions –
-`na_if_at()`, `_if()`, `_all()`, `_not_at()`, `_not_if()`, and
-`_not_all()` – that can operate directly on data frames.
-
-Load **fauxnaif** after **dplyr** or use a conflict manager like
-[**conflicted**](https://github.com/r-lib/conflicted) to ensure you get
-its extended `na_if()` functionality. Alternatively, use `na_if_in()` to
-avoid conflicts with **dplyr**.
+`na_if_in()` allows you to specify multiple values to be replaced with
+`NA` using a single function. **fauxnaif** also includes a complementary
+function `na_if_not()` to specify values to keep.
 
 ## Installation
 
@@ -78,7 +71,7 @@ We can replace -1…
 … explicitly:
 
 ``` r
-na_if(-1:10, -1)
+na_if_in(-1:10, -1)
 #>  [1] NA  0  1  2  3  4  5  6  7  8  9 10
 ```
 
@@ -92,14 +85,14 @@ na_if_not(-1:10, 0:10)
 … using a formula:
 
 ``` r
-na_if(-1:10, ~ . < 0)
+na_if_in(-1:10, ~ . < 0)
 #>  [1] NA  0  1  2  3  4  5  6  7  8  9 10
 ```
 
 … or using a function:
 
 ``` r
-na_if(-1:10, min)
+na_if_in(-1:10, min)
 #>  [1] NA  0  1  2  3  4  5  6  7  8  9 10
 ```
 
@@ -114,18 +107,18 @@ We can replace unwanted values…
 … one at a time:
 
 ``` r
-na_if(messy_string, "")
+na_if_in(messy_string, "")
 #> [1] "abc"  NA     "def"  "NA"   "ghi"  "42"   "jkl"  "NULL" "mno"
 ```
 
 … or all at once:
 
 ``` r
-na_if(messy_string, "", "NA", "NULL", 1:100)
+na_if_in(messy_string, "", "NA", "NULL", 1:100)
 #> [1] "abc" NA    "def" NA    "ghi" NA    "jkl" NA    "mno"
-na_if(messy_string, c("", "NA", "NULL", 1:100))
+na_if_in(messy_string, c("", "NA", "NULL", 1:100))
 #> [1] "abc" NA    "def" NA    "ghi" NA    "jkl" NA    "mno"
-na_if(messy_string, list("", "NA", "NULL", 1:100))
+na_if_in(messy_string, list("", "NA", "NULL", 1:100))
 #> [1] "abc" NA    "def" NA    "ghi" NA    "jkl" NA    "mno"
 ```
 
@@ -152,15 +145,15 @@ faux_census
 #> 5 TN        64 9999999 M
 ```
 
-na\_if() is particularly useful inside `dplyr::mutate()`:
+na\_if\_in() is particularly useful inside `dplyr::mutate()`:
 
 ``` r
 faux_census %>%
  mutate(
-   income = na_if(income, 9999999),
-   age    = na_if(age, ~ . < 18, ~ . > 120),
+   income = na_if_in(income, 9999999),
+   age    = na_if_in(age, ~ . < 18, ~ . > 120),
    state  = na_if_not(state, ~ grepl("^[A-Z]{2,}$", .)),
-   gender = na_if(gender, ~ nchar(.) > 20)
+   gender = na_if_in(gender, ~ nchar(.) > 20)
  )
 #> # A tibble: 5 x 4
 #>   state   age income gender
@@ -177,10 +170,10 @@ Or you can use `dplyr::across()` on data frames:
 ``` r
 faux_census %>%
   mutate(
-    across(age, na_if, ~ . < 18, ~ . > 120),
+    across(age, na_if_in, ~ . < 18, ~ . > 120),
     across(state, na_if_not, ~ grepl("^[A-Z]{2,}$", .)),
-    across(where(is.character), na_if, ~ nchar(.) > 20),
-    across(everything(), na_if, 9999999)
+    across(where(is.character), na_if_in, ~ nchar(.) > 20),
+    across(everything(), na_if_in, 9999999)
   )
 #> # A tibble: 5 x 4
 #>   state   age income gender

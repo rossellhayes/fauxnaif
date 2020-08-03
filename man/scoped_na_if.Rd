@@ -73,7 +73,7 @@ na_if_not_if(df, is.integer, 0:3)
 
 }
 \seealso{
-\code{\link[=na_if]{na_if()}} and \code{\link[=na_if_not]{na_if_not()}} operate directly on vectors
+\code{\link[=na_if_in]{na_if_in()}} and \code{\link[=na_if_not]{na_if_not()}} operate directly on vectors
 
 \code{\link[dplyr:mutate_all]{dplyr::mutate_all()}}, \code{\link[dplyr:mutate_all]{dplyr::mutate_at()}} and \code{\link[dplyr:mutate_all]{dplyr::mutate_if()}} can
 apply any function to variables selected in the same way

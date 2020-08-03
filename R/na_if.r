@@ -86,8 +86,9 @@ na_if_in <- function(input, ...) {
   faux_na_if(input, ...)
 }
 
-#' @rdname na_if
+#' @rdname na_if_in
 #' @export
+
 na_if <- function(input, ...) {
   if (!identical(Sys.getenv("TESTTHAT"), "true")) {
     lifecycle::deprecate_soft("0.6.0", "fauxnaif::na_if()", "na_if_in()")
@@ -96,7 +97,7 @@ na_if <- function(input, ...) {
   faux_na_if(input, ...)
 }
 
-#' @rdname na_if
+#' @rdname na_if_in
 #' @export
 
 na_if_not <- function(input, ...) {

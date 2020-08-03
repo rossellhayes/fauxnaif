@@ -2,9 +2,15 @@
 % Please edit documentation in R/na_if.r
 \name{na_if_in}
 \alias{na_if_in}
+\alias{na_if}
+\alias{na_if_not}
 \title{Convert values to NA}
 \usage{
 na_if_in(input, ...)
+
+na_if(input, ...)
+
+na_if_not(input, ...)
 }
 \arguments{
 \item{input}{Vector to modify}

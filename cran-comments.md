@@ -1,3 +1,8 @@
+# Resubmission
+
+This resubmission fixes the following problems:
+* README.md now refers to the canonical CRAN link
+
 # Test environments
 * Local R installation, Windows 10, R 4.0.2
 * GitHub Actions

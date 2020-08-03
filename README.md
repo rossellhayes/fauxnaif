@@ -42,7 +42,7 @@ avoid conflicts with **dplyr**.
 ## Installation
 
 You can install `fauxnaif` from
-[CRAN](https://cran.r-project.org/web/packages/fauxnaif/index.html):
+[CRAN](https://cran.r-project.org/package=fauxnaif):
 
 ``` r
 install.packages("fauxanif")

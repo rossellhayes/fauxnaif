@@ -48,15 +48,13 @@ Alternatively, use `na_if_in()` to avoid conflicts with **dplyr**.
 
 ## Installation
 
-You can install `fauxnaif` from
-[CRAN](https://cran.r-project.org/web/packages/fauxnaif/index.html):
+You can install `fauxnaif` from [CRAN](https://cran.r-project.org/package=fauxnaif):
 
 ```{r eval = FALSE}
 install.packages("fauxanif")
 ```
 
-Or the development version from
-[GitHub](https://github.com/rossellhayes/fauxnaif):
+Or the development version from [GitHub](https://github.com/rossellhayes/fauxnaif):
 
 ```{r eval = FALSE}
 # install.packages("remotes")

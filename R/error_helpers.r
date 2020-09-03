@@ -1,11 +1,11 @@
-abort_uncoercible <- function(input) {
+abort_uncoercible <- function(x) {
   glue_abort(
     'Input must be coercible to a vector. \n* ',
     encodeString(
-      as_label(substitute(input, env = parent.frame(2))),
+      as_label(substitute(x, env = parent.frame(2))),
       quote = "`"
     ),
-    ' is of uncoercible class "', class(input), '".'
+    ' is of uncoercible class "', class(x), '".'
   )
 }
 

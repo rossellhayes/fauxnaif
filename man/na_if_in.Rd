@@ -6,14 +6,14 @@
 \alias{na_if_not}
 \title{Convert values to NA}
 \usage{
-na_if_in(input, ...)
+na_if_in(x, ...)
 
-na_if(input, ...)
+\lifecycle{deprecated} na_if(x, ...)
 
-na_if_not(input, ...)
+na_if_not(x, ...)
 }
 \arguments{
-\item{input}{Vector to modify}
+\item{x}{Vector to modify}
 
 \item{...}{Values to replace with \code{NA}, specified as either:
 \itemize{
@@ -22,7 +22,7 @@ na_if_not(input, ...)
 }}
 }
 \value{
-A modified version of \code{input} with selected values replaced with
+A modified version of \code{x} with selected values replaced with
 \code{NA}.
 }
 \description{

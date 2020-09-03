@@ -72,5 +72,11 @@ test_that("no ... produces warning", {
 })
 
 test_that("na_if() aliases na_if_in()", {
+  withr::local_options(list(lifecycle_verbosity = "quiet"))
   expect_equal(na_if(0:9, 0, 1), na_if_in(0:9, 0, 1))
+})
+
+test_that("na_if() is deprecated", {
+  lifecycle::expect_deprecated(na_if(0:9, 0, 1))
+  expect_failure(lifecycle::expect_deprecated(na_if(0:9, 0)))
 })

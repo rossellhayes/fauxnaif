@@ -30,7 +30,8 @@ Suggests:
     testthat,
     tibble,
     tidyr,
-    vctrs
+    vctrs,
+    withr
 VignetteBuilder: 
     knitr
 RdMacros: 

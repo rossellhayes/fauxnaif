@@ -1,3 +1,7 @@
+# fauxnaif (development version)
+
+* Remove `inst/CITATION`.
+
 # fauxnaif 0.6.0
 
 * No longer produce a warning when no replacements are made.

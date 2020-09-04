@@ -14,6 +14,7 @@
 
 # fauxnaif 0.5.6
 
+* Initial CRAN release.
 * Scoped na_if_*() functions now call an internal function
   fauxnaif:::scoped_na_if() to reduce repeated code.
 

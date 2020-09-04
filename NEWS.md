@@ -1,4 +1,4 @@
-# fauxnaif (development version)
+# fauxnaif 0.6.1
 
 * Replace argument `input` with `x`.
 * Advance `fauxnaif::na_if()` and scoped `na_if_*()` functions from `deprecate_soft()` to `deprecate_warn()`.

@@ -12,7 +12,7 @@
 #' vectors.
 #' The input is represented in these conditional statements as "`.`".
 #' Valid formulas take the form `~ . < 0`.
-#' Additional examples are included in section "Examples".
+#' See examples.
 #'
 #' @param x Vector to modify
 #' @param ... Values to replace with `NA`, specified as either:
@@ -84,7 +84,11 @@ na_if_in <- function(x, ...) {
 }
 
 #' @rdname na_if_in
-#' @usage \lifecycle{deprecated} na_if(x, ...)
+#' @details # Lifecycle
+#'
+#' \lifecycle{deprecated} `na_if()` has been deprecated in favor of
+#' `na_if_in()` to avoid masking [dplyr::na_if()].
+#'
 #' @export
 
 na_if <- function(x, ...) {

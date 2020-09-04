@@ -8,7 +8,7 @@
 \usage{
 na_if_in(x, ...)
 
-\lifecycle{deprecated} na_if(x, ...)
+na_if(x, ...)
 
 na_if_not(x, ...)
 }
@@ -41,7 +41,12 @@ These functions accept one-sided formulas that can evaluate to logical
 vectors.
 The input is represented in these conditional statements as "\code{.}".
 Valid formulas take the form \code{~ . < 0}.
-Additional examples are included in section "Examples".
+See examples.
+}
+
+\section{Lifecycle}{
+\lifecycle{deprecated} \code{na_if()} has been deprecated in favor of
+\code{na_if_in()} to avoid masking \code{\link[dplyr:na_if]{dplyr::na_if()}}.
 }
 
 \examples{

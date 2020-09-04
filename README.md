@@ -191,7 +191,7 @@ Hex sticker fonts are
 [Source Code Pro](https://github.com/adobe-fonts/source-code-pro) by
 [Adobe](https://www.adobe.com).
 
-Image adapted from icon made by [Freepik](https://freepik.com) from
+Image adapted from icon made by [Freepik](https://www.freepik.com) from
 [flaticon.com](https://www.flaticon.com/free-icon/paper-shredder_1701401).
 
 Please note that **fauxnaif** is released with a [Contributor Code of

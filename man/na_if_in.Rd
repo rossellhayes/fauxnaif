@@ -91,9 +91,6 @@ na_if_in(1:5, 5:1)
 dplyr::na_if(1:5, 5:1)
 }
 \seealso{
-\link[=na_if_all]{Scoped variants} can be used in pipelines and modify
-multiple variables at once
-
 \code{\link[dplyr:na_if]{dplyr::na_if()}} to replace a single value with \code{NA}.
 
 \code{\link[dplyr:coalesce]{dplyr::coalesce()}} to replace missing values with a specified value.

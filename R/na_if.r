@@ -23,10 +23,7 @@
 #' @return A modified version of `x` with selected values replaced with
 #' `NA`.
 #'
-#' @seealso [Scoped variants][na_if_all()] can be used in pipelines and modify
-#'   multiple variables at once
-#'
-#'   [dplyr::na_if()] to replace a single value with `NA`.
+#' @seealso [dplyr::na_if()] to replace a single value with `NA`.
 #'
 #'   [dplyr::coalesce()] to replace missing values with a specified value.
 #'

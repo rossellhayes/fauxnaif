@@ -1,5 +1,7 @@
 # fauxnaif (development version)
 
+* Added `pkgdown` URL to `DESCRIPTION`.
+
 # fauxnaif 0.6.1
 
 * Replace argument `input` with `x`.

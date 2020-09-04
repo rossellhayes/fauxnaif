@@ -16,15 +16,15 @@ BugReports: https://github.com/rossellhayes/fauxnaif/issues
 Depends:
     R (>= 3.5)
 Imports:
-    dplyr,
     glue,
     lifecycle,
-    magrittr,
     rlang
 Suggests:
     covr,
+    dplyr,
     intrval,
     knitr,
+    magrittr,
     rmarkdown,
     roxygen2,
     testthat,

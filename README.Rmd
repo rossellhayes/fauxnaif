@@ -15,16 +15,19 @@ knitr::opts_chunk$set(
 options(tibble.print_min = 5, tibble.print_max = 5)
 
 library(ipa)
+# remotes::install_github("GuangchuangYu/badger")
+library(badger)
 ```
 
 # fauxnaif <img src="man/figures/logo.png?raw=TRUE" align="right" height="138" />
 
 <!-- badges: start -->
-[![CRAN status](https://www.r-pkg.org/badges/version/fauxnaif)](https://CRAN.R-project.org/package=fauxnaif)
-[![Lifecycle: maturing](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://www.tidyverse.org/lifecycle/#stable)
-[![License: MIT](https://img.shields.io/badge/license-MIT-blueviolet.svg)](https://opensource.org/licenses/MIT)
-[![R build status](https://github.com/rossellhayes/fauxnaif/workflows/R-CMD-check/badge.svg)](https://github.com/rossellhayes/fauxnaif/actions)
-[![Codecov test coverage](https://codecov.io/gh/rossellhayes/fauxnaif/branch/master/graph/badge.svg)](https://codecov.io/gh/rossellhayes/fauxnaif?branch=master)
+`r badge_cran_release(color = "brightgreen")`
+`r badge_lifecycle("maturing")`
+`r badge_license(color = "blueviolet")`
+`r badge_github_actions(action = "R-CMD-check")`
+`r badge_codecov()`
+`r badge_dependencies()`
 <!-- badges: end -->
 
 ***faux-naïf*** ([`r ipa::sampa("/%foU.naI\"if/")`](https://en.wikipedia.org/wiki/Help:IPA/English)): a person who pretends to be simple or innocent
@@ -161,7 +164,7 @@ faux_census %>%
 Hex sticker fonts are [Bodoni*](https://github.com/indestructible-type/Bodoni)
 by [indestructible type*](https://indestructibletype.com/Home.html) and
 [Source Code Pro](https://github.com/adobe-fonts/source-code-pro) by
-[Adobe](https://adobe.com).
+[Adobe](https://www.adobe.com).
 
 Image adapted from icon made by [Freepik](https://freepik.com) from
 [flaticon.com](https://www.flaticon.com/free-icon/paper-shredder_1701401).

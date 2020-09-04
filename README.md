@@ -5,16 +5,14 @@
 
 <!-- badges: start -->
 
-[![CRAN
-status](https://www.r-pkg.org/badges/version/fauxnaif)](https://CRAN.R-project.org/package=fauxnaif)
-[![Lifecycle:
-maturing](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://www.tidyverse.org/lifecycle/#stable)
+[![](https://www.r-pkg.org/badges/version/fauxnaif?color=brightgreen)](https://cran.r-project.org/package=fauxnaif)
+[![](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
 [![License:
-MIT](https://img.shields.io/badge/license-MIT-blueviolet.svg)](https://opensource.org/licenses/MIT)
+MIT](https://img.shields.io/badge/license-MIT-blueviolet.svg)](https://cran.r-project.org/web/licenses/MIT)
 [![R build
 status](https://github.com/rossellhayes/fauxnaif/workflows/R-CMD-check/badge.svg)](https://github.com/rossellhayes/fauxnaif/actions)
-[![Codecov test
-coverage](https://codecov.io/gh/rossellhayes/fauxnaif/branch/master/graph/badge.svg)](https://codecov.io/gh/rossellhayes/fauxnaif?branch=master)
+[![](https://codecov.io/gh/rossellhayes/fauxnaif/branch/master/graph/badge.svg)](https://codecov.io/gh/rossellhayes/fauxnaif)
+[![Dependencies](https://tinyverse.netlify.com/badge/fauxnaif)](https://cran.r-project.org/package=fauxnaif)
 <!-- badges: end -->
 
 ***faux-naïf***
@@ -191,7 +189,7 @@ Hex sticker fonts are
 [Bodoni\*](https://github.com/indestructible-type/Bodoni) by
 [indestructible type\*](https://indestructibletype.com/Home.html) and
 [Source Code Pro](https://github.com/adobe-fonts/source-code-pro) by
-[Adobe](https://adobe.com).
+[Adobe](https://www.adobe.com).
 
 Image adapted from icon made by [Freepik](https://freepik.com) from
 [flaticon.com](https://www.flaticon.com/free-icon/paper-shredder_1701401).

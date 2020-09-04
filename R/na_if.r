@@ -58,8 +58,9 @@
 #' na_if_not(messy_string, ~ grepl("[a-z]{3,}", .))
 #'
 #' # na_if_in() is particularly useful inside dplyr::mutate
+#' library(dplyr)
 #' faux_census %>%
-#'   dplyr::mutate(
+#'   mutate(
 #'     state = na_if_in(state, "Canada"),
 #'     age   = na_if_in(age, ~ . < 18, ~ . > 120)
 #'   )

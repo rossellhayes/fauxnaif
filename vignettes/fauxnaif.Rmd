@@ -24,6 +24,7 @@ To demonstrate the basic functionality of `fauxnaif`, let's first load the packa
 
 ```{r}
 library(fauxnaif)
+library(magrittr)
 fauxnaif::faux_census
 ```
 

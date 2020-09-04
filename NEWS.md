@@ -1,3 +1,5 @@
+# fauxnaif (development version)
+
 # fauxnaif 0.6.1
 
 * Replace argument `input` with `x`.

@@ -13,3 +13,6 @@
 ^LICENSE\.md$
 ^CRAN-RELEASE$
 ^examples$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$

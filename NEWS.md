@@ -3,6 +3,7 @@
 * Replace argument `input` with `x`.
 * Advance `fauxnaif::na_if()` and scoped `na_if_*()` functions from `deprecate_soft()` to `deprecate_warn()`.
 * Only warn `fauxnaif::na_if()` is deprecated if arguments could not be handled by `dplyr::na_if()`.
+* Added `pkgdown` site.
 * Remove `inst/CITATION`.
 
 # fauxnaif 0.6.0

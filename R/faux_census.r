@@ -5,6 +5,4 @@
 #' @format A tibble with 20 rows and 6 variables.
 #'
 #' @source Fabricated
-#' @examples
-#' faux_census
 "faux_census"

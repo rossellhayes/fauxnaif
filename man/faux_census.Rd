@@ -16,7 +16,4 @@ faux_census
 \description{
 A dataset containing fake demographic data, used in the \code{fauxnaif} vignette.
 }
-\examples{
-faux_census
-}
 \keyword{datasets}

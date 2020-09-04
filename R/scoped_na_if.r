@@ -54,7 +54,7 @@ na_if_all <- function(.tbl, ...) {
   lifecycle::deprecate_warn("0.6.0", format(sys.call()[1]), "dplyr::across()")
 
   scoped_na_if(
-    fun       = dplyr::mutate_all,
+    fun       = "mutate_all",
     .tbl      = .tbl,
     arguments = list(...),
     arg_names = as.list(substitute(list(...)))
@@ -68,7 +68,7 @@ na_if_not_all <- function(.tbl, ...) {
   lifecycle::deprecate_warn("0.6.0", format(sys.call()[1]), "dplyr::across()")
 
   scoped_na_if(
-    fun       = dplyr::mutate_all,
+    fun       = "mutate_all",
     .tbl      = .tbl,
     arguments = list(...),
     arg_names = as.list(substitute(list(...))),
@@ -83,7 +83,7 @@ na_if_at <- function(.tbl, .vars, ...) {
   lifecycle::deprecate_warn("0.6.0", format(sys.call()[1]), "dplyr::across()")
 
   scoped_na_if(
-    fun       = dplyr::mutate_at,
+    fun       = "mutate_at",
     .tbl      = .tbl,
     .vars     = .vars,
     arguments = list(...),
@@ -98,7 +98,7 @@ na_if_not_at <- function(.tbl, .vars, ...) {
   lifecycle::deprecate_warn("0.6.0", format(sys.call()[1]), "dplyr::across()")
 
   scoped_na_if(
-    fun       = dplyr::mutate_at,
+    fun       = "mutate_at",
     .tbl      = .tbl,
     .vars     = .vars,
     arguments = list(...),
@@ -114,7 +114,7 @@ na_if_if <- function(.tbl, .predicate, ...) {
   lifecycle::deprecate_warn("0.6.0", format(sys.call()[1]), "dplyr::across()")
 
   scoped_na_if(
-    fun        = dplyr::mutate_if,
+    fun        = "mutate_if",
     .tbl       = .tbl,
     .predicate = .predicate,
     arguments  = list(...),
@@ -129,7 +129,7 @@ na_if_not_if <- function(.tbl, .predicate, ...) {
   lifecycle::deprecate_warn("0.6.0", format(sys.call()[1]), "dplyr::across()")
 
   scoped_na_if(
-    fun        = dplyr::mutate_if,
+    fun        = "mutate_if",
     .tbl       = .tbl,
     .predicate = .predicate,
     arguments  = list(...),

@@ -64,6 +64,7 @@ scoped_na_if <- function(fun, .tbl, ...) {
     )
   }
 
+  fun    <- get(fun, envir = asNamespace("dplyr"))
   result <- fun(.tbl = .tbl, .funs = faux_na_if, ..., scoped = TRUE)
 
   result

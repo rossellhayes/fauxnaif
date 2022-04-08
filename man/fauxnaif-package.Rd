@@ -8,20 +8,19 @@
 \description{
 \if{html}{\figure{logo.png}{options: align='right' alt='logo' width='120'}}
 
-Provides a replacement for dplyr::na_if().  Allows
-    you to specify multiple values to be replaced with NA using a single
-    function.
+Provides a replacement for dplyr::na_if(). Allows you to specify multiple values to be replaced with NA using a single function.
 }
 \seealso{
 Useful links:
 \itemize{
+  \item \url{https://fauxnaif.rossellhayes.com/}
   \item \url{https://github.com/rossellhayes/fauxnaif}
   \item Report bugs at \url{https://github.com/rossellhayes/fauxnaif/issues}
 }
 
 }
 \author{
-\strong{Maintainer}: Alexander Rossell Hayes \email{alexander@rossellhayes.com} (\href{https://orcid.org/0000-0001-9412-0457}{ORCID})
+\strong{Maintainer}: Alexander Rossell Hayes \email{alexander@rossellhayes.com} (\href{https://orcid.org/0000-0001-9412-0457}{ORCID}) [copyright holder]
 
 }
 \keyword{internal}

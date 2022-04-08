@@ -2,13 +2,9 @@
 #' @importFrom rlang abort as_function as_label caller_env enquo inform
 #'     is_atomic is_formula is_function is_list is_logical is_missing warn
 
-faux_na_if <- function(
-  x, ..., arguments, arg_names, not = FALSE, scoped = FALSE
-) {
-  if (!scoped) {
-    arguments <- list(...)
-    arg_names <- as.list(substitute(list(...)))
-  }
+faux_na_if <- function(x, ..., not = FALSE) {
+  arguments <- list(...)
+  arg_names <- as.list(substitute(list(...)))
 
   if (is_list(recurse(x))) abort_uncoercible(x)
 
@@ -53,19 +49,4 @@ faux_na_if <- function(
   if (any(!valid & !two_sided)) warn_invalid(arg_names[-1][!valid & !two_sided])
 
   x
-}
-
-scoped_na_if <- function(fun, .tbl, ...) {
-  if (!requireNamespace("dplyr")) {
-    glue_abort(
-      "Package `dplyr` must be installed to use scoped fauxnaif functions.",
-      "\n",
-      'Try `install.packages("dplyr")`'
-    )
-  }
-
-  fun    <- get(fun, envir = asNamespace("dplyr"))
-  result <- fun(.tbl = .tbl, .funs = faux_na_if, ..., scoped = TRUE)
-
-  result
 }

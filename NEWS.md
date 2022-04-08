@@ -1,5 +1,6 @@
 # fauxnaif (development version)
 
+* Removed deprecated `fauxnaif::na_if()` and scoped `na_if_*()` functions.
 * Added `pkgdown` URL to `DESCRIPTION`.
 
 # fauxnaif 0.6.1

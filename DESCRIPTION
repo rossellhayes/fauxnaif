@@ -17,28 +17,26 @@ BugReports: https://github.com/rossellhayes/fauxnaif/issues
 Depends:
     R (>= 3.5)
 Imports:
-    glue,
-    lifecycle,
+    cli,
     rlang
 Suggests:
     covr,
     dplyr,
+    haven,
     intrval,
     knitr,
     magrittr,
     rmarkdown,
-    roxygen2,
-    testthat,
+    testthat (>= 3.0.0),
     tibble,
     tidyr,
     vctrs,
     withr
 VignetteBuilder: 
     knitr
-RdMacros: 
-    lifecycle
 Encoding: UTF-8
 Language: en-US
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.2
+Config/testthat/edition: 3

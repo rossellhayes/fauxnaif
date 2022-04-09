@@ -14,8 +14,10 @@ na_if_not(x, ...)
 
 \item{...}{Values to replace with \code{NA}, specified as either:
 \itemize{
-\item An object, vector of objects, or list of objects
-\item A one-sided formula (see section "Formulas")
+\item An object, vector of objects, or list of objects.
+\item A function (including a \link[rlang:as_function]{purrr-style lambda function})
+that returns a logical vector of the same length as \code{x}.
+See section "Formulas" for more details.
 }}
 }
 \value{
@@ -35,7 +37,7 @@ to be replaced with \code{NA} at the same time.
 \section{Formulas}{
 
 These functions accept one-sided formulas that can evaluate to logical
-vectors.
+vectors of the same length as \code{x}.
 The input is represented in these conditional statements as "\code{.}".
 Valid formulas take the form \code{~ . < 0}.
 See examples.
@@ -48,15 +50,17 @@ x <- sample(c(1:5, 99))
 na_if_in(x, 99)
 # ... by specifying values to keep
 na_if_not(x, 1:5)
-# ... using a formula
+# ... or by using a formula
 na_if_in(x, ~ . > 5)
-# ... or using a function
-na_if_in(x, max)
 
 messy_string <- c("abc", "", "def", "NA", "ghi", 42, "jkl", "NULL", "mno")
 # We can replace unwanted values...
 # ... one at a time
-na_if_in(messy_string, "")
+clean_string <- na_if_in(messy_string, "")
+clean_string <- na_if_in(clean_string, "NA")
+clean_string <- na_if_in(clean_string, 42)
+clean_string <- na_if_in(clean_string, "NULL")
+clean_string
 # ... or all at once
 na_if_in(messy_string, "", "NA", "NULL", 1:100)
 na_if_in(messy_string, c("", "NA", "NULL", 1:100))
@@ -72,16 +76,6 @@ faux_census \%>\%
     state = na_if_in(state, "Canada"),
     age   = na_if_in(age, ~ . < 18, ~ . > 120)
   )
-
-# We get a message if our values to replace don't exist
-na_if_in(x, 11)
-# And a warning if we use an invalid input...
-# ... like a two-sided formula
-na_if_in(x, x ~ . < 0)
-# ... NULL
-na_if_in(x, NULL)
-# ... or nothing at all
-na_if_in(x)
 
 # This function handles vector values differently than dplyr,
 # and returns a different result with vector replacement values:

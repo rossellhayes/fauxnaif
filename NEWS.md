@@ -1,7 +1,13 @@
 # fauxnaif (development version)
 
+* `na_if_in()` and `na_if_not()` now support `vctrs` classes like `haven_labelled`.
+* Function arguments must now return logical vectors of the same length as `x`.
+* `fauxnaif` no longer throws warnings. Situations that previously produced a warning now produce an error:
+  * If no arguments are passed to `...`.
+  * If any arguments passed to `...` are not coercible to a vector or a function.
 * Removed deprecated `fauxnaif::na_if()` and scoped `na_if_*()` functions.
 * Added `pkgdown` URL to `DESCRIPTION`.
+* Added `inst/CITATION`.
 
 # fauxnaif 0.6.1
 

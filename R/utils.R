@@ -31,3 +31,6 @@ mapply_vec <- function(f, ...) {
   try_recurse(Map(f, ...))
 }
 
+release_questions <- function() {
+  "Have you updated the CITATION file?" # nocov
+}

@@ -1,0 +1,14 @@
+bibentry(
+  header  = "To cite fauxnaif in publications use:",
+  bibtype = "Manual",
+  title   = "{fauxnaif}: Convert values to NA",
+  author  = person(given = "Alexander", family = "Rossell Hayes"),
+  year    = 2022,
+  note    = paste("R package version 0.6.1"),
+  url     = "https://fauxnaif.rossellhayes.com",
+  textVersion = paste(
+    "Rossell Hayes, Alexander (2022).",
+    "fauxnaif: Convert Values to NA.",
+    "https://fauxnaif.rossellhayes.com"
+  )
+)

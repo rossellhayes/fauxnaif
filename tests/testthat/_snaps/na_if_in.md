@@ -58,7 +58,7 @@
     ! All arguments must be coercible to an atomic vector, function, or one-sided formula.
     x `lm(1 ~ 1)` is of uncoercible class <lm>.
 
-# multiple non-coercible arguments produces error
+# multiple non-coercible arguments produce errors
 
     ! All arguments must be coercible to an atomic vector, function, or one-sided formula.
     x `NULL` is of uncoercible class <NULL>.
@@ -80,41 +80,53 @@
 
 # function arguments must return logical vectors
 
-    ! Function arguments must return logical vectors.
+    ! All function arguments must return a logical vector of length 10 (the same length as `0:9`).
     x `min` returns an object of class <integer>.
 
 ---
 
-    ! Function arguments must return logical vectors.
+    ! All function arguments must return a logical vector of length 10 (the same length as `0:9`).
     x `min` returns an object of class <integer>.
 
 ---
 
-    ! Function arguments must return logical vectors.
+    ! All function arguments must return a logical vector of length 10 (the same length as `0:9`).
     x `max` returns an object of class <integer>.
 
 ---
 
-    ! Function arguments must return logical vectors.
+    ! All function arguments must return a logical vector of length 10 (the same length as `0:9`).
     x `max` returns an object of class <integer>.
 
 ---
 
-    ! Function arguments must return logical vectors.
+    ! All function arguments must return a logical vector of length 5 (the same length as `1:5`).
     x `mean` returns an object of class <numeric>.
 
 ---
 
-    ! Function arguments must return logical vectors.
+    ! All function arguments must return a logical vector of length 5 (the same length as `1:5`).
     x `mean` returns an object of class <numeric>.
 
 # function arguments must return vectors of the same length as `x`
 
-    ! Function arguments must return vectors of the same length as `x`.
-    x `~TRUE` returns a vector of length 1, but `1:5` is length 5.
+    ! All function arguments must return a logical vector of length 5 (the same length as `1:5`).
+    x `~TRUE` returns a vector of length 1.
 
 ---
 
-    ! Function arguments must return vectors of the same length as `x`.
-    x `~TRUE` returns a vector of length 1, but `1:5` is length 5.
+    ! All function arguments must return a logical vector of length 5 (the same length as `1:5`).
+    x `~TRUE` returns a vector of length 1.
+
+# function arguments can generate multiple errors
+
+    ! All function arguments must return a logical vector of length 5 (the same length as `1:5`).
+    x `mean` returns an object of class <numeric>.
+    x `~TRUE` returns a vector of length 1.
+
+---
+
+    ! All function arguments must return a logical vector of length 5 (the same length as `1:5`).
+    x `mean` returns an object of class <numeric>.
+    x `~TRUE` returns a vector of length 1.
 

@@ -24,23 +24,20 @@ matches <- function(x, ..., call = rlang::caller_env()) {
   args <- list(...)
   args <- validate_args(args, arg_labels, call)
 
-  matches <- mapply_vec(
-    find_matches,
-    arg = args,
-    arg_label = arg_labels,
-    MoreArgs = list(x = x, x_label = x_label, call = call)
-  )
-
-  matches
+  matches <- apply_functions(x, args, x_label, arg_labels, call)
+  try_recurse(matches)
 }
 
-find_matches <- function(x, arg, x_label, arg_label, call) {
-  if (rlang::is_atomic(arg)) return(arg)
+apply_functions <- function(x, args, x_label, arg_labels, call) {
+  functions <- vlapply(args, rlang::is_function)
 
-  fun <- rlang::as_function(arg)
-  matches <- fun(x)
-  assert_valid_fun(arg, matches, x, x_label, arg_label, call)
-  x[matches]
+  args[functions] <- lapply(args[functions], do.call, args = list(x))
+
+  assert_valid_functions(args, functions, x, x_label, arg_labels, call)
+
+  args[functions] <- lapply(args[functions], function(logical) x[logical])
+
+  args
 }
 
 validate_args <- function(args, arg_labels, call) {

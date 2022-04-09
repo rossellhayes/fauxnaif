@@ -23,12 +23,12 @@ vlapply <- function(X, FUN, ..., USE.NAMES = TRUE) {
   vapply(X, FUN, FUN.VALUE = logical(1), ..., USE.NAMES = USE.NAMES)
 }
 
-mapply_chr <- function(f, ...) {
-  vapply(Map(f, ...), identity, character(1))
+mapply_lgl <- function(f, ...) {
+  vapply(Map(f, ...), identity, logical(1))
 }
 
-mapply_vec <- function(f, ...) {
-  try_recurse(Map(f, ...))
+mapply_chr <- function(f, ...) {
+  vapply(Map(f, ...), identity, character(1))
 }
 
 release_questions <- function() {

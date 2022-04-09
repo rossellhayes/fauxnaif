@@ -87,19 +87,24 @@ test_that("no ... produces error", {
 })
 
 test_that("function arguments must return logical vectors", {
-  expect_snapshot_error(na_if_in(0:9, min), class = "fauxnaif_illogical_function")
-  expect_snapshot_error(na_if_not(0:9, min), class = "fauxnaif_illogical_function")
+  expect_snapshot_error(na_if_in(0:9, min), class = "fauxnaif_invalid_functions")
+  expect_snapshot_error(na_if_not(0:9, min), class = "fauxnaif_invalid_functions")
 
-  expect_snapshot_error(na_if_in(0:9, max), class = "fauxnaif_illogical_function")
-  expect_snapshot_error(na_if_not(0:9, max), class = "fauxnaif_illogical_function")
+  expect_snapshot_error(na_if_in(0:9, max), class = "fauxnaif_invalid_functions")
+  expect_snapshot_error(na_if_not(0:9, max), class = "fauxnaif_invalid_functions")
 
-  expect_snapshot_error(na_if_in(1:5, mean), class = "fauxnaif_illogical_function")
-  expect_snapshot_error(na_if_not(1:5, mean), class = "fauxnaif_illogical_function")
+  expect_snapshot_error(na_if_in(1:5, mean), class = "fauxnaif_invalid_functions")
+  expect_snapshot_error(na_if_not(1:5, mean), class = "fauxnaif_invalid_functions")
 })
 
 test_that("function arguments must return vectors of the same length as `x`", {
-  expect_snapshot_error(na_if_in(1:5, ~ TRUE), class = "fauxnaif_wrong_length_function")
-  expect_snapshot_error(na_if_not(1:5, ~ TRUE), class = "fauxnaif_wrong_length_function")
+  expect_snapshot_error(na_if_in(1:5, ~ TRUE), class = "fauxnaif_invalid_functions")
+  expect_snapshot_error(na_if_not(1:5, ~ TRUE), class = "fauxnaif_invalid_functions")
+})
+
+test_that("function arguments can generate multiple errors", {
+  expect_snapshot_error(na_if_in(1:5, mean, ~ TRUE), class = "fauxnaif_invalid_functions")
+  expect_snapshot_error(na_if_not(1:5, mean, ~ TRUE), class = "fauxnaif_invalid_functions")
 })
 
 test_that("coercible argument does not produce error", {

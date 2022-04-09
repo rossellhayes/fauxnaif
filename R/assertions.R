@@ -61,29 +61,48 @@ assert_valid_args <- function(args, arg_labels, call) {
   )
 }
 
-assert_valid_fun <- function(arg, replacement, x, x_label, arg_label, call) {
-  if (!rlang::is_logical(replacement)) {
-    cli::cli_abort(
-      c(
-        "!" = "Function arguments must return logical vectors.",
-        "x" = "{.arg {arg_label}} returns an object of class {.cls {class(replacement)}}."
-      ),
-      call = call,
-      class = "fauxnaif_illogical_function"
-    )
+assert_valid_functions <- function(
+  args, functions, x, x_label, arg_labels, call
+) {
+  invalid <- mapply_lgl(
+    function(arg, is_function, x) {
+      is_function &&
+        (!rlang::is_logical(arg) || !identical(length(arg), length(x)))
+    },
+    arg = args, is_function = functions, MoreArgs = list(x = x)
+  )
+
+  if (all(!invalid)) {
+    return()
   }
 
-  if (!identical(length(replacement), length(x))) {
+  errors <- mapply_chr(
+    function(arg, label) {
+      if (!rlang::is_logical(arg)) {
+        return(cli::format_inline(
+          "{.arg {label}} returns an object of class {.cls {class(arg)}}."
+        ))
+      }
+
+      cli::format_inline(
+        "{.arg {label}} returns a vector of length {.val {length(arg)}}."
+      )
+    },
+    arg = args[invalid], label = arg_labels[invalid]
+  )
+  names(errors) <- rep("x", length(errors))
+
+  cli::cli_abort(
     cli::cli_abort(
       c(
-        "!" = "Function arguments must return vectors of the same length as {.arg x}.",
-        "x" = paste(
-          "{.arg {arg_label}} returns a vector of length {.val {length(replacement)}},",
-          "but {.arg {x_label}} is length {.val {length(x)}}."
-        )
+        "!" = paste(
+          "All function arguments must return a logical vector of length",
+          "{.val {length(x)}} (the same length as {.arg {x_label}})."
+        ),
+        errors
       ),
       call = call,
-      class = "fauxnaif_wrong_length_function"
+      class = "fauxnaif_invalid_functions"
     )
-  }
+  )
 }

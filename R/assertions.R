@@ -1,7 +1,9 @@
-assert_atomicish <- function(x, x_label, call) {
+assert_atomicish <- function(x, call) {
   if (is_atomicish(x)) {
     return()
   }
+
+  x_label <- get_x_label(call)
 
   cli::cli_abort(
     c(
@@ -25,7 +27,7 @@ assert_args <- function(args, call) {
   )
 }
 
-assert_valid_args <- function(args, arg_labels, call) {
+assert_valid_args <- function(args, call) {
   invalid <- vlapply(
     args,
     function(x) !rlang::is_atomic(x) & !rlang::is_function(x)
@@ -34,6 +36,8 @@ assert_valid_args <- function(args, arg_labels, call) {
   if (all(!invalid)) {
     return()
   }
+
+  arg_labels <- get_arg_labels(call)
 
   errors <- mapply_chr(
     function(arg, label) {
@@ -61,9 +65,7 @@ assert_valid_args <- function(args, arg_labels, call) {
   )
 }
 
-assert_valid_functions <- function(
-  args, functions, x, x_label, arg_labels, call
-) {
+assert_valid_functions <- function(args, functions, x, call) {
   invalid <- mapply_lgl(
     function(arg, is_function, x) {
       is_function &&
@@ -75,6 +77,9 @@ assert_valid_functions <- function(
   if (all(!invalid)) {
     return()
   }
+
+  x_label <- get_x_label(call)
+  arg_labels <- get_arg_labels(call)
 
   errors <- mapply_chr(
     function(arg, label) {

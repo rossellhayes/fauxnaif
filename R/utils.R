@@ -23,6 +23,10 @@ vlapply <- function(X, FUN, ..., USE.NAMES = TRUE) {
   vapply(X, FUN, FUN.VALUE = logical(1), ..., USE.NAMES = USE.NAMES)
 }
 
+vcapply <- function(X, FUN, ..., USE.NAMES = TRUE) {
+  vapply(X, FUN, FUN.VALUE = character(1), ..., USE.NAMES = USE.NAMES)
+}
+
 mapply_lgl <- function(f, ...) {
   vapply(Map(f, ...), identity, logical(1))
 }

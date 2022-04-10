@@ -79,7 +79,7 @@ na_if_in <- function(x, ...) {
     return(x)
   }
 
-  x[x %in% matches(x, ...)] <- NA
+  x[x %in% find_matches(x, ...)] <- NA
   x
 }
 
@@ -91,6 +91,6 @@ na_if_not <- function(x, ...) {
     return(x)
   }
 
-  x[!x %in% matches(x, ...)] <- NA
+  x[!x %in% find_matches(x, ...)] <- NA
   x
 }

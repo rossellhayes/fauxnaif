@@ -1,4 +1,4 @@
-matches <- function(x, ..., call = rlang::caller_env()) {
+find_matches <- function(x, ..., call = rlang::caller_env()) {
   # Set up argument labels if they are needed for error messages
   delayedAssign("labels",
     lapply(

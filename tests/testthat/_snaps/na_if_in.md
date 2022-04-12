@@ -130,3 +130,33 @@
     x `mean` returns an object of class <numeric>.
     x `~TRUE` returns a vector of length 1.
 
+# errors when fauxnaif functions are called in unusual ways
+
+    ! Input `x` must be coercible to a vector.
+    x `x` is of uncoercible class <function>.
+
+---
+
+    ! All arguments must be coercible to an atomic vector, function, or one-sided formula.
+    x `..1` is of uncoercible class <lm>.
+
+---
+
+    ! All function arguments must return a logical vector of length 1 (the same length as `x`).
+    x `..1` returns an object of class <numeric>.
+
+---
+
+    ! All function arguments must return a logical vector of length 1 (the same length as `x`).
+    x `..` returns an object of class <numeric>.
+
+---
+
+    ! All arguments must be coercible to an atomic vector, function, or one-sided formula.
+    x `..` is of uncoercible class <lm>.
+
+---
+
+    ! Input `x` must be coercible to a vector.
+    x `x` is of uncoercible class <function>.
+

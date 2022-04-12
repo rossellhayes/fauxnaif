@@ -107,6 +107,16 @@ test_that("function arguments can generate multiple errors", {
   expect_snapshot_error(na_if_not(1:5, mean, ~ TRUE), class = "fauxnaif_invalid_functions")
 })
 
+test_that("errors when fauxnaif functions are called in unusual ways", {
+  expect_snapshot_error(do.call(na_if_in, list(mean, 0)), class = "fauxnaif_uncoercible_input")
+  expect_snapshot_error(do.call(na_if_in, list(0, lm(1 ~ 1))), class = "fauxnaif_invalid_arguments")
+  expect_snapshot_error(do.call(na_if_in, list(0, mean)), class = "fauxnaif_invalid_functions")
+
+  expect_snapshot_error(lapply(1:10, na_if_in, mean), class = "fauxnaif_invalid_functions")
+  expect_snapshot_error(lapply(1:10, na_if_in, lm(1 ~ 1)), class = "fauxnaif_invalid_arguments")
+  expect_snapshot_error(lapply(1:10, na_if_in, x = mean), class = "fauxnaif_uncoercible_input")
+})
+
 test_that("coercible argument does not produce error", {
   expect_equal(na_if_in(0:9, list(0, 1)), c(NA, NA, 2:9))
   expect_equal(na_if_not(0:9, list(0, 1)), c(0, 1, rep(NA, 8)))

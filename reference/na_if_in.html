@@ -113,13 +113,13 @@ values.</p></div>
 <span class="r-in"><span class="co"># We can replace 99...</span></span>
 <span class="r-in"><span class="co"># ... explicitly</span></span>
 <span class="r-in"><span class="fu">na_if_in</span><span class="op">(</span><span class="va">x</span>, <span class="fl">99</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  2  5 NA  3  4  1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] NA  2  4  1  3  5</span>
 <span class="r-in"><span class="co"># ... by specifying values to keep</span></span>
 <span class="r-in"><span class="fu">na_if_not</span><span class="op">(</span><span class="va">x</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  2  5 NA  3  4  1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] NA  2  4  1  3  5</span>
 <span class="r-in"><span class="co"># ... or by using a formula</span></span>
 <span class="r-in"><span class="fu">na_if_in</span><span class="op">(</span><span class="va">x</span>, <span class="op">~</span> <span class="va">.</span> <span class="op">&gt;</span> <span class="fl">5</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  2  5 NA  3  4  1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] NA  2  4  1  3  5</span>
 <span class="r-in"></span>
 <span class="r-in"><span class="va">messy_string</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"abc"</span>, <span class="st">""</span>, <span class="st">"def"</span>, <span class="st">"NA"</span>, <span class="st">"ghi"</span>, <span class="fl">42</span>, <span class="st">"jkl"</span>, <span class="st">"NULL"</span>, <span class="st">"mno"</span><span class="op">)</span></span>
 <span class="r-in"><span class="co"># We can replace unwanted values...</span></span>

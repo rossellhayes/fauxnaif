@@ -13,6 +13,7 @@ vignette: >
 
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
+  message = FALSE,
   collapse = TRUE,
   comment = "#>"
 )
@@ -115,35 +116,19 @@ but
 Formulas in `fauxnaif` are based on the formula syntax used in `rlang` and `purrr`.
 They are introduced with a tilde (`~`) and indicate each observation with a dot (`.`).
 
-To clean the age variable, we will need two formulas.
+To clean the age variable, we can use two formulas.
 One will replace values less than 18 and another will replace values greater than 122:
 
 ```{r}
 faux_census$age %>% na_if_in(~ . < 18, ~ . > 122)
 ```
 
-## Using relational operators from other packages
-
-If you really want to get this down to a single argument, you can use more advanced relational operators provided by packages like `intrval`, `inops`, or `invctr`.
-
-For example, `intrval`'s closed interval operator (`%[]%`) allows you to check if a value is between two values, even if it is not an integer:
+Or we can use the `between()` function from `dplyr`:
 
 ```{r}
-library(intrval)
+library(dplyr)
 
-23.5 %[]% c(18, 122)
-```
-
-With this, we can clean the age variable using only one formula argument:
-
-```{r}
-faux_census$age %>% na_if_not(~ . %[]% c(18, 122))
-```
-
-or 
-
-```{r}
-faux_census$age %>% na_if_in(~ . %][% c(18, 122))
+faux_census$age %>% na_if_in(~ !between(., 18, 122))
 ```
 
 ## Using formulas for non-numeric variables
@@ -172,27 +157,6 @@ In that case, we can use a formula operating on the number of characters (`nchar
 ```{r}
 faux_census$religion %>% na_if_in(~ nchar(.) > 25)
 ```
-
-# Replacing values using functions
-
-Finally, there are cases when we can use a simple function to replace values.
-
-Returning to the income variable, we know that `NA` is indicated using the largest value.
-Rather than specifying it directly, we can simply tell `fauxnaif` to replace the variable's maximum value:
-
-```{r}
-faux_census$income %>% na_if_in(max)
-```
-
-We can do the same with the age variable, where both the lowest and highest values are unrealistic:
-
-```{r}
-faux_census$age %>% na_if_in(min, max)
-```
-
-But beware!
-If no respondent had given an unrealistic answer, replacing the minimum or maximum values could result in the loss of real data!
-It is often better to use more complicated formulas than simpler functions for your replacements.
 
 # Replacing values in data frames
 

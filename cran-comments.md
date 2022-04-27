@@ -1,10 +1,5 @@
-# Resubmission
-
-* This is an amendment to the previous submission of fauxnaif 0.6.1.
-* Fixes link to www.freepik.com in README.
-
 # Test environments
-* Local R installation, Windows 10, R 4.0.2
+* Local R installation, Mac OS 12.3.1, R 4.2.0
 * GitHub Actions
     * R 4.1.0-devel on Ubuntu 16.04
     * R 4.0.2 on Windows Server 2019, Mac OS X 10.15.4 and Ubuntu 16.04

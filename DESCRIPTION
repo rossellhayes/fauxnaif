@@ -15,12 +15,11 @@ Depends:
     R (>= 3.5)
 Imports:
     cli,
-    rlang
+    rlang (>= 1.0.0)
 Suggests:
     covr,
     dplyr,
     haven,
-    intrval,
     knitr,
     magrittr,
     rmarkdown,

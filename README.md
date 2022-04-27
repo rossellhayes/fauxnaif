@@ -6,12 +6,12 @@
 <!-- badges: start -->
 
 [![](https://www.r-pkg.org/badges/version/fauxnaif?color=brightgreen)](https://cran.r-project.org/package=fauxnaif)
-[![](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
+[![](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
 [![License:
 MIT](https://img.shields.io/badge/license-MIT-blueviolet.svg)](https://cran.r-project.org/web/licenses/MIT)
 [![R build
 status](https://github.com/rossellhayes/fauxnaif/workflows/R-CMD-check/badge.svg)](https://github.com/rossellhayes/fauxnaif/actions)
-[![](https://codecov.io/gh/rossellhayes/fauxnaif/branch/master/graph/badge.svg)](https://codecov.io/gh/rossellhayes/fauxnaif)
+[![](https://app.codecov.io/gh/rossellhayes/fauxnaif/branch/main/graph/badge.svg)](https://app.codecov.io/gh/rossellhayes/fauxnaif)
 [![Dependencies](https://tinyverse.netlify.com/badge/fauxnaif)](https://cran.r-project.org/package=fauxnaif)
 <!-- badges: end -->
 
@@ -87,13 +87,6 @@ na_if_in(-1:10, ~ . < 0)
 #>  [1] NA  0  1  2  3  4  5  6  7  8  9 10
 ```
 
-… or using a function:
-
-``` r
-na_if_in(-1:10, min)
-#>  [1] NA  0  1  2  3  4  5  6  7  8  9 10
-```
-
 ### A little more complex
 
 ``` r
@@ -133,7 +126,7 @@ na_if_not(messy_string, ~ grepl("[a-z]{3,}", .))
 
 ``` r
 faux_census
-#> # A tibble: 5 x 4
+#> # A tibble: 5 × 4
 #>   state    age  income gender                      
 #>   <chr>  <dbl>   <dbl> <chr>                       
 #> 1 TX        57 9999999 Gender is a social construct
@@ -143,7 +136,7 @@ faux_census
 #> 5 TN        64 9999999 M
 ```
 
-na\_if\_in() is particularly useful inside `dplyr::mutate()`:
+na_if_in() is particularly useful inside `dplyr::mutate()`:
 
 ``` r
 faux_census %>%
@@ -153,7 +146,7 @@ faux_census %>%
    state  = na_if_not(state, ~ grepl("^[A-Z]{2,}$", .)),
    gender = na_if_in(gender, ~ nchar(.) > 20)
  )
-#> # A tibble: 5 x 4
+#> # A tibble: 5 × 4
 #>   state   age income gender
 #>   <chr> <dbl>  <dbl> <chr> 
 #> 1 TX       57     NA <NA>  
@@ -173,7 +166,7 @@ faux_census %>%
     across(where(is.character), na_if_in, ~ nchar(.) > 20),
     across(everything(), na_if_in, 9999999)
   )
-#> # A tibble: 5 x 4
+#> # A tibble: 5 × 4
 #>   state   age income gender
 #>   <chr> <dbl>  <dbl> <chr> 
 #> 1 TX       57     NA <NA>  
@@ -183,13 +176,11 @@ faux_census %>%
 #> 5 TN       64     NA M
 ```
 
------
+------------------------------------------------------------------------
 
-Hex sticker fonts are
-[Bodoni\*](https://github.com/indestructible-type/Bodoni) by
-[indestructible type\*](https://indestructibletype.com/Home.html) and
-[Source Code Pro](https://github.com/adobe-fonts/source-code-pro) by
-[Adobe](https://www.adobe.com).
+Hex sticker fonts are [Bodoni\* by indestructible
+type\*](https://github.com/indestructible-type/Bodoni) and [Source Code
+Pro by Adobe](https://github.com/adobe-fonts/source-code-pro).
 
 Image adapted from icon made by [Freepik](https://www.freepik.com) from
 [flaticon.com](https://www.flaticon.com/free-icon/paper-shredder_1701401).

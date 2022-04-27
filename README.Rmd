@@ -23,7 +23,7 @@ library(badger)
 
 <!-- badges: start -->
 `r badge_cran_release(color = "brightgreen")`
-`r badge_lifecycle("maturing")`
+`r badge_lifecycle("stable")`
 `r badge_license(color = "blueviolet")`
 `r badge_github_actions(action = "R-CMD-check")`
 `r badge_codecov()`
@@ -87,11 +87,6 @@ na_if_not(-1:10, 0:10)
 ... using a formula:
 ```{r}
 na_if_in(-1:10, ~ . < 0)
-```
-
-... or using a function:
-```{r}
-na_if_in(-1:10, min)
 ```
 
 ### A little more complex
@@ -161,10 +156,8 @@ faux_census %>%
 
 ---
 
-Hex sticker fonts are [Bodoni*](https://github.com/indestructible-type/Bodoni)
-by [indestructible type*](https://indestructibletype.com/Home.html) and
-[Source Code Pro](https://github.com/adobe-fonts/source-code-pro) by
-[Adobe](https://www.adobe.com).
+Hex sticker fonts are [Bodoni* by indestructible type*](https://github.com/indestructible-type/Bodoni) and
+[Source Code Pro by Adobe](https://github.com/adobe-fonts/source-code-pro).
 
 Image adapted from icon made by [Freepik](https://www.freepik.com) from
 [flaticon.com](https://www.flaticon.com/free-icon/paper-shredder_1701401).

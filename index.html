@@ -125,23 +125,19 @@
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="reference/na_if_in.html">na_if_in</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, <span class="op">~</span> <span class="va">.</span> <span class="op">&lt;</span> <span class="fl">0</span><span class="op">)</span>
 <span class="co">#&gt;  [1] NA  0  1  2  3  4  5  6  7  8  9 10</span></code></pre></div>
-<p>… or using a function:</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="reference/na_if_in.html">na_if_in</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, <span class="va">min</span><span class="op">)</span>
-<span class="co">#&gt;  [1] NA  0  1  2  3  4  5  6  7  8  9 10</span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="a-little-more-complex">A little more complex<a class="anchor" aria-label="anchor" href="#a-little-more-complex"></a>
 </h3>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">messy_string</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"abc"</span>, <span class="st">""</span>, <span class="st">"def"</span>, <span class="st">"NA"</span>, <span class="st">"ghi"</span>, <span class="fl">42</span>, <span class="st">"jkl"</span>, <span class="st">"NULL"</span>, <span class="st">"mno"</span><span class="op">)</span></code></pre></div>
 <p>We can replace unwanted values…</p>
 <p>… one at a time:</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="reference/na_if_in.html">na_if_in</a></span><span class="op">(</span><span class="va">messy_string</span>, <span class="st">""</span><span class="op">)</span>
 <span class="co">#&gt; [1] "abc"  NA     "def"  "NA"   "ghi"  "42"   "jkl"  "NULL" "mno"</span></code></pre></div>
 <p>… or all at once:</p>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="reference/na_if_in.html">na_if_in</a></span><span class="op">(</span><span class="va">messy_string</span>, <span class="st">""</span>, <span class="st">"NA"</span>, <span class="st">"NULL"</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">100</span><span class="op">)</span>
 <span class="co">#&gt; [1] "abc" NA    "def" NA    "ghi" NA    "jkl" NA    "mno"</span>
 <span class="fu"><a href="reference/na_if_in.html">na_if_in</a></span><span class="op">(</span><span class="va">messy_string</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">""</span>, <span class="st">"NA"</span>, <span class="st">"NULL"</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">100</span><span class="op">)</span><span class="op">)</span>
@@ -149,7 +145,7 @@
 <span class="fu"><a href="reference/na_if_in.html">na_if_in</a></span><span class="op">(</span><span class="va">messy_string</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">""</span>, <span class="st">"NA"</span>, <span class="st">"NULL"</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">100</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; [1] "abc" NA    "def" NA    "ghi" NA    "jkl" NA    "mno"</span></code></pre></div>
 <p>… or using a clever formula:</p>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/grep.html" class="external-link">grepl</a></span><span class="op">(</span><span class="st">"[a-z]{3,}"</span>, <span class="va">messy_string</span><span class="op">)</span>
 <span class="co">#&gt; [1]  TRUE FALSE  TRUE FALSE  TRUE FALSE  TRUE FALSE  TRUE</span>
 <span class="fu"><a href="reference/na_if_in.html">na_if_not</a></span><span class="op">(</span><span class="va">messy_string</span>, <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/base/grep.html" class="external-link">grepl</a></span><span class="op">(</span><span class="st">"[a-z]{3,}"</span>, <span class="va">.</span><span class="op">)</span><span class="op">)</span>
@@ -158,9 +154,9 @@
 <div class="section level3">
 <h3 id="with-data-frames">With data frames<a class="anchor" aria-label="anchor" href="#with-data-frames"></a>
 </h3>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">faux_census</span>
-<span class="co">#&gt; # A tibble: 5 x 4</span>
+<span class="co">#&gt; # A tibble: 5 × 4</span>
 <span class="co">#&gt;   state    age  income gender                      </span>
 <span class="co">#&gt;   &lt;chr&gt;  &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;                       </span>
 <span class="co">#&gt; 1 TX        57 9999999 Gender is a social construct</span>
@@ -169,7 +165,7 @@
 <span class="co">#&gt; 4 LA         2   61000 Male                        </span>
 <span class="co">#&gt; 5 TN        64 9999999 M</span></code></pre></div>
 <p>na_if_in() is particularly useful inside <code><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">dplyr::mutate()</a></code>:</p>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">faux_census</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>
    income <span class="op">=</span> <span class="fu"><a href="reference/na_if_in.html">na_if_in</a></span><span class="op">(</span><span class="va">income</span>, <span class="fl">9999999</span><span class="op">)</span>,
@@ -177,7 +173,7 @@
    state  <span class="op">=</span> <span class="fu"><a href="reference/na_if_in.html">na_if_not</a></span><span class="op">(</span><span class="va">state</span>, <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/base/grep.html" class="external-link">grepl</a></span><span class="op">(</span><span class="st">"^[A-Z]{2,}$"</span>, <span class="va">.</span><span class="op">)</span><span class="op">)</span>,
    gender <span class="op">=</span> <span class="fu"><a href="reference/na_if_in.html">na_if_in</a></span><span class="op">(</span><span class="va">gender</span>, <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/base/nchar.html" class="external-link">nchar</a></span><span class="op">(</span><span class="va">.</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">20</span><span class="op">)</span>
  <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 5 x 4</span>
+<span class="co">#&gt; # A tibble: 5 × 4</span>
 <span class="co">#&gt;   state   age income gender</span>
 <span class="co">#&gt;   &lt;chr&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt; </span>
 <span class="co">#&gt; 1 TX       57     NA &lt;NA&gt;  </span>
@@ -186,7 +182,7 @@
 <span class="co">#&gt; 4 LA       NA  61000 Male  </span>
 <span class="co">#&gt; 5 TN       64     NA M</span></code></pre></div>
 <p>Or you can use <code><a href="https://dplyr.tidyverse.org/reference/across.html" class="external-link">dplyr::across()</a></code> on data frames:</p>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">faux_census</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>
     <span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html" class="external-link">across</a></span><span class="op">(</span><span class="va">age</span>, <span class="va">na_if_in</span>, <span class="op">~</span> <span class="va">.</span> <span class="op">&lt;</span> <span class="fl">18</span>, <span class="op">~</span> <span class="va">.</span> <span class="op">&gt;</span> <span class="fl">120</span><span class="op">)</span>,
@@ -194,7 +190,7 @@
     <span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html" class="external-link">across</a></span><span class="op">(</span><span class="fu">where</span><span class="op">(</span><span class="va">is.character</span><span class="op">)</span>, <span class="va">na_if_in</span>, <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/base/nchar.html" class="external-link">nchar</a></span><span class="op">(</span><span class="va">.</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">20</span><span class="op">)</span>,
     <span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html" class="external-link">across</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/everything.html" class="external-link">everything</a></span><span class="op">(</span><span class="op">)</span>, <span class="va">na_if_in</span>, <span class="fl">9999999</span><span class="op">)</span>
   <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 5 x 4</span>
+<span class="co">#&gt; # A tibble: 5 × 4</span>
 <span class="co">#&gt;   state   age income gender</span>
 <span class="co">#&gt;   &lt;chr&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt; </span>
 <span class="co">#&gt; 1 TX       57     NA &lt;NA&gt;  </span>
@@ -203,7 +199,7 @@
 <span class="co">#&gt; 4 LA       NA  61000 Male  </span>
 <span class="co">#&gt; 5 TN       64     NA M</span></code></pre></div>
 <hr>
-<p>Hex sticker fonts are <a href="https://github.com/indestructible-type/Bodoni" class="external-link">Bodoni*</a> by <a href="https://indestructibletype.com/Home.html" class="external-link">indestructible type*</a> and <a href="https://github.com/adobe-fonts/source-code-pro" class="external-link">Source Code Pro</a> by <a href="https://www.adobe.com" class="external-link">Adobe</a>.</p>
+<p>Hex sticker fonts are <a href="https://github.com/indestructible-type/Bodoni" class="external-link">Bodoni* by indestructible type*</a> and <a href="https://github.com/adobe-fonts/source-code-pro" class="external-link">Source Code Pro by Adobe</a>.</p>
 <p>Image adapted from icon made by <a href="https://www.freepik.com" class="external-link">Freepik</a> from <a href="https://www.flaticon.com/free-icon/paper-shredder_1701401" class="external-link">flaticon.com</a>.</p>
 <p>Please note that <strong>fauxnaif</strong> is released with a <a href="https://www.contributor-covenant.org/version/2/0/code_of_conduct/" class="external-link">Contributor Code of Conduct</a>.</p>
 </div>
@@ -254,10 +250,10 @@
 <h2 data-toc-skip>Dev status</h2>
 <ul class="list-unstyled">
 <li><a href="https://cran.r-project.org/package=fauxnaif" class="external-link"><img src="https://www.r-pkg.org/badges/version/fauxnaif?color=brightgreen"></a></li>
-<li><a href="https://www.tidyverse.org/lifecycle/#maturing" class="external-link"><img src="https://img.shields.io/badge/lifecycle-maturing-blue.svg"></a></li>
+<li><a href="https://lifecycle.r-lib.org/articles/stages.html#stable" class="external-link"><img src="https://img.shields.io/badge/lifecycle-stable-brightgreen.svg"></a></li>
 <li><a href="https://cran.r-project.org/web/licenses/MIT" class="external-link"><img src="https://img.shields.io/badge/license-MIT-blueviolet.svg" alt="License: MIT"></a></li>
 <li><a href="https://github.com/rossellhayes/fauxnaif/actions" class="external-link"><img src="https://github.com/rossellhayes/fauxnaif/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
-<li><a href="https://codecov.io/gh/rossellhayes/fauxnaif" class="external-link"><img src="https://codecov.io/gh/rossellhayes/fauxnaif/branch/master/graph/badge.svg"></a></li>
+<li><a href="https://app.codecov.io/gh/rossellhayes/fauxnaif" class="external-link"><img src="https://app.codecov.io/gh/rossellhayes/fauxnaif/branch/main/graph/badge.svg"></a></li>
 <li><a href="https://cran.r-project.org/package=fauxnaif" class="external-link"><img src="https://tinyverse.netlify.com/badge/fauxnaif" alt="Dependencies"></a></li>
 </ul>
 </div>

@@ -6,7 +6,7 @@
 \alias{fauxnaif-package}
 \title{fauxnaif: Convert Values to NA}
 \description{
-\if{html}{\figure{logo.png}{options: align='right' alt='logo' width='120'}}
+\if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
 Provides a replacement for dplyr::na_if(). Allows you to specify multiple values to be replaced with NA using a single function.
 }

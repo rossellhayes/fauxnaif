@@ -1,3 +1,7 @@
+# fauxnaif 0.7.1
+
+- Update Roxygen version to avoid CRAN NOTE.
+
 # fauxnaif 0.7.0
 
 -   `na_if_in()` and `na_if_not()` now support `vctrs` classes like `haven_labelled`.

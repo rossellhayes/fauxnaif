@@ -24,7 +24,7 @@ na_if_not() replaces values that do not match its arguments with NA.
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fauxnaif</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.7.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.7.1</span>
       </span>
     </div>
 
@@ -67,25 +67,30 @@ to be replaced with <code>NA</code> at the same time.</p><ul><li><p><code>na_if_
 </ul></div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">na_if_in</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="fu">na_if_not</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">na_if_in</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">na_if_not</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>x</dt>
 <dd><p>Vector to modify</p></dd>
+
+
 <dt>...</dt>
 <dd><p>Values to replace with <code>NA</code>, specified as either:</p><ul><li><p>An object, vector of objects, or list of objects.</p></li>
 <li><p>A function (including a <a href="https://rlang.r-lib.org/reference/as_function.html" class="external-link">purrr-style lambda function</a>)
 that returns a logical vector of the same length as <code>x</code>.
 See section "Formulas" for more details.</p></li>
 </ul></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A modified version of <code>x</code> with selected values replaced with
+    
+
+<p>A modified version of <code>x</code> with selected values replaced with
 <code>NA</code>.</p>
     </div>
     <div id="formulas">
@@ -109,42 +114,42 @@ values.</p></div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="fl">99</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"><span class="co"># We can replace 99...</span></span>
-<span class="r-in"><span class="co"># ... explicitly</span></span>
-<span class="r-in"><span class="fu">na_if_in</span><span class="op">(</span><span class="va">x</span>, <span class="fl">99</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  3  4  2  1 NA  5</span>
-<span class="r-in"><span class="co"># ... by specifying values to keep</span></span>
-<span class="r-in"><span class="fu">na_if_not</span><span class="op">(</span><span class="va">x</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  3  4  2  1 NA  5</span>
-<span class="r-in"><span class="co"># ... or by using a formula</span></span>
-<span class="r-in"><span class="fu">na_if_in</span><span class="op">(</span><span class="va">x</span>, <span class="op">~</span> <span class="va">.</span> <span class="op">&gt;</span> <span class="fl">5</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  3  4  2  1 NA  5</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">messy_string</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"abc"</span>, <span class="st">""</span>, <span class="st">"def"</span>, <span class="st">"NA"</span>, <span class="st">"ghi"</span>, <span class="fl">42</span>, <span class="st">"jkl"</span>, <span class="st">"NULL"</span>, <span class="st">"mno"</span><span class="op">)</span></span>
-<span class="r-in"><span class="co"># We can replace unwanted values...</span></span>
-<span class="r-in"><span class="co"># ... one at a time</span></span>
-<span class="r-in"><span class="va">clean_string</span> <span class="op">&lt;-</span> <span class="fu">na_if_in</span><span class="op">(</span><span class="va">messy_string</span>, <span class="st">""</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">clean_string</span> <span class="op">&lt;-</span> <span class="fu">na_if_in</span><span class="op">(</span><span class="va">clean_string</span>, <span class="st">"NA"</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">clean_string</span> <span class="op">&lt;-</span> <span class="fu">na_if_in</span><span class="op">(</span><span class="va">clean_string</span>, <span class="fl">42</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">clean_string</span> <span class="op">&lt;-</span> <span class="fu">na_if_in</span><span class="op">(</span><span class="va">clean_string</span>, <span class="st">"NULL"</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">clean_string</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="fl">99</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># We can replace 99...</span></span></span>
+<span class="r-in"><span><span class="co"># ... explicitly</span></span></span>
+<span class="r-in"><span><span class="fu">na_if_in</span><span class="op">(</span><span class="va">x</span>, <span class="fl">99</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  5  1 NA  4  3  2</span>
+<span class="r-in"><span><span class="co"># ... by specifying values to keep</span></span></span>
+<span class="r-in"><span><span class="fu">na_if_not</span><span class="op">(</span><span class="va">x</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  5  1 NA  4  3  2</span>
+<span class="r-in"><span><span class="co"># ... or by using a formula</span></span></span>
+<span class="r-in"><span><span class="fu">na_if_in</span><span class="op">(</span><span class="va">x</span>, <span class="op">~</span> <span class="va">.</span> <span class="op">&gt;</span> <span class="fl">5</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  5  1 NA  4  3  2</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">messy_string</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"abc"</span>, <span class="st">""</span>, <span class="st">"def"</span>, <span class="st">"NA"</span>, <span class="st">"ghi"</span>, <span class="fl">42</span>, <span class="st">"jkl"</span>, <span class="st">"NULL"</span>, <span class="st">"mno"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># We can replace unwanted values...</span></span></span>
+<span class="r-in"><span><span class="co"># ... one at a time</span></span></span>
+<span class="r-in"><span><span class="va">clean_string</span> <span class="op">&lt;-</span> <span class="fu">na_if_in</span><span class="op">(</span><span class="va">messy_string</span>, <span class="st">""</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">clean_string</span> <span class="op">&lt;-</span> <span class="fu">na_if_in</span><span class="op">(</span><span class="va">clean_string</span>, <span class="st">"NA"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">clean_string</span> <span class="op">&lt;-</span> <span class="fu">na_if_in</span><span class="op">(</span><span class="va">clean_string</span>, <span class="fl">42</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">clean_string</span> <span class="op">&lt;-</span> <span class="fu">na_if_in</span><span class="op">(</span><span class="va">clean_string</span>, <span class="st">"NULL"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">clean_string</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "abc" NA    "def" NA    "ghi" NA    "jkl" NA    "mno"</span>
-<span class="r-in"><span class="co"># ... or all at once</span></span>
-<span class="r-in"><span class="fu">na_if_in</span><span class="op">(</span><span class="va">messy_string</span>, <span class="st">""</span>, <span class="st">"NA"</span>, <span class="st">"NULL"</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">100</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="co"># ... or all at once</span></span></span>
+<span class="r-in"><span><span class="fu">na_if_in</span><span class="op">(</span><span class="va">messy_string</span>, <span class="st">""</span>, <span class="st">"NA"</span>, <span class="st">"NULL"</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">100</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "abc" NA    "def" NA    "ghi" NA    "jkl" NA    "mno"</span>
-<span class="r-in"><span class="fu">na_if_in</span><span class="op">(</span><span class="va">messy_string</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">""</span>, <span class="st">"NA"</span>, <span class="st">"NULL"</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">100</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu">na_if_in</span><span class="op">(</span><span class="va">messy_string</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">""</span>, <span class="st">"NA"</span>, <span class="st">"NULL"</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">100</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "abc" NA    "def" NA    "ghi" NA    "jkl" NA    "mno"</span>
-<span class="r-in"><span class="fu">na_if_in</span><span class="op">(</span><span class="va">messy_string</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">""</span>, <span class="st">"NA"</span>, <span class="st">"NULL"</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">100</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu">na_if_in</span><span class="op">(</span><span class="va">messy_string</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">""</span>, <span class="st">"NA"</span>, <span class="st">"NULL"</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">100</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "abc" NA    "def" NA    "ghi" NA    "jkl" NA    "mno"</span>
-<span class="r-in"><span class="co"># ... or using a clever formula</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/grep.html" class="external-link">grepl</a></span><span class="op">(</span><span class="st">"[a-z]{3,}"</span>, <span class="va">messy_string</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="co"># ... or using a clever formula</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/grep.html" class="external-link">grepl</a></span><span class="op">(</span><span class="st">"[a-z]{3,}"</span>, <span class="va">messy_string</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1]  TRUE FALSE  TRUE FALSE  TRUE FALSE  TRUE FALSE  TRUE</span>
-<span class="r-in"><span class="fu">na_if_not</span><span class="op">(</span><span class="va">messy_string</span>, <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/base/grep.html" class="external-link">grepl</a></span><span class="op">(</span><span class="st">"[a-z]{3,}"</span>, <span class="va">.</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu">na_if_not</span><span class="op">(</span><span class="va">messy_string</span>, <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/base/grep.html" class="external-link">grepl</a></span><span class="op">(</span><span class="st">"[a-z]{3,}"</span>, <span class="va">.</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "abc" NA    "def" NA    "ghi" NA    "jkl" NA    "mno"</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># na_if_in() is particularly useful inside dplyr::mutate</span></span>
-<span class="r-in"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># na_if_in() is particularly useful inside dplyr::mutate</span></span></span>
+<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Attaching package: ‘dplyr’</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> The following objects are masked from ‘package:stats’:</span>
@@ -153,40 +158,41 @@ values.</p></div>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> The following objects are masked from ‘package:base’:</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     intersect, setdiff, setequal, union</span>
-<span class="r-in"><span class="va">faux_census</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span class="r-in">  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span></span>
-<span class="r-in">    state <span class="op">=</span> <span class="fu">na_if_in</span><span class="op">(</span><span class="va">state</span>, <span class="st">"Canada"</span><span class="op">)</span>,</span>
-<span class="r-in">    age   <span class="op">=</span> <span class="fu">na_if_in</span><span class="op">(</span><span class="va">age</span>, <span class="op">~</span> <span class="va">.</span> <span class="op">&lt;</span> <span class="fl">18</span>, <span class="op">~</span> <span class="va">.</span> <span class="op">&gt;</span> <span class="fl">120</span><span class="op">)</span></span>
-<span class="r-in">  <span class="op">)</span></span>
+<span class="r-in"><span><span class="va">faux_census</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>    state <span class="op">=</span> <span class="fu">na_if_in</span><span class="op">(</span><span class="va">state</span>, <span class="st">"Canada"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>    age   <span class="op">=</span> <span class="fu">na_if_in</span><span class="op">(</span><span class="va">age</span>, <span class="op">~</span> <span class="va">.</span> <span class="op">&lt;</span> <span class="fl">18</span>, <span class="op">~</span> <span class="va">.</span> <span class="op">&gt;</span> <span class="fl">120</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 20 × 6</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    state gender                         age race                 income religion</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                 <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> CA    female                          80 Native American      2.8 <span style="color: #949494;">e</span>4 Christi…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> NY    Woman                           89 Latino               1.49<span style="color: #949494;">e</span>5 Spiritu…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> CA    Female                          48 White                4.79<span style="color: #949494;">e</span>5 Catholic</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> TX    Male                            63 latinx               8.5 <span style="color: #949494;">e</span>4 christi…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> PA    Male                            47 asian                4.19<span style="color: #949494;">e</span>4 Baptist </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> TX    Gender is a social construct    57 Race is a social co… 1.00<span style="color: #949494;">e</span>7 Religio…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> <span style="color: #BB0000;">NA</span>    Male                            49 white                1.49<span style="color: #949494;">e</span>5 methodi…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> TX    Female                          50 White                9.88<span style="color: #949494;">e</span>4 Lutheran</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> NY    f                               <span style="color: #BB0000;">NA</span> white                9.07<span style="color: #949494;">e</span>4 Agnostic</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> WA    F                               33 White                4.50<span style="color: #949494;">e</span>4 Jewish  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span> TX    Male                            30 White                1.27<span style="color: #949494;">e</span>5 none    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span> OH    Non-binary                      42 Caucasian            2.16<span style="color: #949494;">e</span>4 Roman C…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">13</span> NC    Female                          22 African American     7.42<span style="color: #949494;">e</span>4 atheist </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">14</span> LA    Male                            <span style="color: #BB0000;">NA</span> White                6.1 <span style="color: #949494;">e</span>4 Christi…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">15</span> LA    Female                          28 Black                2   <span style="color: #949494;">e</span>4 Not rel…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">16</span> CA    male                            34 Asian American       7.74<span style="color: #949494;">e</span>4 Christi…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">17</span> TN    M                               64 white                1.00<span style="color: #949494;">e</span>7 Nothing </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">18</span> FL    Female                          68 white                4.71<span style="color: #949494;">e</span>4 None    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">19</span> OH    Male                            39 black                2.38<span style="color: #949494;">e</span>4 baptist </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">20</span> NH    male                            73 Hispanic             3.32<span style="color: #949494;">e</span>4 Christi…</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># This function handles vector values differently than dplyr,</span></span>
-<span class="r-in"><span class="co"># and returns a different result with vector replacement values:</span></span>
-<span class="r-in"><span class="fu">na_if_in</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="fl">5</span><span class="op">:</span><span class="fl">1</span><span class="op">)</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    state gender                         age race                  income relig…¹</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> CA    female                          80 Native American       2.8 <span style="color: #949494;">e</span>4 Christ…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> NY    Woman                           89 Latino                1.49<span style="color: #949494;">e</span>5 Spirit…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> CA    Female                          48 White                 4.79<span style="color: #949494;">e</span>5 Cathol…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> TX    Male                            63 latinx                8.5 <span style="color: #949494;">e</span>4 christ…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> PA    Male                            47 asian                 4.19<span style="color: #949494;">e</span>4 Baptist</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> TX    Gender is a social construct    57 Race is a social con… 1.00<span style="color: #949494;">e</span>7 Religi…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> <span style="color: #BB0000;">NA</span>    Male                            49 white                 1.49<span style="color: #949494;">e</span>5 method…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> TX    Female                          50 White                 9.88<span style="color: #949494;">e</span>4 Luther…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> NY    f                               <span style="color: #BB0000;">NA</span> white                 9.07<span style="color: #949494;">e</span>4 Agnost…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> WA    F                               33 White                 4.50<span style="color: #949494;">e</span>4 Jewish </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span> TX    Male                            30 White                 1.27<span style="color: #949494;">e</span>5 none   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span> OH    Non-binary                      42 Caucasian             2.16<span style="color: #949494;">e</span>4 Roman …</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">13</span> NC    Female                          22 African American      7.42<span style="color: #949494;">e</span>4 atheist</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">14</span> LA    Male                            <span style="color: #BB0000;">NA</span> White                 6.1 <span style="color: #949494;">e</span>4 Christ…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">15</span> LA    Female                          28 Black                 2   <span style="color: #949494;">e</span>4 Not re…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">16</span> CA    male                            34 Asian American        7.74<span style="color: #949494;">e</span>4 Christ…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">17</span> TN    M                               64 white                 1.00<span style="color: #949494;">e</span>7 Nothing</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">18</span> FL    Female                          68 white                 4.71<span style="color: #949494;">e</span>4 None   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">19</span> OH    Male                            39 black                 2.38<span style="color: #949494;">e</span>4 baptist</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">20</span> NH    male                            73 Hispanic              3.32<span style="color: #949494;">e</span>4 Christ…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with abbreviated variable name ¹​religion</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># This function handles vector values differently than dplyr,</span></span></span>
+<span class="r-in"><span><span class="co"># and returns a different result with vector replacement values:</span></span></span>
+<span class="r-in"><span><span class="fu">na_if_in</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="fl">5</span><span class="op">:</span><span class="fl">1</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] NA NA NA NA NA</span>
-<span class="r-in"><span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/na_if.html" class="external-link">na_if</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="fl">5</span><span class="op">:</span><span class="fl">1</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/na_if.html" class="external-link">na_if</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="fl">5</span><span class="op">:</span><span class="fl">1</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1]  1  2 NA  4  5</span>
 </code></pre></div>
     </div>
@@ -202,7 +208,7 @@ values.</p></div>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>
